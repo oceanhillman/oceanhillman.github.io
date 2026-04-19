@@ -15,11 +15,12 @@ const tooltip = ref<TooltipData | null>(null);
 export function useTooltip() {
     function show(text: string, element: HTMLElement, icon?: TextureKey|TexProps, x?: number, y?: number) {
         const tooltipData = { element, text, icon, x, y };
-        tooltip.value = tooltipData;
 
-        // prevent resetting causing duplicate entries
-        if (element != tooltip.value?.element)
+        // prevent resetting causing duplicate entries (if a tooltip exists)
+        if (!tooltip.value || (tooltip.value && element != tooltip.value?.element))
             tooltipHistory.value.push(tooltipData);
+
+        tooltip.value = tooltipData;
     }
 
     function hide(element: HTMLElement) {

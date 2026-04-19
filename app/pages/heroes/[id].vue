@@ -521,7 +521,7 @@ import ListSelect from '~/components/modals/ListSelect.vue';
 import ModifyHeroData from '~/components/modals/ModifyHeroData.vue';
 import { changeColor } from '~/utils/util';
 import { type HeroData } from '../../assets/data/common';
-import { Calculator } from '~/services/calculator';
+import { calculateTimesToLevel, Calculator } from '~/services/calculator';
 import { tex, texUrl } from '~/assets/data/textures';
 import ConfigureHeroModal from '~/components/modals/ConfigureHeroModal.vue';
 import ConfirmModal from '~/components/modals/ConfirmModal.vue';
@@ -598,9 +598,41 @@ if (heroId == 'new') {
 if (!hero.value)
     throw createError({ statusCode: 404, message: `Hero doesn't exist!`, stack: `` });
 
+let description = `View all proficiency rewards, see time estimates to reach set goals, and plan your grind for ${hero.value.name} in Marvel Rivals.`;
+
+// custom seo is ssr only for prerendering
+if (import.meta.server && !!getAverageStatsForHero(hero.value.id)) {
+    const estimates = calculateTimesToLevel(hero.value, {
+        level: 1,
+        points: 0,
+        goal: 70,
+        averageStats: {},
+    });
+
+    let totalTimeToLord = 0;
+    let totalTimeToChampion = 0;
+    let totalTimeToFinish = 0;
+
+    const ranks = Object.keys(PROFICIENCY_RANKS);
+    const rankLordIndex = ranks.indexOf('lord');
+    const rankChampionIndex = ranks.indexOf('champion');
+
+    estimates.forEach(([_, [__, avg]], index) => {
+        if (index < rankLordIndex)
+            totalTimeToLord += avg;
+        if (index < rankChampionIndex)
+            totalTimeToChampion += avg;
+        
+        totalTimeToFinish += avg;
+    });
+
+    if (totalTimeToFinish != 0)
+        description = `View all proficiency rewards, see time estimates to reach set goals, and plan your grind for ${hero.value.name} in Marvel Rivals. It takes ${secondsToHoursString(totalTimeToLord)}h on average to get Lord on ${hero.value.name}, ${secondsToHoursString(totalTimeToChampion)}h to get the animated icon and ${secondsToHoursString(totalTimeToFinish)}h total for the Legendary title. Do you think you can get them faster?`;
+}
+
 useSeoMeta({
     title: `${hero.value.name} | MR Proficiency Calculator`,
-    description: `Calculate proficiency rewards and plan your grind for ${hero.value.name} in Marvel Rivals.`,
+    description,
 
     ogTitle: `${hero.value.name} | MR Proficiency Calculator`,
     ogUrl: useAbsoluteUrl('heroes', hero.value.id),
@@ -609,8 +641,8 @@ useSeoMeta({
     ogImageHeight: '630',
     ogImageAlt: 'Heroes | Marvel Rivals Proficiency Calculator - Calculate how long it takes to unlock every proficiency reward for any hero',
 
-    twitterTitle: 'Heroes | MR Proficiency Calculator',
-    twitterDescription: 'Browse all Marvel Rivals heroes and calculate proficiency rewards.',
+    twitterTitle: `${hero.value.name} | MR Proficiency Calculator`,
+    twitterDescription: description,
     twitterImage: useAbsoluteUrl('/img/seo/og-image-heroes.webp'),
     twitterImageAlt: 'Heroes | Marvel Rivals Proficiency Calculator - Calculate how long it takes to unlock every proficiency reward for any hero',
 });

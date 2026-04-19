@@ -9,8 +9,95 @@ export const HERO_FILE_PATH = `./app/assets/data/heroes/`;
 
 interface HeroIdentity {
     name: string,
-    id: string,
-    internalId: string
+    id?: string,
+    internalId?: string
+}
+
+async function showChoices(message: string, add = false, overwrite = false) {
+    const options = [
+        { value: 'stats', label: 'Scrape stats' },
+        { value: 'images', label: 'Copy images' },
+        { value: 'cancel', label: 'Cancel' },
+    ];
+
+    if (add)
+        options.unshift({ value: 'add', label: 'Add new hero' });
+    if (overwrite)
+        options.unshift({ value: 'overwrite', label: 'Overwrite hero (Full)' });
+
+    return await p.select({
+        message,
+        options
+    });
+}
+
+async function importHeroFile(heroId: string) {
+    return await import(
+        `../../${HERO_FILE_PATH}${heroId}.ts`
+    ) as { [key: string]: HeroData };
+}
+function heroNameAsImportConst(heroName: string) {
+    return heroName.replace(/\s+/g, "");
+}
+
+async function selectChoice(heroIdentity: HeroIdentity, choice: string, heroData?: HeroData) {
+    if (!heroIdentity.id)
+        heroIdentity.id = inferHeroId(heroIdentity.name);
+    if (!heroIdentity.internalId)
+        // will have been validated and confirmed to exist by now
+        heroIdentity.internalId = inferInternalId(heroIdentity.id as string) as string;
+    else {
+        // let's see if we can expand the file with the new internal id - hero id pair
+        const added = addInternalIdPair(heroIdentity.id, heroIdentity.internalId);
+        if (added)
+            p.log.info(`Added [${heroIdentity.id}]: ${heroIdentity.internalId} to the local pair collection.`);
+    }
+
+    if (!heroData) {
+        const { [heroNameAsImportConst(heroIdentity.name)]: _heroData } = await importHeroFile(heroIdentity.id);
+        heroData = _heroData;
+    }
+
+    let scrapeSeason = 'last';
+    if (choice == 'stats') {
+        scrapeSeason = await p.text({
+            message: 'Type season id (S7 = 14) for data scraping (Leave blank for last)',
+            placeholder: 'e.g.: 14'
+        }) as string;
+
+        if (!scrapeSeason)
+            scrapeSeason = 'last';
+    }
+
+    switch (choice) {
+        case 'overwrite':
+            await createHeroFull(heroIdentity);
+
+            break;
+
+        case 'stats':
+            const roles = Array.isArray(heroData.roles) ? heroData.roles : [heroData.roles];
+            await scrapeStats(heroIdentity.internalId, heroIdentity.id, roles, scrapeSeason);
+
+            p.outro('Hero modification successful.');
+
+            break;
+
+        case 'images':
+            const spinner = p.spinner();
+            spinner.start('Copying images...');
+            await copyImages(heroIdentity.internalId, heroIdentity.id, p.log);
+            spinner.stop('Images copied and converted');
+
+            p.outro('Hero modification successful.');
+
+            break;
+
+        case 'cancel':
+        default:
+            p.cancel('Cancelled')
+            process.exit(0)
+    }
 }
 
 /**
@@ -40,105 +127,66 @@ interface HeroIdentity {
  * the hero everywhere.
  */
 async function main() {
-    p.intro('Add a new hero');
+    p.intro('Add or modify hero');
 
-    const heroIdentity: HeroIdentity = (await p.group({
-        name: () => p.text({
-            message: 'Hero name',
-            placeholder: 'e.g.: Luna Snow',
-            validate: v => !v ? 'Name is required' : undefined
-        }),
+    const initialChoice = await showChoices('What would you like to do?', true);
 
-        id: ({ results }) => p.text({
-            message: 'String ID (leave empty to infer)',
-            placeholder: results.name ? inferHeroId(results.name) : 'e.g.: luna-snow'
-        }),
-        internalId: ({ results }) => p.text({
-            message: 'Internal ID (leave empty to infer)',
-            placeholder: inferInternalId((results.id as string) || inferHeroId(results.name!)) ?? 'e.g.: 1031',
-            validate: v => {
-                if (!v && !inferInternalId((results.id as string) || inferHeroId(results.name!)))
-                    return 'ID is required';
-            }
-        }),
-    }, {
-        onCancel: () => {
-            p.cancel('Cancelled')
-            process.exit(0)
-        }
-    })) as HeroIdentity;
+    if (initialChoice == 'add') {
+        const heroIdentity: HeroIdentity = (await p.group({
+            name: () => p.text({
+                message: 'Hero name',
+                placeholder: 'e.g.: Luna Snow',
+                validate: v => !v ? 'Name is required' : undefined
+            }),
 
-    if (!heroIdentity.id)
-        heroIdentity.id = inferHeroId(heroIdentity.name);
-    if (!heroIdentity.internalId)
-        // will have been validated and confirmed to exist by now
-        heroIdentity.internalId = inferInternalId(heroIdentity.id as string) as string;
-    else {
-        // let's see if we can expand the file with the new internal id - hero id pair
-        const added = addInternalIdPair(heroIdentity.id, heroIdentity.internalId);
-        if (added)
-            p.log.info(`Added [${heroIdentity.id}]: ${heroIdentity.internalId} to the local pair collection.`);
-    }
-
-    if (fs.existsSync(`${HERO_FILE_PATH}${heroIdentity.id}.ts`)) {
-        const choice = await p.select({
-            message: 'Hero file exists, what would you like to do?',
-            options: [
-                { value: 'overwrite', label: 'Overwrite hero (Full)' },
-                { value: 'stats', label: 'Scrape stats' },
-                { value: 'images', label: 'Copy images' },
-                { value: 'cancel', label: 'Cancel' },
-            ]
-        });
-
-        let scrapeSeason = 'last';
-        if (choice == 'stats') {
-            scrapeSeason = await p.text({
-                message: 'Type season id (S7 = 14) for data scraping (Leave blank for last)',
-                placeholder: 'e.g.: 14'
-            }) as string;
-
-            if (!scrapeSeason)
-                scrapeSeason = 'last';
-        }
-
-        const heroNameConst = heroIdentity.name.replace(/\s+/g, "");
-        const { [heroNameConst]: heroData } = await import(
-            `../../${HERO_FILE_PATH}${heroIdentity.id}.ts`
-        ) as { [key: string]: HeroData };
-
-        switch (choice) {
-            case 'overwrite':
-                await createHeroFull(heroIdentity);
-
-                break;
-
-            case 'stats':
-                const roles = Array.isArray(heroData.roles) ? heroData.roles : [heroData.roles];
-                await scrapeStats(heroIdentity.internalId, heroIdentity.id, roles, scrapeSeason);
-
-                p.outro('Hero modification successful.');
-
-                break;
-
-            case 'images':
-                const spinner = p.spinner();
-                spinner.start('Copying images...');
-                await copyImages(heroIdentity.internalId, heroIdentity.id, p.log);
-                spinner.stop('Images copied and converted');
-
-                p.outro('Hero modification successful.');
-
-                break;
-
-            case 'cancel':
-            default:
+            id: ({ results }) => p.text({
+                message: 'String ID (leave empty to infer)',
+                placeholder: results.name ? inferHeroId(results.name) : 'e.g.: luna-snow'
+            }),
+            internalId: ({ results }) => p.text({
+                message: 'Internal ID (leave empty to infer)',
+                placeholder: inferInternalId((results.id as string) || inferHeroId(results.name!)) ?? 'e.g.: 1031',
+                validate: v => {
+                    if (!v && !inferInternalId((results.id as string) || inferHeroId(results.name!)))
+                        return 'ID is required';
+                }
+            }),
+        }, {
+            onCancel: () => {
                 p.cancel('Cancelled')
                 process.exit(0)
+            }
+        })) as HeroIdentity;
+
+        if (fs.existsSync(`${HERO_FILE_PATH}${heroIdentity.id}.ts`)) {
+            const choice = await showChoices('Hero file exists, what would you like to do?', false, true);
+
+            await selectChoice(heroIdentity, choice as string);
         }
+        else
+            await createHeroFull(heroIdentity);
     }
-    else
-        await createHeroFull(heroIdentity);
+    else {
+        const heroId = await p.text({
+            message: 'Hero ID',
+            placeholder: 'e.g.: luna-snow'
+        });
+
+        if (!fs.existsSync(`${HERO_FILE_PATH}${heroId as string}.ts`)) {
+            p.cancel('Hero doesn\'t exist');
+            process.exit(1);
+        }
+
+        const heroNamePascalCase = (heroId as string).replace(/(^\w|-\w)/g, t => t.replace(/-/, "").toUpperCase());
+        const { [heroNamePascalCase]: heroData } = await importHeroFile(heroId as string);
+
+        p.log.message(`Found hero: ${heroData.name}`);
+
+        await selectChoice({
+            id: heroId as string,
+            name: heroData.name,
+        }, initialChoice as string, heroData)
+    }
 }
 
 function inferHeroId(heroName: string) {
@@ -251,11 +299,11 @@ async function createHeroFull(heroIdentity: HeroIdentity) {
     spinner.stop('Wrote hero file.');
 
     spinner.start('Copying images...');
-    await copyImages(heroIdentity.internalId, heroIdentity.id, p.log);
+    await copyImages(heroIdentity.internalId!, heroIdentity.id!, p.log);
     spinner.stop('Images copied and converted');
 
     if (hero.scrape)
-        await scrapeStats(heroIdentity.internalId, heroIdentity.id, hero.roles);
+        await scrapeStats(heroIdentity.internalId!, heroIdentity.id!, hero.roles);
 
     p.outro('Hero added successfully!');
 }

@@ -1,5 +1,47 @@
 [
   {
+    "sha": "0fe4a0e6fc43c04597622dfe345389c079506d8e",
+    "node_id": "C_kwDORv7rQ9oAKDBmZTRhMGU2ZmM0M2MwNDU5NzYyMmRmZTM0NTM4OWMwNzk1MDZkOGU",
+    "commit": {
+      "author": {
+        "name": "mr-calculator",
+        "email": "mr-calculator.estimate510@slmails.com",
+        "date": "2026-04-18T22:15:03Z"
+      },
+      "committer": {
+        "name": "mr-calculator",
+        "email": "mr-calculator.estimate510@slmails.com",
+        "date": "2026-04-18T22:15:03Z"
+      },
+      "message": "Fixed oversight with tooltips on mobile (why does mouseenter fire on mobile??)\nFixed bug when a tooltip binding is set to undefined, it was not removed.\nLanding page hero stats list had 2 different texts for the 2 tooltip-enabled elements, made them the same.",
+      "tree": {
+        "sha": "9b1047a3b904f015ecb41a55c675fb044379b458",
+        "url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/git/trees/9b1047a3b904f015ecb41a55c675fb044379b458"
+      },
+      "url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/git/commits/0fe4a0e6fc43c04597622dfe345389c079506d8e",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/commits/0fe4a0e6fc43c04597622dfe345389c079506d8e",
+    "html_url": "https://github.com/mr-calculator/mr-calculator.github.io/commit/0fe4a0e6fc43c04597622dfe345389c079506d8e",
+    "comments_url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/commits/0fe4a0e6fc43c04597622dfe345389c079506d8e/comments",
+    "author": null,
+    "committer": null,
+    "parents": [
+      {
+        "sha": "0d01897962f87c138263a81b87b88382c6d2e97c",
+        "url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/commits/0d01897962f87c138263a81b87b88382c6d2e97c",
+        "html_url": "https://github.com/mr-calculator/mr-calculator.github.io/commit/0d01897962f87c138263a81b87b88382c6d2e97c"
+      }
+    ]
+  },
+  {
     "sha": "0d01897962f87c138263a81b87b88382c6d2e97c",
     "node_id": "C_kwDORv7rQ9oAKDBkMDE4OTc5NjJmODdjMTM4MjYzYTgxYjg3Yjg4MzgyYzZkMmU5N2M",
     "commit": {

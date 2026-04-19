@@ -220,9 +220,9 @@ export const CHANGELOG = (): ChangeLogEntry[] => [
             commitSha: '658c03706959f0ef790e86ca5bae6e9ce18910d8'
         },
         title: 'Added Black Cat',
-        description: `Added Black Cat to the calculator without generic stats (will add later - when averages are more accurate)
-        Made slight optimisations and bug fixes.
-        Refreshed White Fox generic average stats with data from S7.0.
+        description: `Added Black Cat to the calculator without generic stats (will add later - when averages are more accurate)<br/>
+        Made slight optimisations and bug fixes.<br/>
+        Refreshed White Fox generic average stats with data from S7.0.<br/>
         Added new hero promotional UI elements to help players more easily get to the new hero's page.
         `,
         list: [
@@ -267,9 +267,30 @@ export const CHANGELOG = (): ChangeLogEntry[] => [
             number: '1.2.7',
             date: 'Apr 18, 2026',
             time: '10:01 PM',
+            commitSha: '0d01897962f87c138263a81b87b88382c6d2e97c'
         },
         title: 'Added tooltips',
         description: `Added tooltips to help with UI confusion here and there. Made other small fixes.`,
+    },
+    {
+        version: {
+            number: '1.2.8',
+            date: 'Apr 19, 2026',
+            time: '05:09 AM',
+        },
+        title: 'Added Black Cat average stats',
+        description: `Added Black Cat average stats, made a few adjustments to tooltips, fixed a few bugs and improved SEO for hero pages.
+        <br/><br/>
+        Note: Black Cat stats <b>will</b> be updated in the future as more games are played with her and the averages become more average (?).`,
+        list: [
+            'Added Black Cat average stats',
+            'Fixed background image not being fixed on iOS',
+            'Animated new hero promo UI on landing page. No more snapping and flickering.',
+            'onMounted hooks were used outside components for isMobile and isTouchDevice composables, fixed.',
+            'Fixed tooltip disappearing when hovering nested tooltip elements and unhovering.',
+            'Changed SEO meta for hero page (was wrong description for twitter) to be more appealing and contain average completion estimates, only rendered at generate/prerender time.',
+            'Modified add-hero script to ask what needs to be done first, then ask details. Now requires only hero id for modifying an existing hero.',
+        ]
     }
 ];
 

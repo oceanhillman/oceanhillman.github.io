@@ -635,8 +635,15 @@ await useGsap(({ gsap, scrollTrigger, splitText }) => {
     }, '<');
 
     gsap.set('#hero .right-wrapper .info', {
-        display: 'flex'
+        opacity: 1
     });
+    gsap.set('#hero .featured-hero-desktop', {
+        opacity: 1
+    });
+    gsap.set('#hero .featured-hero-mobile', {
+        opacity: 1
+    });
+
 
     // ==== HERO PROFICIENCY RANK ICONS ====
 

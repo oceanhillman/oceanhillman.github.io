@@ -7,10 +7,13 @@ export type PersonalRankTimeEstimate = [
     levelCount: number
 ];
 
+type PickedStore = Pick<PlayerHeroStore, 'averageStats'|'averageStatsArcade'|'goal'|'level'|'points'>;
+
 export class Calculator {
     public hero: HeroData;
-    public store: PlayerHeroStore;
+    public store: PickedStore;
 
+    public constructor(hero: HeroData, level: PickedStore);
     public constructor(hero: HeroData, level: PlayerHeroStore) {
         this.hero = hero;
         this.store = level;
@@ -32,7 +35,7 @@ export class Calculator {
                 continue;
             }
 
-            let avgStat = daily ? (this.store.averageStatsArcade?.[stat.type] ?? 0) : this.store.averageStats[stat.type];
+            let avgStat = daily ? (this.store.averageStatsArcade?.[stat.type] ?? 0) : this.store.averageStats?.[stat.type];
 
             if (!avgStat) {
                 avgStat = genericStats?.[stat.type] ?? 0;
@@ -145,4 +148,9 @@ export class Calculator {
 
         return totalTimes;
     }
+}
+
+export function calculateTimesToLevel(hero: HeroData, store: PickedStore) {
+    const calculator = new Calculator(hero, store);
+    return calculator.totalTimes();
 }

@@ -4,6 +4,7 @@
         :to="`/heroes/${hero.id}?from=/`"
     >
         <div
+            ref="prestige"
             class="prestige"
             :style="{
                 '--prestige-image': `url(${hero.dataDir}prestige.webp)`,
@@ -12,9 +13,9 @@
         >
             <div class="stroke" />
             <img :src="`${hero.dataDir}prestige.webp`" />
-            <div class="shadow" />
+            <div ref="prestigeShadow" class="shadow" />
         </div>
-        <div class="bar">
+        <div ref="bar" class="bar">
             <div class="new">
                 NEW
             </div>
@@ -262,4 +263,27 @@ import { heroRolesAsArray } from '~/assets/data/heroes';
 defineProps<{
     hero: HeroData
 }>();
+
+const prestige = useTemplateRef('prestige');
+const prestigeShadow = useTemplateRef('prestigeShadow');
+const bar = useTemplateRef('bar');
+
+await useGsap(({ gsap }) => {
+    const tl = gsap.timeline();
+
+    tl.from(bar.value, {
+        x: -500,
+        duration: .4,
+        ease: 'back.out'
+    })
+    .from(prestige.value, {
+        y: 500,
+        duration: .3,
+        ease: 'back.out'
+    }, '-=0.2')
+    .from(prestigeShadow.value, {
+        opacity: 0,
+        duration: 1,
+    });
+})
 </script>
