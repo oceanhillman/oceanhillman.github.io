@@ -1,5 +1,47 @@
 [
   {
+    "sha": "faad47d7d8fb0f65e75cab53fede8caf444ae73c",
+    "node_id": "C_kwDORv7rQ9oAKGZhYWQ0N2Q3ZDhmYjBmNjVlNzVjYWI1M2ZlZGU4Y2FmNDQ0YWU3M2M",
+    "commit": {
+      "author": {
+        "name": "mr-calculator",
+        "email": "mr-calculator.estimate510@slmails.com",
+        "date": "2026-04-19T05:12:56Z"
+      },
+      "committer": {
+        "name": "mr-calculator",
+        "email": "mr-calculator.estimate510@slmails.com",
+        "date": "2026-04-19T05:12:56Z"
+      },
+      "message": "Added Black Cat average stats\nFixed background image not being fixed on iOS\nAnimated new hero promo UI on landing page. No more snapping and flickering.\nonMounted hooks were used outside components for isMobile and isTouchDevice composables, fixed.\nFixed tooltip disappearing when hovering nested tooltip elements and unhovering.\nChanged SEO meta for hero page (was wrong description for twitter) to be more appealing and contain average completion estimates, only rendered at generate/prerender time.\nModified add-hero script to ask what needs to be done first, then ask details. Now requires only hero id for modifying an existing hero.",
+      "tree": {
+        "sha": "d584d745099160acd6adaff0f87b6df2d17fcddf",
+        "url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/git/trees/d584d745099160acd6adaff0f87b6df2d17fcddf"
+      },
+      "url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/git/commits/faad47d7d8fb0f65e75cab53fede8caf444ae73c",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/commits/faad47d7d8fb0f65e75cab53fede8caf444ae73c",
+    "html_url": "https://github.com/mr-calculator/mr-calculator.github.io/commit/faad47d7d8fb0f65e75cab53fede8caf444ae73c",
+    "comments_url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/commits/faad47d7d8fb0f65e75cab53fede8caf444ae73c/comments",
+    "author": null,
+    "committer": null,
+    "parents": [
+      {
+        "sha": "0fe4a0e6fc43c04597622dfe345389c079506d8e",
+        "url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/commits/0fe4a0e6fc43c04597622dfe345389c079506d8e",
+        "html_url": "https://github.com/mr-calculator/mr-calculator.github.io/commit/0fe4a0e6fc43c04597622dfe345389c079506d8e"
+      }
+    ]
+  },
+  {
     "sha": "0fe4a0e6fc43c04597622dfe345389c079506d8e",
     "node_id": "C_kwDORv7rQ9oAKDBmZTRhMGU2ZmM0M2MwNDU5NzYyMmRmZTM0NTM4OWMwNzk1MDZkOGU",
     "commit": {

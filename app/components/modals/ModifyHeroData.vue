@@ -232,7 +232,7 @@
 </style>
 
 <script setup lang="ts">
-import { DEFAULT_HERO_STORE, type HeroData, type PlayerHeroStore } from '~/assets/data/common';
+import { DEFAULT_HERO_STORE, PlayerHeroStoreSchema, type HeroData, type PlayerHeroStore } from '~/assets/data/common';
 import { useUnknownHeroHasPossibleMatch } from '~/composables/useUnknownHeroHasPossibleMatch';
 
 const props = defineProps<{
@@ -249,7 +249,7 @@ const emit = defineEmits(['confirm', 'cancel']);
 
 const router = useRouter();
 
-const storedLevel = useLocalStorage<PlayerHeroStore>(`hero_${props.hero.id}`, DEFAULT_HERO_STORE());
+const storedLevel = useLocalStorage<PlayerHeroStore>(`hero_${props.hero.id}`, DEFAULT_HERO_STORE(), PlayerHeroStoreSchema);
 const hasAvgStats = useHasAvgStats(() => props.hero);
 const isLv1AndGoalLv1 = computed(() => storedLevel.value.level == 1 && storedLevel.value.goal == 1);
 

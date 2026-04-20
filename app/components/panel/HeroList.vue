@@ -176,7 +176,7 @@
 
 <script setup lang="ts">
 import { NuxtLink } from '#components';
-import { DEFAULT_HERO_STORE, PROFICIENCY_RANKS, ROLE_ICONS, type HeroData, type HeroRole, type PlayerHeroStore } from '~/assets/data/common';
+import { DEFAULT_HERO_STORE, PlayerHeroStoreSchema, PROFICIENCY_RANKS, ROLE_ICONS, type HeroData, type HeroRole, type PlayerHeroStore } from '~/assets/data/common';
 import { getFeaturedHero, HERO_LIST, heroRolesAsArray } from '~/assets/data/heroes';
 import { tex, texUrl } from '~/assets/data/textures';
 import type { TooltipBinding } from '~/directives/tooltip';
@@ -307,7 +307,7 @@ function filterHeroList(list: HeroData[]) {
     list.sort(props.sortHeroes);
 
     const output = list.map(hero => {
-        const storedLevel = useLocalStorage<PlayerHeroStore>(`hero_${hero.id}`, DEFAULT_HERO_STORE());
+        const storedLevel = useLocalStorage<PlayerHeroStore>(`hero_${hero.id}`, DEFAULT_HERO_STORE(), PlayerHeroStoreSchema);
         
         return { hero, level: storedLevel.value };
     });

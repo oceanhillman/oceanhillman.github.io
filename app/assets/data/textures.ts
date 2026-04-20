@@ -195,6 +195,9 @@ export const TEX = {
     missionRepeat: {
         default: 'icon/mission-repeat.png',
     } as Texture,
+    missionRepeat15: {
+        default: 'icon/mission-repeat-15.png',
+    } as Texture,
     dropdownCaret: {
         default: 'icon/dropdown-caret.png'
     } as Texture,

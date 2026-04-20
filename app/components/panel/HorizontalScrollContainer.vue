@@ -11,7 +11,7 @@
         @touchmove="onTouchMove"
         @touchend="onPointerUp"
     >
-       <div ref="content" class="scroll-content" :style="{ transform: `translateX(${-scrollX}px)` }">
+       <div ref="content" class="scroll-content">
             <slot />
         </div>
     </div>
@@ -57,6 +57,8 @@ let startX = 0;
 let startY = 0;
 let startScroll = 0;
 
+let animFrameId: number;
+
 const DEFAULT_SCROLL_SMOOTH = 0.15;
 let simulatedScrollSmooth = DEFAULT_SCROLL_SMOOTH;
 
@@ -80,7 +82,10 @@ function animate() {
     if (scrollX.value > targetX - 0.5)
         simulatedScrollSmooth = DEFAULT_SCROLL_SMOOTH;
 
-    requestAnimationFrame(animate);
+    animFrameId = requestAnimationFrame(animate);
+
+    if (content.value)
+        content.value.style.transform = `translate3d(${-scrollX.value}px, 0, 0)`;
 }
 
 function onWheel(e: WheelEvent) {
@@ -167,5 +172,9 @@ onMounted(() => {
     updateBounds();
     setTimeout(updateBounds, 100);
     animate();
+});
+
+onUnmounted(() => {
+    cancelAnimationFrame(animFrameId);
 });
 </script>

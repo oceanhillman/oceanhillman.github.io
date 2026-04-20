@@ -55,6 +55,9 @@ export interface GitHubCommit {
     ]
 }
 
+/**
+ * Version update scheme: a.b.c = a - major update, b - major feature update, c - minor feature/fix
+ */
 export const CHANGELOG = (): ChangeLogEntry[] => [
     {
         version: {
@@ -214,7 +217,7 @@ export const CHANGELOG = (): ChangeLogEntry[] => [
     },
     {
         version: {
-            number: '1.2.5',
+            number: '1.3.0',
             date: 'Apr 17, 2026',
             time: '4:11 PM',
             commitSha: '658c03706959f0ef790e86ca5bae6e9ce18910d8'
@@ -238,14 +241,14 @@ export const CHANGELOG = (): ChangeLogEntry[] => [
             'Modified commit list caching mechanism to use an authenticated GitHub API request, since I literally just got rate limited as writing this'
         ],
         images: [
-            '/img/changelog/v1.2.5/black-cat.webp',
-            '/img/changelog/v1.2.5/new-hero-promo-landing.webp',
-            '/img/changelog/v1.2.5/new-hero-promo-list.webp',
+            '/img/changelog/v1.3.0/black-cat.webp',
+            '/img/changelog/v1.3.0/new-hero-promo-landing.webp',
+            '/img/changelog/v1.3.0/new-hero-promo-list.webp',
         ]
     },
     {
         version: {
-            number: '1.2.6',
+            number: '1.4.0',
             date: 'Apr 17, 2026',
             time: '10:14 PM',
             commitSha: 'cfdcb05a8debe37c7bac67b49cad906a125edf17'
@@ -259,12 +262,12 @@ export const CHANGELOG = (): ChangeLogEntry[] => [
             'Added Export Hero button'
         ],
         images: [
-            '/img/changelog/v1.2.6/hero-page.webp',
+            '/img/changelog/v1.4.0/hero-page.webp',
         ]
     },
     {
         version: {
-            number: '1.2.7',
+            number: '1.4.1',
             date: 'Apr 18, 2026',
             time: '10:01 PM',
             commitSha: '0d01897962f87c138263a81b87b88382c6d2e97c'
@@ -274,9 +277,10 @@ export const CHANGELOG = (): ChangeLogEntry[] => [
     },
     {
         version: {
-            number: '1.2.8',
+            number: '1.4.2',
             date: 'Apr 19, 2026',
-            time: '05:09 AM',
+            time: '05:10 AM',
+            commitSha: 'faad47d7d8fb0f65e75cab53fede8caf444ae73c'
         },
         title: 'Added Black Cat average stats',
         description: `Added Black Cat average stats, made a few adjustments to tooltips, fixed a few bugs and improved SEO for hero pages.
@@ -290,6 +294,33 @@ export const CHANGELOG = (): ChangeLogEntry[] => [
             'Fixed tooltip disappearing when hovering nested tooltip elements and unhovering.',
             'Changed SEO meta for hero page (was wrong description for twitter) to be more appealing and contain average completion estimates, only rendered at generate/prerender time.',
             'Modified add-hero script to ask what needs to be done first, then ask details. Now requires only hero id for modifying an existing hero.',
+        ]
+    },
+    {
+        version: {
+            number: '1.5.0',
+            date: 'Apr 20, 2026',
+            time: '04:25 AM',
+        },
+        title: 'Added Arcade Mode precise estimates',
+        description: `Added Arcade Mode duration feature which estimates the real time in days it will take to reach a goal on a hero based on personal average stats and mission limits. Customizable with a "Daily missions to complete" selector, where users can select a number of missions they are willing to complete (all 15 of the daily ones) before switching to a different mode or stopping to wait for the next day.
+        <br/>
+        Planner now takes arcade mission limits into consideration`,
+        // TODO CHANGE PLANNER, COMMIT LATER
+        list: [
+            'Added Arcade Mode duration feature',
+            'Added Arcade Mode to Planner',
+            'Changed some types to use zod infer from schema, now with defaults built in',
+            'Fixed a styling issue (on hover) with the reward/level selector',
+            'Fixed a bug related to the hero data list (landing page) and other places where the HorizontalScrollContainer component was used that, after excessive scrolling caused intense lag on the entire website due to usage of refs bound to style attributes. Switched to manual (vanilla JS) setting of translations',
+            'Fixed tooltips leaving event listeners behind due to an oversight',
+            'Fixed tooltips going outside of viewport and limited their width',
+            'Changed versions of previous changelog entries that were not following the version update scheme (oops, forgot)',
+            'Added Reddit social link pointing to the mr-prof-calculator account'
+        ],
+        images: [
+            '/img/changelog/v1.5.0/estimates-arcade.webp',
+            '/img/changelog/v1.5.0/planner-arcade.webp',
         ]
     }
 ];

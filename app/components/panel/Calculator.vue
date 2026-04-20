@@ -55,11 +55,10 @@
             <span class="level">LV{{ totalTitleRanks.nextRank?.level }}</span>.
         </div>
         <!-- <div :class="{total: 1, 'single-game-type': selectedGameType != 'normal'}"> -->
-        <div :class="{total: 1, 'single-game-type': selectedGameType == 'arcade'}">
+        <div :class="{total: 1, '_single-game-type': selectedGameType == 'arcade'}">
             <div class="column">
-                <div :class="{title: 1, arcade: selectedGameType == 'arcade'}">
+                <div class="title">
                     <Tex
-                        v-if="selectedGameType != 'arcade'"
                         class="time-icon"
                         image="time"
                         color="#4fdbff"
@@ -68,16 +67,13 @@
                         height="35px"
                         object-fit="contain"
                     />
-                    <Tex
-                        v-else
-                        image="timeArcade"
-
-                        width="35px"
-                        height="35px"
-                        object-fit="contain"
-                    />
-                    <h3>Time</h3>
-                    <!-- <h4 v-if="selectedGameType == 'arcade'">(ARCADE)</h4> -->
+                    <h3 v-if="selectedGameType != 'arcade'">Time</h3>
+                    <h3 v-else>Play Time</h3>
+                    <h4
+                        v-if="selectedGameType == 'arcade' && !displayTimeNumbers.points"
+                    >
+                        (Total)
+                    </h4>
                 </div>
                 <div class="time conservative">
                     <p class="desc">Conservative</p>
@@ -308,6 +304,54 @@
             </div>
             <div v-if="displayTimeNumbers.games.arcade && selectedGameType == 'arcade'" class="column">
                 <div class="title">
+                    <Tex
+                        image="timeArcade"
+
+                        width="35px"
+                        height="35px"
+                        object-fit="contain"
+                    />
+                    <h3>
+                        DURATION
+                        <Tex
+                            class="info"
+                            image="infoButton"
+                            square
+                            clickable
+                            hover="auto"
+
+                            width="17px"
+                            height="17px"
+                            object-fit="contain"
+
+                            v-tooltip="({
+                                text: `How long it will take you to get to your goal (considering daily mission limits).`,
+                                touchEnabled: true
+                            } satisfies TooltipBinding)"
+                        />
+                    </h3>
+                </div>
+                <div class="time avg">
+                    <p class="desc">Average</p>
+                    <div :class="{'with-points': !!displayTimeNumbers.points}">
+                        {{ displayTimeNumbers.arcadeDaily }}d
+
+                        <div v-if="!!displayTimeNumbers.points?.arcade" class="points">
+                            +{{ displayTimeNumbers.points.arcadeDaily }}
+                            <Tex
+                                image="proficiency"
+                                state="hover"
+
+                                width="20px"
+                                height="20px"
+                            />
+                            / day
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-if="displayTimeNumbers.games.arcade && selectedGameType == 'arcade'" class="column">
+                <div class="title">
                     <!-- <PanelCalculatorGameTypeSwitcher
                         v-model="selectedGameTypeRaw"
                     /> -->
@@ -466,31 +510,78 @@
                 </TransitionGroup>
             </PanelHorizontalScrollContainer>
         </Transition>
-        <div v-if="times.length > 3" class="scroll-indicator">
-            <Tex
-                image="mouseScroll"
+        <div :class="{'bottom-options': 1, arcade: selectedGameType == 'arcade'}">
+            <div v-if="selectedGameType == 'arcade'" class="arcade-mission-select">
+                <Tex
+                    image="missionRepeat15"
 
-                width="35px"
-                height="35px"
-                object-fit="contain"
-            />
-            <p>Scroll for more</p>
-        </div>
-        <div v-else class="scroll-missing"></div>
+                    width="30px"
+                    height="30px"
+                />
+                <ul class="missions">
+                    <li
+                        v-for="(challenge, index) in [...hero.ranks[0]?.challenges ?? []].toReversed()"
+                        :class="{
+                            selected: index + 1 <= maxFeasableMissions,
+                            'has-prev': index == 0 ? false : true,
+                            'has-next': index + 2 <= maxFeasableMissions
+                        }"
 
-        <div
-            :class="{advanced: 1, active: advanced}"
-            @click="advanced = !advanced"
-        >
-            <Tex
-                image="chart"
-                color="var(--blue)"
-                clickable
+                        @click="maxFeasableMissions = index + 1"
+                    >
+                        <img :src="CHALLENGE_ICONS[challenge.type]!" />
+                    </li>
+                </ul>
 
-                width="30px"
-                height="30px"
-            />
-            {{ advanced ? 'Less Data' : 'More Data' }}
+                <Tex
+                    image="infoButton"
+                    square
+                    clickable
+                    hover="auto"
+
+                    width="25px"
+                    height="25px"
+                    object-fit="contain"
+
+                    v-tooltip="({
+                        text: `<strong>Daily missions to complete</strong>
+                        <br/><br/>
+                        How many arcade missions you finish each day before switching to another mode (or stopping). Each mission requires 15 match completions to fully clear.
+                        <br/>
+                        Missions are not in a specific order, the first one that gets finished will be the one you do best at according to your average stats (usually completed from last to first in 18v18 Annihilation).
+                        <br/><br/>
+                        Current: <b>${maxFeasableMissions}</b>
+                        `,
+                        touchEnabled: true
+                    } satisfies TooltipBinding)"
+                />
+            </div>
+            <div v-else />
+            <div v-if="times.length > 3" class="scroll-indicator">
+                <Tex
+                    image="mouseScroll"
+
+                    width="35px"
+                    height="35px"
+                    object-fit="contain"
+                />
+                <p>Scroll for more</p>
+            </div>
+            <div v-else class="scroll-missing" />
+            <div
+                :class="{advanced: 1, active: advanced}"
+                @click="advanced = !advanced"
+            >
+                <Tex
+                    image="chart"
+                    color="var(--blue)"
+                    clickable
+
+                    width="30px"
+                    height="30px"
+                />
+                {{ advanced ? 'Less Data' : 'More Data' }}
+            </div>
         </div>
     </div>
 </template>
@@ -500,7 +591,7 @@
 
 <script setup lang="ts">
 import HorizontalScrollContainer from './HorizontalScrollContainer.vue'
-import { AVG_ARCADE_MATCH_DURATION_MIN, AVG_COMP_MATCH_DURATION_MIN, AVG_QUICK_MATCH_DURATION_MIN, levelToRank, PROFICIENCY_RANKS, type HeroData, type PlayerHeroStore, type ProficiencyRank, type Rank, type Reward } from '~/assets/data/common';
+import { AVG_ARCADE_MATCH_DURATION_MIN, AVG_COMP_MATCH_DURATION_MIN, AVG_QUICK_MATCH_DURATION_MIN, CHALLENGE_ICONS, DEFAULT_HERO_STORE, levelToRank, PlayerHeroStoreSchema, PROFICIENCY_RANKS, type HeroData, type PlayerHeroStore, type ProficiencyRank, type Rank, type Reward } from '~/assets/data/common';
 import type { TooltipBinding } from '~/directives/tooltip';
 import { type PersonalRankTimeEstimate } from '~/services/calculator';
 
@@ -521,7 +612,13 @@ const emit = defineEmits<{
     finishedAnimation: []
 }>();
 
+const storedLevel = useLocalStorage<PlayerHeroStore>(`hero_${props.hero.id}`, DEFAULT_HERO_STORE(), PlayerHeroStoreSchema);
+
 const advanced = ref(false);
+const maxFeasableMissions = ref(storedLevel.value.arcadeMaxFeasableMissions ?? 2);
+watch(maxFeasableMissions, (missions) => {
+    storedLevel.value.arcadeMaxFeasableMissions = missions;
+});
 
 const levelCount = computed(() => {
     let count = props.level.goal - props.level.level;
@@ -561,11 +658,11 @@ const isIncorrectSelection = computed(() => props.level.goal < props.level.level
 
 const total = computed(() => {
     let conservative = 0;
-    props.timeEstimates.forEach(r => conservative += r[1][0]);
+    props.timeEstimates.forEach(r => conservative += r.time[0]);
     let avg = 0;
-    props.timeEstimates.forEach(r => avg += r[1][1]);
+    props.timeEstimates.forEach(r => avg += r.time[1]);
     let optimistic = 0;
-    props.timeEstimates.forEach(r => optimistic += r[1][2]);
+    props.timeEstimates.forEach(r => optimistic += r.time[2]);
 
     return { conservative, avg, optimistic };
 });
@@ -574,13 +671,21 @@ const totalArcade = computed(() => {
         return null;
 
     let conservative = 0;
-    props.timeEstimatesArcade.forEach(r => conservative += r[1][0]);
+    props.timeEstimatesArcade.forEach(r => conservative += r.time[0]);
     let avg = 0;
-    props.timeEstimatesArcade.forEach(r => avg += r[1][1]);
+    props.timeEstimatesArcade.forEach(r => avg += r.time[1]);
     let optimistic = 0;
-    props.timeEstimatesArcade.forEach(r => optimistic += r[1][2]);
+    props.timeEstimatesArcade.forEach(r => optimistic += r.time[2]);
 
     return { conservative, avg, optimistic };
+});
+const totalDailyArcade = computed(() => {
+    if (!props.timeEstimatesArcade)
+        return null;
+
+    return props.timeEstimatesArcade.map(r => r.arcade?.dayCount)
+                                    .filter(c => typeof c !== 'undefined')
+                                    .reduce((sum, c) => sum + c, 0);
 });
 
 function c(duration: number, percent: number) {
@@ -661,15 +766,15 @@ const times = computed(() => {
     let nextRank: Rank|null = null;
     for (let i = 0; i < props.hero.ranks.length; i++) {
         const rank = props.hero.ranks[i]!;
-        const calculatedRank = props.timeEstimates.find(r => r[0] == rank.type.id);
-        const calculatedRankArcade = props.timeEstimatesArcade?.find(r => r[0] == rank.type.id);
+        const calculatedRank = props.timeEstimates.find(r => r.rankId == rank.type.id);
+        const calculatedRankArcade = props.timeEstimatesArcade?.find(r => r.rankId == rank.type.id);
 
         if (calculatedRank) {
-            let [ rankId, time, points, levelCount ] = calculatedRank;
+            let { rankId, time, points, levelCount } = calculatedRank;
 
             // if (selectedGameType.value == 'arcade' && calculatedRankArcade)
             if (props.selectedGameType == 'arcade' && calculatedRankArcade)
-                time = calculatedRankArcade[1];
+                time = calculatedRankArcade.time;
 
             const showLevel = currentLevelRank?.id == rankId ? 
                 props.level.level
@@ -729,7 +834,7 @@ const times = computed(() => {
 // ==== ANIMATIONS ==== 
 
 function scrollToRank(index: number, smoothing?: number) {
-    const scrollToId = props.timeEstimates.at(index)![0];
+    const scrollToId = props.timeEstimates.at(index)!.rankId;
     if (rankRefs.value[scrollToId])
         timeTableScrollable.value?.scrollToElement(
             rankRefs.value[scrollToId] as HTMLElement,
@@ -788,7 +893,12 @@ const totalAnimationPercent = ref(0);
 const totalAnimated = computed(() => {
     const easing = ease(totalAnimationPercent.value / 100) * 100;
 
-    const values: { time: AverageValues, arcadeTime?: AverageValues, games: GameCounts } = {
+    const values: {
+        time: AverageValues,
+        arcadeTime?: AverageValues,
+        arcadeDaily?: number,
+        games: GameCounts
+    } = {
         time: {
             conservative: total.value.conservative / 100 * easing,
             avg: total.value.avg / 100 * easing,
@@ -820,6 +930,9 @@ const totalAnimated = computed(() => {
             optimistic: totalArcade.value.optimistic / 100 * easing,
         }
     }
+
+    if (typeof totalDailyArcade.value !== 'undefined' && totalDailyArcade.value !== null)
+        values.arcadeDaily = totalDailyArcade.value / 100 * easing;
 
     return values;
 });
@@ -894,12 +1007,12 @@ const displayTimeNumbers = computed(() => {
         return number.toLocaleString(undefined, { maximumFractionDigits: fractionDigits });
     }
 
-    const calculatedRank = props.timeEstimates.find(r => r[0] == displayTimeRank.value);
-    const calculatedRankArcade = props.timeEstimatesArcade?.find(r => r[0] == displayTimeRank.value);
+    const calculatedRank = props.timeEstimates.find(r => r.rankId == displayTimeRank.value);
+    const calculatedRankArcade = props.timeEstimatesArcade?.find(r => r.rankId == displayTimeRank.value);
     
     if (
         !calculatedRank
-     || (calculatedRank[1][0] == 0 && calculatedRank[1][1] == 0 && calculatedRank[1][2] == 0)
+     || (calculatedRank.time[0] == 0 && calculatedRank.time[1] == 0 && calculatedRank.time[2] == 0)
      || displayTimeRank.value === null
     ) {
         displayTimeRank.value = null;
@@ -915,6 +1028,7 @@ const displayTimeNumbers = computed(() => {
                 avg: secondsToHoursString(totalAnimated.value.arcadeTime.avg),
                 optimistic: secondsToHoursString(totalAnimated.value.arcadeTime.optimistic),
             } : undefined,
+            arcadeDaily: totalAnimated.value.arcadeDaily?.toFixed(1),
             games: {
                 quickMatch: {
                     conservative: displayNumber(totalAnimated.value.games.quickMatch.conservative),
@@ -936,24 +1050,24 @@ const displayTimeNumbers = computed(() => {
     }
 
     const time = {
-        conservative: calculatedRank[1][0],
-        avg: calculatedRank[1][1],
-        optimistic: calculatedRank[1][2],
+        conservative: calculatedRank.time[0],
+        avg: calculatedRank.time[1],
+        optimistic: calculatedRank.time[2],
     }
     const timeArcade = {
-        conservative: calculatedRankArcade?.[1][0]!,
-        avg: calculatedRankArcade?.[1][1]!,
-        optimistic: calculatedRankArcade?.[1][2]!,
+        conservative: calculatedRankArcade?.time[0]!,
+        avg: calculatedRankArcade?.time[1]!,
+        optimistic: calculatedRankArcade?.time[2]!,
     }
     const gameCount = calcGameCount(time, calculatedRankArcade ? timeArcade : null);
 
-    const pointsPerMinCons = calculatedRank[2][0] / 10;
-    const pointsPerMinAvg = calculatedRank[2][1] / 10;
-    const pointsPerMinOpt = calculatedRank[2][2] / 10;
+    const pointsPerMinCons = calculatedRank.points[0] / 10;
+    const pointsPerMinAvg = calculatedRank.points[1] / 10;
+    const pointsPerMinOpt = calculatedRank.points[2] / 10;
 
-    const arcadePointsPerMinCons = (calculatedRankArcade?.[2][0] ?? 0) / 10;
-    const arcadePointsPerMinAvg = (calculatedRankArcade?.[2][1] ?? 0) / 10;
-    const arcadePointsPerMinOpt = (calculatedRankArcade?.[2][2] ?? 0) / 10;
+    const arcadePointsPerMinCons = (calculatedRankArcade?.points[0] ?? 0) / 10;
+    const arcadePointsPerMinAvg = (calculatedRankArcade?.points[1] ?? 0) / 10;
+    const arcadePointsPerMinOpt = (calculatedRankArcade?.points[2] ?? 0) / 10;
 
     return {
         time: {
@@ -966,6 +1080,7 @@ const displayTimeNumbers = computed(() => {
             avg: secondsToHoursString(timeArcade.avg),
             optimistic: secondsToHoursString(timeArcade.optimistic),
         } : undefined,
+        arcadeDaily: calculatedRankArcade?.arcade?.dayCount.toFixed(1),
         games: {
             quickMatch: {
                 conservative: displayNumber(gameCount.quickMatch.conservative),
@@ -985,14 +1100,14 @@ const displayTimeNumbers = computed(() => {
         },
         points: {
             time: {
-                conservative: displayNumber(calculatedRank[2][0]),
-                avg: displayNumber(calculatedRank[2][1]),
-                optimistic: displayNumber(calculatedRank[2][2]),
+                conservative: displayNumber(calculatedRank.points[0]),
+                avg: displayNumber(calculatedRank.points[1]),
+                optimistic: displayNumber(calculatedRank.points[2]),
             },
             arcadeTime: calculatedRankArcade ? {
-                conservative: displayNumber(calculatedRankArcade[2][0]),
-                avg: displayNumber(calculatedRankArcade[2][1]),
-                optimistic: displayNumber(calculatedRankArcade[2][2]),
+                conservative: displayNumber(calculatedRankArcade.points[0]),
+                avg: displayNumber(calculatedRankArcade.points[1]),
+                optimistic: displayNumber(calculatedRankArcade.points[2]),
             } : undefined,
             quickMatch: {
                 conservative: displayNumber(pointsPerMinCons * qmC(-0.1)),
@@ -1008,7 +1123,8 @@ const displayTimeNumbers = computed(() => {
                 conservative: displayNumber(arcadePointsPerMinCons * arcadeC(-0.1)),
                 avg: displayNumber(arcadePointsPerMinAvg * arcadeC(0)),
                 optimistic: displayNumber(arcadePointsPerMinOpt * arcadeC(0.1)),
-            } : undefined
+            } : undefined,
+            arcadeDaily: calculatedRankArcade?.arcade?.dailyPoints.toFixed(0)
         }
     }
 });

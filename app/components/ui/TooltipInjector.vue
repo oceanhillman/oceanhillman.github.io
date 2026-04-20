@@ -2,6 +2,7 @@
     <Teleport to="body">
         <div
             v-if="tooltip"
+            ref="tooltipEl"
 
             class="tooltip"
             :style="{
@@ -22,6 +23,8 @@
     position: fixed
     top: 0
     left: 0
+
+    max-width: 300px
 
     background: #28282c
     padding: 3px 12px
@@ -48,6 +51,8 @@
 <script setup lang="ts">
 const { tooltip } = useTooltip();
 
+const tooltipEl = useTemplateRef('tooltipEl');
+
 const mousePos = ref<{x: number, y: number}>({x: 0, y: 0});
 useEvent('mousemove', (e: MouseEvent) => {
     mousePos.value.x = e.clientX;
@@ -58,16 +63,24 @@ const position = computed(() => {
     if (!tooltip.value)
         return null;
 
-    if (typeof tooltip.value.x !== 'undefined' && typeof tooltip.value.y !== 'undefined')
-        return {
-            x: tooltip.value.x,
-            y: tooltip.value.y
-        }
-    else
-        return {
-            x: mousePos.value.x + 15,
-            y: mousePos.value.y + 15
-        };
+    let x, y;
+    if (typeof tooltip.value.x !== 'undefined' && typeof tooltip.value.y !== 'undefined') {
+        x = tooltip.value.x;
+        y = tooltip.value.y;
+    }
+    else {
+        x = mousePos.value.x + 15;
+        y = mousePos.value.y + 15;
+    }
+
+    // clamp to viewport if we have dimensions
+    if (tooltipEl.value) {
+        const { offsetWidth: w, offsetHeight: h } = tooltipEl.value;
+        x = Math.min(x, window.innerWidth - w - 4);
+        y = Math.min(y, window.innerHeight - h - 4);
+    }
+
+    return { x, y }
 });
 
 const texProps = computed(() => {

@@ -47,6 +47,41 @@
                 />
             </div>
         </template>
+        <div v-if="hasAvgArcadeStats" class="option">
+            <div class="label">
+                What game modes?
+            </div>
+            <FormToggle
+                class="input toggle"
+
+                large
+                both
+                :model-value="level.planner.gameMode == 'arcade'"
+                @update:model-value="level.planner.gameMode = $event ? 'arcade' : 'normal'"
+            >
+                <template #off>
+                    Quick/Comp
+                </template>
+                <template #on>
+                    Arcade (18v18)
+                </template>
+            </FormToggle>
+        </div>
+        <div v-else class="option">
+            <div class="label">
+                If you want to see arcade options
+            </div>
+            <FormButton size="tiny" @click="$emit('openArcadeStatsMenu')">
+                <Tex
+                    image="gameTime"
+                    color="var(--dark)"
+
+                    width="30px"
+                    height="30px"
+                />
+                Set your arcade stats
+            </FormButton>
+        </div>
 
         <div v-if="mode == 'weekly'" class="calendar">
             <div class="toolbar">
@@ -145,7 +180,7 @@
             <ul :class="{data: 1, single: settings.numberOfDays.days < 7}">
                 <li>
                     <p>DAILY</p>
-                    <h3>
+                    <h3 v-if="settings.gameMode != 'arcade'">
                         <Tex
                             image="time"
                             color="#4fdbff"
@@ -156,7 +191,7 @@
                         />
                         {{ secondsToHoursString(liveEstimatesNumberOfDays.dailyPlayTime) }}h
                     </h3>
-                    <h3 v-if="totalTimesArcade">
+                    <h3 v-if="totalTimesArcade && settings.gameMode == 'arcade'">
                         <Tex
                             image="timeArcade"
 
@@ -166,7 +201,7 @@
                         />
                         {{ secondsToHoursString(liveEstimatesNumberOfDays.dailyPlayTimeArcade!) }}h
                     </h3>
-                    <h3>
+                    <h3 v-if="settings.gameMode != 'arcade'">
                         <Tex
                             image="quickMatchIcon"
 
@@ -176,7 +211,7 @@
                         />
                         {{ liveEstimatesNumberOfDays.dailyQuickMatches.toFixed(1) }}
                     </h3>
-                    <h3>
+                    <h3 v-if="settings.gameMode != 'arcade'">
                         <Tex
                             image="competitiveIcon"
 
@@ -186,7 +221,7 @@
                         />
                         {{ liveEstimatesNumberOfDays.dailyCompMatches.toFixed(1) }}
                     </h3>
-                    <h3 v-if="totalTimesArcade">
+                    <h3 v-if="totalTimesArcade && settings.gameMode == 'arcade'">
                         <Tex
                             image="arcadeIcon"
 
@@ -199,7 +234,7 @@
                 </li>
                 <li v-if="settings.numberOfDays.days >= 7">
                     <p>WEEKLY</p>
-                    <h3>
+                    <h3 v-if="settings.gameMode != 'arcade'">
                         <Tex
                             image="time"
                             color="#4fdbff"
@@ -210,7 +245,7 @@
                         />
                         {{ secondsToHoursString(liveEstimatesNumberOfDays.weeklyPlayTime) }}h
                     </h3>
-                    <h3 v-if="totalTimesArcade">
+                    <h3 v-if="totalTimesArcade && settings.gameMode == 'arcade'">
                         <Tex
                             image="timeArcade"
 
@@ -220,7 +255,7 @@
                         />
                         {{ secondsToHoursString(liveEstimatesNumberOfDays.weeklyPlayTimeArcade!) }}h
                     </h3>
-                    <h3>
+                    <h3 v-if="settings.gameMode != 'arcade'">
                         <Tex
                             image="quickMatchIcon"
 
@@ -230,7 +265,7 @@
                         />
                         {{ liveEstimatesNumberOfDays.weeklyQuickMatches.toFixed(1) }}
                     </h3>
-                    <h3>
+                    <h3 v-if="settings.gameMode != 'arcade'">
                         <Tex
                             image="competitiveIcon"
 
@@ -241,7 +276,7 @@
                         {{ liveEstimatesNumberOfDays.weeklyCompMatches.toFixed(1) }}
                     </h3>
 
-                    <h3 v-if="totalTimesArcade">
+                    <h3 v-if="totalTimesArcade && settings.gameMode == 'arcade'">
                         <Tex
                             image="arcadeIcon"
 
@@ -249,19 +284,30 @@
                             height="25px"
                             object-fit="contain"
                         />
-                        {{ liveEstimatesNumberOfDays.weeklyArcadekMatches!.toFixed(1) }}
+                        {{ liveEstimatesNumberOfDays.weeklyArcadeMatches!.toFixed(1) }}
                     </h3>
                 </li>
             </ul>
-
-            <p>
-                At this rate you will reach your goal on
-                <span>{{ toDateAndTime(liveEstimatesNumberOfDays.finishDate) }}</span>
-                <span class="gray"> (excluding arcade missions)</span>
+            <p v-if="totalTimesArcade && settings.gameMode == 'arcade'" class="small">
+                (Arcade games can only give points for 15 missions of each type every day. Match limits may vary depending on proficiency rank.)
             </p>
 
-            <p v-if="totalTimesArcade" class="small">
-                (Arcade games can only give points for 15 missions of each type every day. The results <b>do not</b> account for that!)
+            <p v-if="settings.gameMode == 'normal'">
+                At this rate you will reach your goal on
+                <span>{{ toDateAndTime(liveEstimatesNumberOfDays.finishDate) }}</span>
+            </p>
+            <p v-else-if="liveEstimatesNumberOfDays.arcadeFinishDate">
+                <template v-if="liveEstimatesNumberOfDays.arcadeFinishTimeOutOfBounds">
+                    Due to mission limits imposed on arcade games, you can't finish in {{ settings.numberOfDays.days }} days.
+                    <br/>
+                    You will finish on
+                    <span>{{ toDateAndTime(liveEstimatesNumberOfDays.arcadeFinishDate) }}</span>
+                    (<span class="gray">in {{ liveEstimatesNumberOfDays.arcadeDayCount }} days</span>)
+                </template>
+                <template v-else>
+                    At this rate you will reach your goal on
+                    <span>{{ toDateAndTime(liveEstimatesNumberOfDays.finishDate) }}</span>
+                </template>
             </p>
         </div>
         <div
@@ -271,20 +317,25 @@
             <ul class="data">
                 <li>
                     <p>TOTAL</p>
-                    <h3><span>
+                    <h3 v-if="settings.gameMode != 'arcade'"><span>
                         {{ secondsToHoursString(liveEstimatesWeekly.weeklyPlayTime) }}h<span>/week</span>
                     </span></h3>
-                    <h3><span>
+                    <h3 v-if="settings.gameMode != 'arcade'"><span>
                         {{ weeksToWeeksAndDays(liveEstimatesWeekly.totalWeeks) }} <span>total</span>
                     </span></h3>
-                    <h3 v-if="totalTimesArcade"><span>
+                    <h3 v-if="totalTimesArcade && settings.gameMode == 'arcade'"><span>
                         {{ weeksToWeeksAndDays(liveEstimatesWeekly.totalWeeksArcade!) }} <span>arcade</span>
                     </span></h3>
-                    <span v-if="totalTimesArcade">(limits apply)</span>
+                    <span
+                        v-if="totalTimesArcade
+                           && settings.gameMode == 'arcade'
+                           && liveEstimatesWeekly.limitApplied
+                        "
+                    >(limit applied)</span>
                 </li>
                 <li>
                     <p>WEEKLY</p>
-                    <h3>
+                    <h3 v-if="settings.gameMode != 'arcade'">
                         <Tex
                             image="time"
                             color="#4fdbff"
@@ -295,7 +346,7 @@
                         />
                         {{ secondsToHoursString(liveEstimatesWeekly.weeklyPlayTime) }}h
                     </h3>
-                    <h3>
+                    <h3 v-if="settings.gameMode != 'arcade'">
                         <Tex
                             image="quickMatchIcon"
 
@@ -305,7 +356,7 @@
                         />
                         {{ liveEstimatesWeekly.weeklyQuickMatches.toFixed(1) }}
                     </h3>
-                    <h3>
+                    <h3 v-if="settings.gameMode != 'arcade'">
                         <Tex
                             image="competitiveIcon"
 
@@ -328,17 +379,26 @@
                 </li>
             </ul>
 
-            <p>
+            <p v-if="totalTimesArcade && settings.gameMode == 'arcade'" class="small">
+                (Arcade games can only give points for 15 missions of each type every day. Match limits may vary depending on proficiency rank.)
+            </p>
+
+            <p v-if="
+                settings.gameMode == 'normal'
+             || (settings.gameMode == 'arcade' && !liveEstimatesWeekly.limitApplied)
+            ">
                 At this rate you will reach your goal on
                 <span>
                     {{ toDateAndTime(liveEstimatesWeekly.finishDate) }}
                     (<span class="gray">in {{ liveEstimatesWeekly.dayCount }} days</span>)
-                    <span class="gray">(excluding arcade missions)</span>
                 </span>
             </p>
-
-            <p v-if="totalTimesArcade" class="small">
-                (Arcade games can only give points for 15 missions of each type every day. The results <b>do not</b> account for that!)
+            <p v-else-if="liveEstimatesWeekly.limitApplied">
+                At this rate you will reach your goal on
+                <span>
+                    {{ toDateAndTime(liveEstimatesNumberOfDays.arcadeFinishDate!) }}
+                    (<span class="gray">in {{ liveEstimatesWeekly.arcadeDayCount }} days</span>)
+                </span>
             </p>
         </div>
 
@@ -441,7 +501,7 @@
 <style src="@/assets/style/components/planner.sass" scoped></style>
 
 <script setup lang="ts">
-import { AVG_COMP_MATCH_DURATION_MIN, AVG_QUICK_MATCH_DURATION_MIN, DEFAULT_PREFERENCES_STORE, WEEK_KEYS, type HeroData, type PlayerHeroStore, type PreferencesStore, type WeekDay, type PlannerWeekDay, AVG_ARCADE_MATCH_DURATION_MIN } from '~/assets/data/common';
+import { AVG_COMP_MATCH_DURATION_MIN, AVG_QUICK_MATCH_DURATION_MIN, DEFAULT_PREFERENCES_STORE, WEEK_KEYS, type HeroData, type PlayerHeroStore, type PreferencesStore, type WeekDay, type PlannerWeekDay, AVG_ARCADE_MATCH_DURATION_MIN, PreferencesStoreSchema } from '~/assets/data/common';
 import type { PersonalRankTimeEstimate } from '~/services/calculator';
 
 const props = defineProps<{
@@ -452,15 +512,18 @@ const props = defineProps<{
     valueLinking?: boolean
 }>();
 
+const emit = defineEmits(['openArcadeStatsMenu'])
+
 const level = defineModel<PlayerHeroStore>({ required: true });
+const hasAvgArcadeStats = useHasAvgArcadeStats(props.hero);
 
 const totalTimes = computed(() => {
     let conservative = 0;
-    props.timeEstimates.forEach(r => conservative += r[1][0]);
+    props.timeEstimates.forEach(r => conservative += r.time[0]);
     let avg = 0;
-    props.timeEstimates.forEach(r => avg += r[1][1]);
+    props.timeEstimates.forEach(r => avg += r.time[1]);
     let optimistic = 0;
-    props.timeEstimates.forEach(r => optimistic += r[1][2]);
+    props.timeEstimates.forEach(r => optimistic += r.time[2]);
 
     return { conservative, avg, optimistic };
 });
@@ -469,16 +532,22 @@ const totalTimesArcade = computed(() => {
         return null;
 
     let conservative = 0;
-    props.timeEstimatesArcade.forEach(r => conservative += r[1][0]);
+    props.timeEstimatesArcade.forEach(r => conservative += r.time[0]);
     let avg = 0;
-    props.timeEstimatesArcade.forEach(r => avg += r[1][1]);
+    props.timeEstimatesArcade.forEach(r => avg += r.time[1]);
     let optimistic = 0;
-    props.timeEstimatesArcade.forEach(r => optimistic += r[1][2]);
+    props.timeEstimatesArcade.forEach(r => optimistic += r.time[2]);
 
     return { conservative, avg, optimistic };
 });
+const totalDaysArcade = computed(() => {
+    if (!props.timeEstimatesArcade)
+        return null;
 
-const preferences = useLocalStorage<PreferencesStore>('preferences', DEFAULT_PREFERENCES_STORE());
+    return props.timeEstimatesArcade.reduce((sum, c) => sum + (c.arcade?.dayCount ?? 0), 0);
+});
+
+const preferences = useLocalStorage<PreferencesStore>('preferences', DEFAULT_PREFERENCES_STORE(), PreferencesStoreSchema);
 const goal = computed(() => useLevel(level.value.goal, props.hero));
 
 const mode = computed(() => level.value.planner.mode);
@@ -567,13 +636,24 @@ const liveEstimatesNumberOfDays = computed(() => {
     let dailyPlayTimeArcade = undefined;
     let weeklyPlayTimeArcade = undefined;
     let dailyArcadeMatches = undefined;
-    let weeklyArcadekMatches = undefined;
+    let weeklyArcadeMatches = undefined;
+    let arcadeFinishDate = undefined;
+    let arcadeDayCount = undefined;
+    let arcadeFinishTimeOutOfBounds = false;
 
     if (totalTimesArcade.value) {
         dailyPlayTimeArcade = totalTimesArcade.value.avg / settings.value.numberOfDays.days;
         weeklyPlayTimeArcade = dailyPlayTimeArcade * 7;
         dailyArcadeMatches = dailyPlayTimeArcade / (AVG_ARCADE_MATCH_DURATION_MIN * 60);
-        weeklyArcadekMatches = dailyArcadeMatches * 7;
+        weeklyArcadeMatches = dailyArcadeMatches * 7;
+
+        if (totalDaysArcade.value) {
+            arcadeFinishDate = new Date(Date.now() + totalDaysArcade.value * 24 * 60 * 60 * 1000);
+            arcadeDayCount = Math.ceil((arcadeFinishDate.getTime() - now) / 1000 / 60 / 60 / 24);
+
+            if (arcadeFinishDate.getTime() - (finishTime * 1000) > 12 * 60 * 60 * 1000)
+                arcadeFinishTimeOutOfBounds = true;
+        }
     }
 
     return {
@@ -589,7 +669,11 @@ const liveEstimatesNumberOfDays = computed(() => {
 
         weeklyQuickMatches,
         weeklyCompMatches,
-        weeklyArcadekMatches,
+        weeklyArcadeMatches,
+
+        arcadeFinishDate,
+        arcadeDayCount,
+        arcadeFinishTimeOutOfBounds,
 
         finishDate,
 
@@ -622,8 +706,16 @@ const liveEstimatesWeekly = computed(() => {
 
     const weeklyArcadeMatches = weeklyPlayTime / (AVG_ARCADE_MATCH_DURATION_MIN * 60);
     let totalWeeksArcade = undefined;
-    if (totalTimesArcade.value) {
-        totalWeeksArcade = totalTimesArcade.value.avg / weeklyPlayTime;
+    let limitApplied = false;
+    let arcadeFinishDate = undefined;
+    let arcadeDayCount = undefined;
+    if (totalDaysArcade.value) {
+        arcadeFinishDate = new Date(Date.now() + totalDaysArcade.value * 24 * 60 * 60 * 1000);
+        arcadeDayCount = Math.ceil((arcadeFinishDate.getTime() - now) / 1000 / 60 / 60 / 24);
+
+        limitApplied = dayCount < arcadeDayCount;
+
+        totalWeeksArcade = limitApplied ? (arcadeDayCount / 7) : (dayCount / 7);
     }
 
     return {
@@ -634,6 +726,11 @@ const liveEstimatesWeekly = computed(() => {
 
         totalWeeks,
         totalWeeksArcade,
+
+        arcadeFinishDate,
+        arcadeDayCount,
+        limitApplied,
+
         finishDate,
         dayCount
     }

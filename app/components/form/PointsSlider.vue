@@ -74,7 +74,7 @@
 </style>
 
 <script setup lang="ts">
-import { DEFAULT_HERO_STORE, PROFICIENCY_RANKS, type HeroData, type PlayerHeroStore } from '~/assets/data/common';
+import { DEFAULT_HERO_STORE, PlayerHeroStoreSchema, PROFICIENCY_RANKS, type HeroData, type PlayerHeroStore } from '~/assets/data/common';
 import type { TooltipBinding } from '~/directives/tooltip';
 
 const props = defineProps<{
@@ -84,7 +84,11 @@ const props = defineProps<{
     showModel?: boolean
 }>()
 
-const storedLevel = useLocalStorage<PlayerHeroStore>(`hero_${props.hero.id}`, DEFAULT_HERO_STORE());
+const emit = defineEmits<{
+    dragEnd: [points: number]
+}>()
+
+const storedLevel = useLocalStorage<PlayerHeroStore>(`hero_${props.hero.id}`, DEFAULT_HERO_STORE(), PlayerHeroStoreSchema);
 const currentRankComp = computed(() => {
     return { 
         rank: PROFICIENCY_RANKS[storedLevel.value.rank] ?? PROFICIENCY_RANKS.agent!,
@@ -153,6 +157,8 @@ function pointsDragMove(e: PointerEvent|TouchEvent) {
 
 function pointsDragEnd() {
     pointsIsDragging.value = false;
+
+    emit('dragEnd', pointsModel.value ?? 0);
 }
 
 useEvent(['pointermove', 'touchmove'], pointsDragMove);

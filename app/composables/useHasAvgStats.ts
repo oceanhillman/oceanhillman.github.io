@@ -1,11 +1,12 @@
-import { DEFAULT_HERO_STORE, type HeroData, type PlayerHeroStore } from "~/assets/data/common";
+import { DEFAULT_HERO_STORE, PlayerHeroStoreSchema, type HeroData, type PlayerHeroStore } from "~/assets/data/common";
 
 export const useHasAvgStats = (heroReactive: MaybeRefOrGetter<HeroData>, ignoreGeneric = false) => {
     return computed(() => {
         const hero = toValue(heroReactive);
 
         const storedLevel = useLocalStorage<PlayerHeroStore>(
-            `hero_${hero.id}`, DEFAULT_HERO_STORE()
+            `hero_${hero.id}`, DEFAULT_HERO_STORE(),
+            PlayerHeroStoreSchema
         );
         const neededStats: string[] = hero.ranks[0]?.challenges.map(c => c.type) as string[] || [];
 
@@ -27,7 +28,8 @@ export const useHasAvgArcadeStats = (heroReactive: MaybeRefOrGetter<HeroData>) =
         const hero = toValue(heroReactive);
 
         const storedLevel = useLocalStorage<PlayerHeroStore>(
-            `hero_${hero.id}`, DEFAULT_HERO_STORE()
+            `hero_${hero.id}`, DEFAULT_HERO_STORE(),
+            PlayerHeroStoreSchema
         );
         const neededStats: string[] = hero.ranks[0]?.challenges.map(c => c.type) as string[] || [];
 

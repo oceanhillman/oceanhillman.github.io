@@ -248,7 +248,7 @@
                                     } satisfies TooltipBinding)"
                                 >
                                     <p>
-                                        {{ currentRankComp.points }}
+                                        {{ pointsSliderModel ?? currentRankComp.points }}
                                         <span>/{{ currentRankComp.rank.xpPerLevel }}</span>
                                     </p>
                                 </Tex>
@@ -256,7 +256,8 @@
                                     class="slider"
                                     :hero="hero"
 
-                                    v-model="storedLevel.points"
+                                    v-model="pointsSliderModel"
+                                    @drag-end="storedLevel.points = $event"
                                 />
                             </div>
                             <div
@@ -491,6 +492,8 @@
                     v-model="storedLevel"
                     :time-estimates="timeEstimates.normal"
                     :time-estimates-arcade="timeEstimates.arcade"
+
+                    @open-arcade-stats-menu="editAvgStats(undefined, undefined, true)"
                 />
                 <PanelSetupCalculator
                     v-else
@@ -514,7 +517,7 @@
 
 <script setup lang="ts">
 import { useModalManager } from '#imports';
-import { CHALLENGE_ICONS, CHALLENGE_NAMES, DEFAULT_HERO_STORE, DEFAULT_PREFERENCES_STORE, getAverageStatsForHero, getHeroMatchCount, levelToRank, PROFICIENCY_RANKS, replaceRewardPlaceholders, type Challenge, type PlayerHeroStore, type PreferencesStore, type ProficiencyRank, type Reward } from '~/assets/data/common';
+import { CHALLENGE_ICONS, CHALLENGE_NAMES, DEFAULT_HERO_STORE, DEFAULT_PREFERENCES_STORE, getAverageStatsForHero, getHeroMatchCount, levelToRank, PlayerHeroStoreSchema, PreferencesStoreSchema, PROFICIENCY_RANKS, replaceRewardPlaceholders, type Challenge, type PlayerHeroStore, type PreferencesStore, type ProficiencyRank, type Reward } from '~/assets/data/common';
 import { createHero, deleteHero, editHero, HERO_LIST, UNKNOWN_HERO } from '~/assets/data/heroes';
 import AverageStatsModal from '~/components/modals/AverageStatsModal.vue';
 import ListSelect from '~/components/modals/ListSelect.vue';
@@ -607,6 +610,8 @@ if (import.meta.server && !!getAverageStatsForHero(hero.value.id)) {
         points: 0,
         goal: 70,
         averageStats: {},
+        averageStatsArcade: {},
+        arcadeMaxFeasableMissions: 2
     });
 
     let totalTimeToLord = 0;
@@ -617,7 +622,7 @@ if (import.meta.server && !!getAverageStatsForHero(hero.value.id)) {
     const rankLordIndex = ranks.indexOf('lord');
     const rankChampionIndex = ranks.indexOf('champion');
 
-    estimates.forEach(([_, [__, avg]], index) => {
+    estimates.forEach(({ time: [_, avg] }, index) => {
         if (index < rankLordIndex)
             totalTimeToLord += avg;
         if (index < rankChampionIndex)
@@ -659,7 +664,7 @@ const stats = computed(() => {
     }
 })
 
-const preferences = useLocalStorage<PreferencesStore>('preferences', DEFAULT_PREFERENCES_STORE());
+const preferences = useLocalStorage<PreferencesStore>('preferences', DEFAULT_PREFERENCES_STORE(), PreferencesStoreSchema);
 
 const favourites = useLocalStorage<HeroData['id'][]>(`favourite_heroes`, []);
 const isFavourite = computed(() => favourites.value.includes(hero.value.id));
@@ -687,7 +692,7 @@ function toggleFavourite() {
     }
 }
 
-const storedLevel = useLocalStorage<PlayerHeroStore>(`hero_${hero.value.id}`, DEFAULT_HERO_STORE());
+const storedLevel = useLocalStorage<PlayerHeroStore>(`hero_${hero.value.id}`, DEFAULT_HERO_STORE(), PlayerHeroStoreSchema);
 const hasAvgStats = useHasAvgStats(hero);
 const hasAvgArcadeStats = useHasAvgArcadeStats(hero);
 const isLv1AndGoalLv1 = computed(() => storedLevel.value.level == 1 && storedLevel.value.goal == 1);
@@ -727,6 +732,10 @@ const currentRankComp = computed(() => {
         level: storedLevel.value.level,
         points: storedLevel.value.points
     };
+});
+const pointsSliderModel = ref(storedLevel.value.points);
+watch(() => storedLevel.value.points, (points) => {
+    pointsSliderModel.value = points;
 });
 
 const finishedAnimation = ref(false);
@@ -780,7 +789,7 @@ function openWhereModal(where: string, returnToModal = true) {
 
 function modifyHeroData() {
     openModal(ModifyHeroData, {
-        title: 'Update your stats',
+        title: `${hero.value.name} options`,
         hero: hero.value,
         isUnknownHero: isUnknownHero.value
     })

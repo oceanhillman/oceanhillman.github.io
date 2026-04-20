@@ -3,6 +3,7 @@ const config = {
 
     githubUser: 'mr-calculator',
     githubRepo: 'mr-calculator.github.io',
+    redditUser: 'mr-prof-calculator',
     email: 'mr-calculator.estimate510@slmails.com',
     domain: 'mr-calculator.github.io',
     domainHttp: 'https://mr-calculator.github.io'

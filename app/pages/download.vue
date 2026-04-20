@@ -349,6 +349,7 @@ p
 import {
     DEFAULT_PREFERENCES_STORE,
     levelToRank,
+    PreferencesStoreSchema,
     type AnySerializableDataSegment,
     type HeroData,
     type PlayerHeroStore,
@@ -373,7 +374,7 @@ const storedHeroes = ref(Object.entries(localStorage ?? {})
                            }) as ({id: string} & PlayerHeroStore)[]);
 const favourites = useLocalStorage<HeroData['id'][]>(`favourite_heroes`, []);
 const unknownHeroes = useLocalStorage<HeroData[]>('unknown_heroes', []);
-const preferences = useLocalStorage<PreferencesStore>('preferences', DEFAULT_PREFERENCES_STORE());
+const preferences = useLocalStorage<PreferencesStore>('preferences', DEFAULT_PREFERENCES_STORE(), PreferencesStoreSchema);
 
 const route = useRoute();
 const heroFromUrl = route.query?.hero;

@@ -4,18 +4,19 @@ import avgHeroStats from './average-hero-stats.json';
 import heroMatches from './hero-matches.json';
 
 export type HeroRole = 'vanguard'|'duelist'|'strategist';
-export const HeroRoleSchema = z.literal(['vanguard', 'duelist', 'strategist']);
+export const HeroRoleSchema = z.enum(['vanguard', 'duelist', 'strategist']);
 
-export interface Challenge {
-    type: 'play'|'damage'|'heal'|'damage_heal'|'take_damage'|'finals'|'kos'|'kos_assists',
-    needed: number,
-    reward: number
-}
+// export interface Challenge {
+//     type: 'play'|'damage'|'heal'|'damage_heal'|'take_damage'|'finals'|'kos'|'kos_assists',
+//     needed: number,
+//     reward: number
+// }
 export const ChallengeSchema = z.object({
-    type: z.literal(['play', 'damage', 'heal', 'damage_heal', 'take_damage', 'finals', 'kos', 'kos_assists']),
+    type: z.enum(['play', 'damage', 'heal', 'damage_heal', 'take_damage', 'finals', 'kos', 'kos_assists']),
     needed: z.number(),
     reward: z.number()
 })
+export type Challenge = z.infer<typeof ChallengeSchema>;
 
 export const CHALLENGE_TEXTS: Record<Challenge['type'], string> = {
     play: 'Hero usage reaches %NEEDED% minutes',
@@ -200,19 +201,6 @@ export const CHALLENGE_REWARDS_PER_RANK: Record<ProficiencyRank['id'], number> =
     champion: 80
 }
 
-export interface Reward {
-    level: number,
-    name: string,
-    icon: string,
-    iconAnimation?: {
-        size: [width: number, height: number],
-        columns: number,
-        rows: number,
-        fps: number,
-        offset?: [x: number, y: number]
-    }
-    rarity?: 'rare'|'epic'|'legendary'
-}
 export const RewardSchema = z.object({
     level: z.number(),
     name: z.string(),
@@ -224,22 +212,11 @@ export const RewardSchema = z.object({
         fps: z.number(),
         offset: z.tuple([z.number(), z.number()]).optional()
     }).optional(),
-    rarity: z.literal(['rare', 'epic', 'legendary']).optional()
-})
+    rarity: z.enum(['rare', 'epic', 'legendary']).optional()
+});
+export type Reward = z.infer<typeof RewardSchema>;
 
-export interface ProficiencyRank {
-    id: string,
-    name: string,
-    icon: string,
-    levelStart: number,
-    levelEnd: number,
-    xpPerLevel: number,
-    levelCount: number,
 
-    color: string,
-
-    rewards: Reward[]
-}
 export const ProficiencyRankSchema = z.object({
     id: z.string(),
     name: z.string(),
@@ -253,15 +230,14 @@ export const ProficiencyRankSchema = z.object({
 
     rewards: z.array(RewardSchema)
 })
+export type ProficiencyRank = z.infer<typeof ProficiencyRankSchema>;
 
-export interface Rank {
-    type: ProficiencyRank,
-    challenges: Challenge[],
-}
+
 export const RankSchema = z.object({
     type: ProficiencyRankSchema,
     challenges: z.array(ChallengeSchema)
 })
+export type Rank = z.infer<typeof RankSchema>;
 
 export const NO_DAILY_POINTS_ATTENUATION_RANK_IDS = ['agent','knight','captain','centurion'];
 
@@ -621,27 +597,6 @@ export function replaceRewardPlaceholders(string: string, hero: HeroData) {
                  .replaceAll('%HERO_DATA_DIR%', hero.dataDir ?? '');
 }
 
-export interface HeroData {
-    meta?: {
-        releasedAt?: string,
-        featured?: boolean
-    },
-
-    id: string,
-    name: string,
-    aliases?: string[],
-    roles: HeroRole | HeroRole[],
-
-    color: string,
-    dataDir: string,
-
-    ranks: Rank[],
-
-    iconAnimationSize?: [width: number, height: number],
-    iconAnimationOffset?: [x: number, y: number],
-    iconLargeAnimationOffset?: [x: number, y: number],
-    iconLargeMask?: string
-}
 export const HeroDataSchema = z.object({
     meta: z.object({
         releasedAt: z.iso.date().optional(),
@@ -662,7 +617,8 @@ export const HeroDataSchema = z.object({
     iconAnimationOffset: z.tuple([z.number(), z.number()]).optional(),
     iconLargeAnimationOffset: z.tuple([z.number(), z.number()]).optional(),
     iconLargeMask: z.string().optional()
-})
+});
+export type HeroData = z.infer<typeof HeroDataSchema>;
 
 export const DEFAULT_ANIMATED_ICON_LARGE_MASK = tex('heroSelectMask');
 export function getHeroMatchCount(heroId: string) {
@@ -678,24 +634,14 @@ export const ROLE_ICONS: Record<HeroRole, string> = {
     strategist: '/img/heroes/roles/strategist.webp'
 }
 
-export interface PlannerWeekDay {
-    enabled: boolean,
-    time: number,
-}
+
 export const PlannerWeekDaySchema = z.object({
     enabled: z.boolean(),
     time: z.number()
 });
+export type PlannerWeekDay = z.infer<typeof PlannerWeekDaySchema>;
 
-export type WeekDay = 
-'monday'
-|'tuesday'
-|'wednesday'
-|'thursday'
-|'friday'
-|'saturday'
-|'sunday';
-export const WeekDaySchema = z.literal([
+export const WeekDaySchema = z.enum([
     "monday",
     "tuesday",
     "wednesday",
@@ -704,54 +650,10 @@ export const WeekDaySchema = z.literal([
     "saturday",
     "sunday"
 ])
+export type WeekDay = z.infer<typeof WeekDaySchema>;
+
 
 export const WEEK_KEYS = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'] as const;
-
-export interface PlayerHeroStore {
-    rank: string,
-    level: number,
-    points: number,
-    goal: number,
-
-    averageStats: Record<string, number>,
-    averageStatsArcade?: Record<string, number>,
-    openedCalculator: boolean,
-    usesGenericStats: boolean
-
-    planner: {
-        mode: 'number-of-days'|'weekly',
-        weekly: {
-            weekDays: Record<WeekDay, PlannerWeekDay>
-        },
-        numberOfDays: {
-            days: number
-        },
-        commitTime?: string,
-        track: boolean
-    }
-}
-export const PlayerHeroStoreSchema = z.object({
-    rank: z.string(),
-    level: z.number(),
-    points: z.number(),
-    goal: z.number(),
-
-    averageStats: z.record(z.string(), z.number()),
-    openedCalculator: z.boolean(),
-    usesGenericStats: z.boolean(),
-
-    planner: z.object({
-        mode: z.literal(['number-of-days', 'weekly']),
-        weekly: z.object({
-            weekDays: z.record(WeekDaySchema, PlannerWeekDaySchema)
-        }),
-        numberOfDays: z.object({
-            days: z.number()
-        }),
-        commitTime: z.string().optional(),
-        track: z.boolean()
-    })
-});
 
 export const DEFAULT_PLANNER_WEEKDAYS: (time?: number) => Record<WeekDay, PlannerWeekDay> = (time = 0) => ({
     monday: {
@@ -783,45 +685,49 @@ export const DEFAULT_PLANNER_WEEKDAYS: (time?: number) => Record<WeekDay, Planne
         time
     },
 })
-export const DEFAULT_HERO_STORE: () => PlayerHeroStore = () => ({
-    rank: 'agent',
-    level: 1,
-    points: 0,
-    goal: 1,
+export const PlayerHeroStoreSchema = z.object({
+    rank: z.string().default('agent'),
+    level: z.number().default(1),
+    points: z.number().default(0),
+    goal: z.number().default(1),
 
-    averageStats: {},
-    averageStatsArcade: {},
-    openedCalculator: false,
-    usesGenericStats: false,
+    averageStats: z.record(z.string(), z.number()).default({}),
+    averageStatsArcade: z.record(z.string(), z.number()).optional().default({}),
+    arcadeMaxFeasableMissions: z.number().default(2),
+    openedCalculator: z.boolean().default(false),
+    usesGenericStats: z.boolean().default(false),
 
+    planner: z.object({
+        mode: z.enum(['number-of-days', 'weekly']).default('number-of-days'),
+        gameMode: z.enum(['normal', 'arcade']).default('normal'),
+        weekly: z.object({
+            weekDays: z.record(WeekDaySchema, PlannerWeekDaySchema)
+                            .default(() => DEFAULT_PLANNER_WEEKDAYS())
+        }),
+        numberOfDays: z.object({
+            days: z.number().default(0),
+        }),
+    })
+});
+export type PlayerHeroStore = z.infer<typeof PlayerHeroStoreSchema>;
+
+export const DEFAULT_HERO_STORE = (): PlayerHeroStore => PlayerHeroStoreSchema.parse({ 
     planner: {
-        mode: 'number-of-days',
-        weekly: {
-            weekDays: DEFAULT_PLANNER_WEEKDAYS()
-        },
-        numberOfDays: {
-            days: 0,
-        },
-        track: false,
+        weekly: {},
+        numberOfDays: {}
     }
 });
 
-export interface PreferencesStore {
-    sawHeroQuickEditPopup: boolean,
-    sawHeroEditPopup: boolean,
-    plannerCalendarMeasureUnit: 'hours'|'quick_matches'|'comp_matches'
-}
-export const PreferencesStoreSchema = z.object({
-    sawHeroQuickEditPopup: z.boolean(),
-    sawHeroEditPopup: z.boolean(),
-    plannerCalendarMeasureUnit: z.literal(['hours', 'quick_matches', 'comp_matches'])
-})
 
-export const DEFAULT_PREFERENCES_STORE: () => PreferencesStore = () => ({
-    sawHeroQuickEditPopup: false,
-    sawHeroEditPopup: false,
-    plannerCalendarMeasureUnit: 'quick_matches'
-});
+export const PreferencesStoreSchema = z.object({
+    sawHeroQuickEditPopup: z.boolean().default(false),
+    sawHeroEditPopup: z.boolean().default(false),
+    plannerCalendarMeasureUnit: z.enum(['hours', 'quick_matches', 'comp_matches']).default('quick_matches')
+})
+export type PreferencesStore = z.infer<typeof PreferencesStoreSchema>;
+export const DEFAULT_PREFERENCES_STORE = (): PreferencesStore => 
+    PreferencesStoreSchema.parse({});
+
 
 export const AVG_QUICK_MATCH_DURATION_MIN = 8.5;
 export const AVG_COMP_MATCH_DURATION_MIN = 11.7;

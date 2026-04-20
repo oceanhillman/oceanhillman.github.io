@@ -526,8 +526,10 @@ p
 <script setup lang="ts">
 import {
     AnySegmentSchema,
+    DEFAULT_HERO_STORE,
     DEFAULT_PREFERENCES_STORE,
     levelToRank,
+    PreferencesStoreSchema,
     type AnySerializableDataSegment,
     type HeroData,
     type PlayerHeroStore,
@@ -548,7 +550,7 @@ const storedHeroes = Object.entries(localStorage ?? {})
                            }) as ({id: string} & PlayerHeroStore)[];
 const favourites = useLocalStorage<HeroData['id'][]>(`favourite_heroes`, []);
 const unknownHeroes = useLocalStorage<HeroData[]>('unknown_heroes', []);
-const preferences = useLocalStorage<PreferencesStore>('preferences', DEFAULT_PREFERENCES_STORE());
+const preferences = useLocalStorage<PreferencesStore>('preferences', DEFAULT_PREFERENCES_STORE(), PreferencesStoreSchema);
 
 const heroesWithData = computed(() => {
     return storedHeroes.map(heroStore => {

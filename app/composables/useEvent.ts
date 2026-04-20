@@ -7,12 +7,19 @@ type SpecialEventsKeys =
 type EventMap = WindowEventMap & DocumentEventMap & HTMLElementEventMap;
 type EventKey = keyof EventMap|SpecialEventsKeys;
 
+export interface UseEventProperties<K extends EventKey> {
+    remove: () => void,
+    event: K|K[],
+    handler: () => any,
+    element?: HTMLElement|Document|Window
+}
+
 export const useEvent = <K extends EventKey>(
     events: K|K[], 
     handler: (...args: any[]) => any,
     element?: HTMLElement|Document|Window,
     options?: boolean | AddEventListenerOptions | undefined
-) : { remove: () => void, event: K|K[], handler: () => any, element?: HTMLElement|Document|Window } => 
+) : UseEventProperties<K> => 
 {
     if (!element)
         element = window;

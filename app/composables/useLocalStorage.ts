@@ -1,9 +1,14 @@
 import type { WatchHandle } from "vue";
+import type z from "zod";
 
 const state: Record<string, Ref<any>> = {};
 const watchers: Record<string, WatchHandle> = {};
 
-export function useLocalStorage<T>(key: string, defaultValue: T) {
+export function useLocalStorage<T>(
+    key: string,
+    defaultValue: T,
+    schema?: z.ZodType<T>
+) {
     // const state = ref(defaultValue) as Ref<T>
 
     if (!import.meta.client) {
@@ -12,8 +17,11 @@ export function useLocalStorage<T>(key: string, defaultValue: T) {
 
     if (!state[key]) {
         const saved = localStorage.getItem(key)
-        if (saved)
-            state[key] = ref(JSON.parse(saved))
+        if (saved) {
+            const parsed = JSON.parse(saved);
+            // merge saved data with defaults for any missing keys
+            state[key] = ref(schema ? schema.parse(parsed) : parsed);
+        }
         else
             state[key] = ref(defaultValue);
     }

@@ -1,13 +1,20 @@
 import { getAverageStatsForHero, levelToRank, NO_DAILY_POINTS_ATTENUATION_RANK_IDS, PROFICIENCY_RANKS, type Challenge, type HeroData, type PlayerHeroStore, type Rank } from "~/assets/data/common";
 
-export type PersonalRankTimeEstimate = [
+export interface PersonalRankTimeEstimate {
     rankId: string, 
     time: [conservative: number, avg: number, optimistic: number],
     points: [conservative: number, avg: number, optimistic: number],
-    levelCount: number
-];
+    levelCount: number,
 
-type PickedStore = Pick<PlayerHeroStore, 'averageStats'|'averageStatsArcade'|'goal'|'level'|'points'>;
+    arcade?: {
+        dailyPoints: number,
+        dayCount: number
+    }
+}
+
+type PickedStore = Pick<PlayerHeroStore, 
+    'averageStats'|'averageStatsArcade'|'arcadeMaxFeasableMissions'|'goal'|'level'|'points'
+>;
 
 export class Calculator {
     public hero: HeroData;
@@ -19,35 +26,43 @@ export class Calculator {
         this.store = level;
     }
 
-    private avgPointsPer10MinForRank(rank: Rank, daily = false): number {
-        const neededStats: Challenge[] = rank.challenges;
-        const playNeeded = rank.challenges.find(c => c.type == 'play')?.needed ?? 15;
-        
+    private avgPointsPer10MinsForChallenge(rank: Rank, challenge: Challenge, arcade: boolean) {
         const genericStats = getAverageStatsForHero(this.hero.id);
 
-        let points = 0;
-        for (const stat of neededStats) {
-            const shouldAttenuate = !NO_DAILY_POINTS_ATTENUATION_RANK_IDS.includes(rank.type.id);
-            const reward = daily && shouldAttenuate ? (stat.reward * 45) / 60 : stat.reward;
+        const shouldAttenuate = !NO_DAILY_POINTS_ATTENUATION_RANK_IDS.includes(rank.type.id);
+        const reward = arcade && shouldAttenuate ? (challenge.reward * 45) / 60 : challenge.reward;
 
-            if (stat.type == 'play') {
-                points += 10 * reward / playNeeded;
-                continue;
-            }
+        if (challenge.type == 'play')
+            return 10 * reward / challenge.needed;
 
-            let avgStat = daily ? (this.store.averageStatsArcade?.[stat.type] ?? 0) : this.store.averageStats?.[stat.type];
+        let avgStat = arcade ?
+            (this.store.averageStatsArcade?.[challenge.type] ?? 0)
+            :
+            this.store.averageStats?.[challenge.type];
 
-            if (!avgStat) {
-                avgStat = genericStats?.[stat.type] ?? 0;
+        if (!avgStat) {
+            avgStat = genericStats?.[challenge.type] ?? 0;
 
-                if (!avgStat)
-                    continue;
-            }
-
-            points += avgStat * reward / stat.needed;
+            if (!avgStat)
+                return null;
         }
 
-        return points;
+        return avgStat * reward / challenge.needed;
+    }
+
+    private avgPointsPer10MinForRank(rank: Rank, arcade: boolean): { challenge: Challenge, points: number }[] {
+        const challenges: Challenge[] = rank.challenges;
+
+        let missionsPoints: { challenge: Challenge, points: number }[] = [];
+        for (const challenge of challenges) {
+            const challengePoints = this.avgPointsPer10MinsForChallenge(rank, challenge, arcade);
+            if (!challengePoints)
+                continue;
+
+            missionsPoints.push({ challenge, points: challengePoints });
+        }
+
+        return missionsPoints;
     }
 
     /**
@@ -60,8 +75,16 @@ export class Calculator {
         fromLevel: number,
         toLevel: number,
         points: number,
-        daily = false
-    ): [PersonalRankTimeEstimate[1], PersonalRankTimeEstimate[2], levelCount: number] {
+        arcade?: {
+            /**
+             * The user's max feasable missions they are willing to play and finish (complete all 15 of) until
+             * they stop playing arcade as their time investment becomes a loss compared to playing other game modes
+             * or waiting for the next daily mission reset
+             */
+            maxFeasableMissions: number,
+            previousRankTime?: PersonalRankTimeEstimate,
+        }
+    ): PersonalRankTimeEstimate {
         // assume all levels initially
         let noLevels = rank.type.levelCount;
 
@@ -101,27 +124,93 @@ export class Calculator {
         // calculate points needed (subtracting the current points if the current (from) level is
         // within the bounds of this rank)
         const pointsNeeded = rank.type.xpPerLevel * noLevels - (fromLevelWithinBounds ? points : 0);
+        const missionsAvgPoints = this.avgPointsPer10MinForRank(rank, !!arcade);
+        
         // calculate averages
-        const avgPointsPer10 = this.avgPointsPer10MinForRank(rank, daily);
+        const avgPointsPer10 = missionsAvgPoints.reduce((sum, c) => sum + c.points, 0);
         const conservativePointsPer10 = avgPointsPer10 * 0.9;
         const optimisticPointsPer10 = avgPointsPer10 * 1.1;
 
-        return [
-            [
-                pointsNeeded / conservativePointsPer10 * 10 * 60,
-                pointsNeeded / avgPointsPer10 * 10 * 60,
-                pointsNeeded / optimisticPointsPer10 * 10 * 60,
-            ],
-            [
-                avgPointsPer10 * 0.9,
-                avgPointsPer10,
-                avgPointsPer10 * 1.1
-            ],
-            noLevels
-        ];
+        if (!arcade || avgPointsPer10 <= 0.001) {
+            return {
+                rankId: rank.type.id,
+                time: [
+                    pointsNeeded / conservativePointsPer10 * 10 * 60,
+                    pointsNeeded / avgPointsPer10 * 10 * 60,
+                    pointsNeeded / optimisticPointsPer10 * 10 * 60,
+                ],
+                points: [
+                    avgPointsPer10 * 0.9,
+                    avgPointsPer10,
+                    avgPointsPer10 * 1.1
+                ],
+                levelCount: noLevels
+            }
+        }
+        else {
+            // need to calculate how many points can be earned until arcadeMaxFeasableMissions are all completed
+            missionsAvgPoints.sort((a,b) => b.points - a.points);
+
+            // make a budget map for how much each mission can give daily
+            // since every mission can be completed 15 times every day
+            const missionsBudgetMap: Partial<Record<Challenge['type'], number>> = {};
+            let remainingPoints = pointsNeeded;
+            missionsAvgPoints.forEach(({ challenge }) => {
+                missionsBudgetMap[challenge.type] = challenge.reward * 15;
+            });
+
+            // while we still have points that need to be gained, check mission counts for every mission
+            while (remainingPoints > 0) {
+                for (const { challenge, points } of missionsAvgPoints) {
+                    // if this mission's budget is depleted, don't account for it anymore
+                    // any points over the limit will not be registered in game
+                    if (missionsBudgetMap[challenge.type]! <= 0)
+                        continue;
+
+                    // remove one count of the points reward of this mission from its budget and the points to be gained
+                    let removablePoints = points;
+                    if (missionsBudgetMap[challenge.type]! - points < 0)
+                        removablePoints -= points - missionsBudgetMap[challenge.type]!;
+                    
+                    missionsBudgetMap[challenge.type]! -= removablePoints;
+                    remainingPoints -= removablePoints;
+                }
+                
+                // calculate how many missions were depleted
+                const remainingFeasableMissions = Object.values(missionsBudgetMap).filter(m => m > 0).length;
+                const totalMissions = missionsAvgPoints.length;
+                const depletedMissions = totalMissions - remainingFeasableMissions;
+
+                // compare the depleted missions against the user's feasable missions
+                if (depletedMissions >= arcade.maxFeasableMissions || remainingFeasableMissions === 0)
+                    break;
+            }
+
+            // calc how many points can be earned per day
+            const canEarnPointsDaily = pointsNeeded - remainingPoints;
+
+            return {
+                rankId: rank.type.id,
+                time: [
+                    pointsNeeded / conservativePointsPer10 * 10 * 60,
+                    pointsNeeded / avgPointsPer10 * 10 * 60,
+                    pointsNeeded / optimisticPointsPer10 * 10 * 60,
+                ],
+                arcade: {
+                    dailyPoints: canEarnPointsDaily,
+                    dayCount: pointsNeeded / canEarnPointsDaily
+                },
+                points: [
+                    avgPointsPer10 * 0.9,
+                    avgPointsPer10,
+                    avgPointsPer10 * 1.1
+                ],
+                levelCount: noLevels
+            }
+        }
     }
 
-    public totalTimes(daily = false): PersonalRankTimeEstimate[] {
+    public totalTimes(arcade = false): PersonalRankTimeEstimate[] {
         const currentLevel = this.store.level;
         let goal = this.store.goal;
 
@@ -139,11 +228,20 @@ export class Calculator {
         );
 
         let totalTimes: PersonalRankTimeEstimate[] = [];
-        for (const rank of remainingRanks) {
-            totalTimes.push([
-                rank.type.id, 
-                ...this.rankTime(rank, currentLevel, goal, this.store.points, daily)
-            ]);
+        for (let i = 0; i < remainingRanks.length; i++) {
+            const rank = remainingRanks[i]!;
+            let arcadePreviousRankTimes: {
+                maxFeasableMissions: number,
+                previousRankTime?: PersonalRankTimeEstimate,
+            } | undefined = undefined;
+
+            if (arcade) {
+                arcadePreviousRankTimes = { maxFeasableMissions: this.store.arcadeMaxFeasableMissions ?? 1 };
+
+                if (i > 0)
+                    arcadePreviousRankTimes.previousRankTime = totalTimes[i - 1];
+            }
+            totalTimes.push(this.rankTime(rank, currentLevel, goal, this.store.points, arcadePreviousRankTimes));
         }
 
         return totalTimes;
