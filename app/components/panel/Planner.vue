@@ -68,7 +68,7 @@
                     </template>
                 </FormToggle>
             </div>
-            <div class="option">
+            <div v-if="level.planner.gameMode == 'arcade'" class="option">
                 <div class="label">
                     Max daily missions
                 </div>

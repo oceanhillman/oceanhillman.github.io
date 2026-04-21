@@ -1,5 +1,47 @@
 [
   {
+    "sha": "191e0d5aac162333b8b4930d5e8b3926af9fc2c7",
+    "node_id": "C_kwDORv7rQ9oAKDE5MWUwZDVhYWMxNjIzMzNiOGI0OTMwZDVlOGIzOTI2YWY5ZmMyYzc",
+    "commit": {
+      "author": {
+        "name": "mr-calculator",
+        "email": "mr-calculator.estimate510@slmails.com",
+        "date": "2026-04-21T15:09:33Z"
+      },
+      "committer": {
+        "name": "mr-calculator",
+        "email": "mr-calculator.estimate510@slmails.com",
+        "date": "2026-04-21T15:09:33Z"
+      },
+      "message": "Added Mission max selector for arcade mode in the planner\nChanged time in missions panel (arcade at the bottom) from 09:00 UTC to be in local time\nFixed SEO description getting ovewritten by client hydration. Now it should stay the same as it was server rendered or stay the same as the initial ssr-ed page.",
+      "tree": {
+        "sha": "166861b47b06d27eb36538b7b7e528b650cf6ad1",
+        "url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/git/trees/166861b47b06d27eb36538b7b7e528b650cf6ad1"
+      },
+      "url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/git/commits/191e0d5aac162333b8b4930d5e8b3926af9fc2c7",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/commits/191e0d5aac162333b8b4930d5e8b3926af9fc2c7",
+    "html_url": "https://github.com/mr-calculator/mr-calculator.github.io/commit/191e0d5aac162333b8b4930d5e8b3926af9fc2c7",
+    "comments_url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/commits/191e0d5aac162333b8b4930d5e8b3926af9fc2c7/comments",
+    "author": null,
+    "committer": null,
+    "parents": [
+      {
+        "sha": "1d29209f915c640de7f4c98e390e24f3d8fbe636",
+        "url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/commits/1d29209f915c640de7f4c98e390e24f3d8fbe636",
+        "html_url": "https://github.com/mr-calculator/mr-calculator.github.io/commit/1d29209f915c640de7f4c98e390e24f3d8fbe636"
+      }
+    ]
+  },
+  {
     "sha": "1d29209f915c640de7f4c98e390e24f3d8fbe636",
     "node_id": "C_kwDORv7rQ9oAKDFkMjkyMDlmOTE1YzY0MGRlN2Y0Yzk4ZTM5MGUyNGYzZDhmYmU2MzY",
     "commit": {
