@@ -1,5 +1,47 @@
 [
   {
+    "sha": "d0b1182dc61b00df6ca10ff154db6bf24219b7d9",
+    "node_id": "C_kwDORv7rQ9oAKGQwYjExODJkYzYxYjAwZGY2Y2ExMGZmMTU0ZGI2YmYyNDIxOWI3ZDk",
+    "commit": {
+      "author": {
+        "name": "mr-calculator",
+        "email": "mr-calculator.estimate510@slmails.com",
+        "date": "2026-04-21T15:23:26Z"
+      },
+      "committer": {
+        "name": "mr-calculator",
+        "email": "mr-calculator.estimate510@slmails.com",
+        "date": "2026-04-21T15:23:26Z"
+      },
+      "message": "Fixed Mission max selector was visible when arcade mode was not selected.\nUpdated Black Cat stats.",
+      "tree": {
+        "sha": "2fcecbf103363025b79d592eb4c43bb2b2cac203",
+        "url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/git/trees/2fcecbf103363025b79d592eb4c43bb2b2cac203"
+      },
+      "url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/git/commits/d0b1182dc61b00df6ca10ff154db6bf24219b7d9",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/commits/d0b1182dc61b00df6ca10ff154db6bf24219b7d9",
+    "html_url": "https://github.com/mr-calculator/mr-calculator.github.io/commit/d0b1182dc61b00df6ca10ff154db6bf24219b7d9",
+    "comments_url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/commits/d0b1182dc61b00df6ca10ff154db6bf24219b7d9/comments",
+    "author": null,
+    "committer": null,
+    "parents": [
+      {
+        "sha": "191e0d5aac162333b8b4930d5e8b3926af9fc2c7",
+        "url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/commits/191e0d5aac162333b8b4930d5e8b3926af9fc2c7",
+        "html_url": "https://github.com/mr-calculator/mr-calculator.github.io/commit/191e0d5aac162333b8b4930d5e8b3926af9fc2c7"
+      }
+    ]
+  },
+  {
     "sha": "191e0d5aac162333b8b4930d5e8b3926af9fc2c7",
     "node_id": "C_kwDORv7rQ9oAKDE5MWUwZDVhYWMxNjIzMzNiOGI0OTMwZDVlOGIzOTI2YWY5ZmMyYzc",
     "commit": {

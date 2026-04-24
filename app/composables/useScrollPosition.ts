@@ -30,7 +30,7 @@ export function useScrollPosition(id?: string) {
 
             useGsap(({ scrollTrigger }) => {
                 scrollTrigger.refresh();
-            }, true);
+            });
         }, 5);
     }
 

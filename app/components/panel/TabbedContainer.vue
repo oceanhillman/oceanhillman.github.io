@@ -25,7 +25,7 @@
 
 .tabs
     position: sticky
-    top: 0
+    top: 65px
     width: 100%
     height: 52px
 
@@ -34,7 +34,7 @@
 
     background: #222635
 
-    z-index: 2
+    z-index: 3
 
     +media-desktop
         justify-content: start

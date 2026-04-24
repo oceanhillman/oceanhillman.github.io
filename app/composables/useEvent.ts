@@ -41,15 +41,13 @@ export const useEvent = <K extends EventKey>(
     // also add if registered after on mounted, keeping removing functionality
     const instance = getCurrentInstance();
     if (instance) {
-        if (instance.isMounted && !instance.isUnmounted) {
+        if (instance.isMounted && !instance.isUnmounted)
             // already mounted, add immediately
             addEvents();
-            onUnmounted(removeEvents);
-        }
-        else {
+        else
             onMounted(addEvents);
-            onUnmounted(removeEvents);
-        }
+
+        onUnmounted(removeEvents);
     }
     else
         addEvents();
