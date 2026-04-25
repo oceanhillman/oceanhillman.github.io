@@ -211,6 +211,9 @@ export const TEX = {
     dropdownCheck: {
         default: 'icon/check.png'
     } as Texture,
+    checkRhombus: {
+        default: 'icon/check-rhombus.png'
+    } as Texture,
     favourite: {
         default: 'icon/favourite.png',
         hover: 'icon/favourite-hover.png'
@@ -286,6 +289,10 @@ export const TEX = {
     } as Texture,
     achievementPoint: {
         default: 'icon/achievement-point.png'
+    } as Texture,
+    achievementRewardProgress: {
+        default: 'icon/achievement-reward-uncompleted.png',
+        active: 'icon/achievement-reward-completed.png'
     } as Texture,
 
     achievementChronoverseSaga: {
@@ -475,6 +482,9 @@ export const TEX = {
     } as Texture,
     ctaMask: {
         default: 'mask/cta-mask.webp'
+    } as Texture,
+    modalBackgroundMask: {
+        default: 'mask/modal-bg-mask.png'
     } as Texture,
 
 

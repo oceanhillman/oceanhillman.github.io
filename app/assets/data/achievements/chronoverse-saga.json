@@ -1,0 +1,705 @@
+[
+  {
+    "id": "148b51a7-f3ef-40eb-8ed6-d3483451e164_cellblock-chat",
+    "title": "Cellblock Chat",
+    "description": "Chat with Kingpin deep in the Vault in Lower Manhattan",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "jeff-the-land-shark",
+    "id": "a6325c31-021c-4e74-8761-0679070f5000_shark-to-shark",
+    "title": "Shark to Shark",
+    "description": "As Jeff the Land Shark, use 1 emote in front of the Jeff Statue in Lower Manhattan",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "7d94653f-79a9-44d8-9fad-da9289c538f7_deal-canceled",
+    "title": "Deal Canceled",
+    "description": "Prevent Kingpin from delivering the Tablet to the Gilded Saint in Lower Manhattan",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "4f34c075-ef96-468d-9530-c0cc7fcefebc_vault-deposit",
+    "title": "Vault Deposit",
+    "description": "Deliver the Tablet to the Gilded Saint to The Vault in Lower Manhattan",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "f56ba47b-949e-446a-998f-02a8e9d97bcc_secret-stash",
+    "title": "Secret Stash",
+    "description": "Discover The Collector's Chronovium Cabinet and reveal its secret in the Museum of Contemplation",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "2c3a9b85-c84a-41f1-a1c7-8556c404192b_well-that-got-weird",
+    "title": "Well, That Got Weird...",
+    "description": "Accidently transform the Bats Mobile in the Museum of Contemplation",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "dc27c862-ec50-42d8-bbda-3c306bee0ee5_field-trip",
+    "title": "Field Trip!",
+    "description": "Snatch the Bats Mobile from Deadpool in the Museum of Contemplation",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "4ac0e4a8-aa5c-4483-9783-44aed134ab67_getting-censered",
+    "title": "Getting Censered",
+    "description": "Escape using the censer in the Museum of Contemplation",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "2ea0aecb-a8f4-4e04-b3ca-791b7678871d_grand-garden-gator",
+    "title": "Grand Garden Gator",
+    "description": "Use 1 emote in front of Alligator Loki in Grand Garden.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "783a3650-61f6-41e1-8925-56e19171fef6_lost-in-the-game",
+    "title": "Lost in the Game",
+    "description": "Trigger 1 checkmate in Grand Garden.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "e22dc12b-11be-4d16-b336-c800ff17fec2_stolen-victory",
+    "title": "Stolen Victory",
+    "description": "Achieve 1 victory in Grand Garden.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "869f0e02-de8b-4627-8f64-3fe189c00bf0_prank-of-monkey-king",
+    "title": "Prank of Monkey King",
+    "description": "Smash 10 Fruit of Immortality at the Jade Pond banquet in K'un-Lun: Heart of Heaven.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 10,
+    "reward": 5
+  },
+  {
+    "id": "0e9ce7f1-0217-484f-9d54-843a4b2cd78c_blueprints-supreme",
+    "title": "Blueprints Supreme",
+    "description": "Use 1 emote in front of the Palace of the Dragon King in K'un-Lun: Heart of Heaven.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "5c129c01-0f1a-43e8-a4d3-612ea0869639_crouching-threat-hidden-dragon",
+    "title": "Crouching Threat, Hidden Dragon",
+    "description": "Stop the awakening of Shou-Lao in K'un-Lun: Heart of Heaven.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "9e9764e5-32d9-4ee5-9967-23e4af8c3010_leap-of-faith",
+    "title": "Leap of Faith",
+    "description": "Use The Tablet of Iron FIst to awaken Shou-Lao in K'un-Lun: Heart of Heaven.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "fc31d427-d29b-4391-820d-0dcabf254bd5_cant-make-an-omlette",
+    "title": "Can't Make An Omlette...",
+    "description": "Destroy 30 Symbiote Eggs in Klyntar: Throne of Knull.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 30,
+    "reward": 5
+  },
+  {
+    "id": "0d16146d-74c5-49c7-924a-190a17cc8530_whispers-of-oblivion",
+    "title": "Whispers of Oblivion",
+    "description": "Listen to Knull in Klyntar: Throne of Knull.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "537b405b-2bc4-4abb-970f-253f2a2bdf49_kings-in-black",
+    "title": "Kings in Black",
+    "description": "Witness the showdown between Venom and Knull in Klyntar: Throne of Knull.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "83cae6e4-9f92-49d1-9dc9-2148deddba38_darkness-and-light",
+    "title": "Darkness and Light",
+    "description": "Obliterate Knull in the White Hot Room in Klyntar: Throne of Knull.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "ad419b24-c455-491b-9686-f9b10891009d_echoes-of-the-abyss",
+    "title": "Echoes of the Abyss",
+    "description": "Listen to All-Black's voice in Klyntar: Celestial Husk.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "e9b4dbff-9fba-4d7c-b49d-fe5fc4235be4_full-heart-cant-lose",
+    "title": "Full Heart, Can't Lose",
+    "description": "Gain control of the Celestial Vault in Klyntar: Celestial Husk.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "86b7be9c-40c7-4339-b399-744e8d60c98a_celestial-pathway",
+    "title": "Celestial Pathway",
+    "description": "Gain control of the Celestial Codex in Klyntar: Celestial Husk.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "c8478520-95e0-40cb-8e0e-db2e105fd416_severed-outpost",
+    "title": "Severed Outpost",
+    "description": "Gain control of the Celestial Hand in Klyntar: Celestial Husk.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "f26879f2-6fb6-40b2-81b7-88180d4f51a9_from-the-abyss",
+    "title": "From the Abyss",
+    "description": "Witness Knull break free and reclaim the All-Black in Klyntar: Celestial Husk.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "2802e3f2-598b-4e9c-8339-d2cd15331a20_blazing-rebirth",
+    "title": "Blazing Rebirth",
+    "description": "Hatch the Phoenix Egg in Klyntar: Celestial Husk.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "a575ec46-8dac-496c-a218-287f4cf542a3_whispers-in-pieces",
+    "title": "Whispers in Pieces",
+    "description": "Shatter 1 robot on the Robot Wailing Wall in Arakko.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "b2261b3b-2885-46e6-b098-33d883db860a_digital-ecosystem",
+    "title": "Digital Ecosystem",
+    "description": "Restore vegetation to the mechanical surface in Arakko.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "b1b7e82d-031b-42e7-85d6-980199f268a0_days-of-future-past",
+    "title": "Days of Future Past",
+    "description": "Erase Ultron's existence from the timeline of Arakko.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "2ae131c2-11c9-4d32-8307-fb37224a6092_arakko-goes-analog",
+    "title": "Arakko Goes Analog",
+    "description": "Purge Ultron's virus in Arakko.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "4c4ca71a-308e-420f-ae11-881d09a54244_the-hidden-womb",
+    "title": "The Hidden Womb",
+    "description": "Gain control of the Cradle in Krakoa.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "b8c3fc81-8b6d-4359-86c2-c69170b33123_head-of-the-table",
+    "title": "Head of the Table",
+    "description": "Gain control of the Quiet Council in Krakoa.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "ae8a1f0d-eb9b-4d38-99a0-fda8b11255f4_unwanted-guests",
+    "title": "Unwanted Guests",
+    "description": "Gain control of the Carousel in Krakoa.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "0d312c9e-0fef-435d-baad-c0e47a0f9a67_a-necessary-sacrifice",
+    "title": "A Necessary Sacrifice",
+    "description": "Attempt to destroy Cerebro to prevent Ultron from backing up his data in Krakoa.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "81ab3630-6fe0-4130-b2c5-fa24c16e170b_out-of-service",
+    "title": "Out of Service",
+    "description": "Attempt to stop Ultron from backing up his data to Cerebro in Krakoa",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "1b990f0d-2955-4336-8449-be54d33ba353_door-to-door",
+    "title": "Door to Door",
+    "description": "Use 2 different portals in a single game when Eternal Night falls on New York.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "9defc8a7-7d58-4a76-9ac8-618438153e49_a-hounding-conversation",
+    "title": "A Hounding Conversation",
+    "description": "Talk with Bats the ghost dog when Eternal Night falls on New York.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "4166c6b2-5537-43e5-97c3-efa5bd059dd5_no-more-house-call",
+    "title": "No More House Call",
+    "description": "Save Doctor Strange from the astral plane when Eternal Night falls on New York.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "dbd36073-2c8a-4599-b47a-1fc37b08b7ef_ruined-idol",
+    "title": "Ruined Idol",
+    "description": "Shatter the Bloodstorm One statue when Eternal Night falls on New York.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "aa44abfe-53b1-4831-a21b-0f5257fb729a_saving-rachel-oskar",
+    "title": "Saving Rachel Oskar",
+    "description": "Rescue Ratatoskr when Eternal Night falls on New York.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "35ddaa85-a331-46e3-9aa2-fde3b8e8d2d4_night-travelers-protected",
+    "title": "Night Travelers, Protected",
+    "description": "Use the spell within Ratatoskr to eliminate all the vampires when Eternal Night falls on New York.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "d094d865-1299-48da-9338-dd8a60528c51_silver-lining",
+    "title": "Silver Lining",
+    "description": "With Ratatoskr's help, complete the first trial run of TRD when Eternal Night falls on New York.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "64441c35-90df-486c-a605-eaa665b38271_factory-setting",
+    "title": "Factory Setting",
+    "description": "Trigger Stark Sentinel's Reverse-Destruction when Eternal Night falls on New York.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "0576099a-2206-4a7b-9097-ef4915da5db6_papers-over-digital",
+    "title": "Papers over Digital",
+    "description": "Stop H.E.R.B.I.E from scanning all pages of the Darkhold when Eternal Night falls on New York.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "00a1f6f5-cab2-45d1-b3d1-c2d0f75914d0_save-the-trees",
+    "title": "Save the Trees!",
+    "description": "Scan all pages of the Darkhold with the help of H.E.R.B.I.E when Eternal Night falls on New York.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "bb7109e2-9328-4cb6-bd7b-16f8bcae7014_spore-sport",
+    "title": "Spore Sport",
+    "description": "Shatter 50 Symbiote Spores in Klyntar.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 50,
+    "reward": 5
+  },
+  {
+    "id": "fd0af6cb-841e-47cd-b248-8ca6185cff55_veni-vidi-v",
+    "title": "VENI VIDI V...?",
+    "description": "Spray 1 time toward the Celestial Codex in Klyntar.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "895f1667-2dac-485b-b1be-6be26603cbfb_we-are-safe-for-now",
+    "title": "We Are Safe... For Now",
+    "description": "Stop Knull's Essence from going underground in Klyntar.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "31813906-3b95-4316-bc8f-5dd24f9f7650_explosive-sendoff",
+    "title": "Explosive Sendoff",
+    "description": "Deliver Knull's Essence underground in Klyntar.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "b1c52efa-1526-4549-8af2-bd7234925b98_shero-of-wakanda",
+    "title": "Shero of Wakanda",
+    "description": "Listen to General Okoye's message in the Intergalactic Empire of Wakanda.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "b0815331-bbb9-478f-8a23-4a8fb1e35652_mind-palace",
+    "title": "Mind Palace",
+    "description": "Listen to Shuri's findings in the Intergalactic Empire of Wakanda.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "7ab7bf8a-216f-4425-96d6-8bbed85cd986_spreading-darkness",
+    "title": "Spreading Darkness",
+    "description": "Stop Bast, the Panther God, from returning to her rightful place in the Intergalactic Empire of Wakanda.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "e1b618c7-ac5a-4c99-8369-8ae0daba8b47_knowledge-of-sin",
+    "title": "Knowledge of Sin",
+    "description": "Activate the Vibrani-Chronovium force field stabilizer in the Imperial Institute of Science of the Intergalactic Empire of Wakanda.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "bf869f2b-af12-4bb6-9729-80e4717d03ec_mystical-power",
+    "title": "Mystical Power",
+    "description": "Unleash the spiritual energy of the Heart-Shaped Herb in the Intergalactic Empire of Wakanda.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "15787768-36c5-4739-82cc-de9e2c957688_scientific-strength",
+    "title": "Scientific Strength",
+    "description": "Advance the Vibrani-Chronovium research in the Intergalactic Empire of Wakanda.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "e5095c34-1d1f-4348-b978-4dc6ddb04bde_divine-house-divided",
+    "title": "Divine House Divided",
+    "description": "Listen to the chat between K'Liluna and Bast in the Intergalactic Empire of Wakanda.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "f52b65d8-a37d-44f1-920a-a63e1fafa719_wakanda-forever",
+    "title": "Wakanda Forever",
+    "description": "Purify Bast, the Panther God, in the Intergalactic Empire of Wakanda.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "7e67118d-6a09-47de-99c2-12736547e945_let-her-speak",
+    "title": "Let Her Speak!",
+    "description": "Chat with Spider-Zero in the Mech Lab of Tokyo 2099: Spider-Islands.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "ab793281-24fa-4b3f-92a2-e5bf1b6c8c00_as-you-wish",
+    "title": "As You Wish",
+    "description": "Help the Master Weaver repair the Web of Life and Destiny in Tokyo 2099.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "b1ebc3f6-4651-4b4f-beb7-9c617befb4f8_all-or-nothing",
+    "title": "All or Nothing!",
+    "description": "Help Spider-Zero repair the Web of Life and Destiny in Tokyo 2099.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "d3f4aa8f-9ece-4bbb-a8b1-97fb47fa538e_tough-business",
+    "title": "Tough Business",
+    "description": "Listen to Fujikawa Mall's uniform ad broadcast in Tokyo 2099.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "9dccefb4-d7e4-4788-8f8e-7e3e92b7859b_public-relations",
+    "title": "Public Relations",
+    "description": "Listen to Stark-Fujikawa promo broadcast in Tokyo 2099.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "9276007e-fcf0-4166-b12d-a644ccaa66e3_eye-witness",
+    "title": "Eye Witness",
+    "description": "Listen to Public Eye's internal comms in Tokyo 2099.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "2d246a98-a837-4d72-8509-39171e8b7d24_whispers-from-the-web",
+    "title": "Whispers from the Web",
+    "description": "Listen to Spider-Zero's holographic message in Tokyo 2099.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "50e398b3-2a45-4120-ad72-7ea2c24f1cbe_halfway-dropout",
+    "title": "Halfway Dropout",
+    "description": "Halt Spider-Zero's advance to Budokan in Tokyo 2099.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "217ceeae-e961-420a-b8c6-dde9fb36de35_the-path-to-the-spiders-nests",
+    "title": "The Path to the Spiders' Nests",
+    "description": "Escort Spider-Zero to Budokan in Tokyo 2099.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "c380e898-0551-45b3-a80c-4230d8f68ccb_thors-alliance",
+    "title": "Thor's Alliance",
+    "description": "Help Thor fight against Loki in Yggsgard.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "7c22fc10-117a-4721-a8a3-75242e4a5c59_lokis-accomplice",
+    "title": "Loki's Accomplice",
+    "description": "Help Loki maintain his rule in Yggsgard.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "7630870e-39e4-4d34-b3b4-740448b1daf7_histrionic-perfection",
+    "title": "Histrionic Perfection",
+    "description": "Use 1 emote on the throne in Yggsgard.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "52bfd3d7-747d-4891-ba4d-110e5b5a43d4_illusive-truth",
+    "title": "Illusive Truth",
+    "description": "Shatter the deception and unveil the mural's truth in the Throne Room of Yggsgard.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "ce5a6369-5288-4206-8645-f01d1e59e82e_tyrant-tumbles",
+    "title": "Tyrant Tumbles",
+    "description": "Shatter the Loki statue area in Yggsgard's Bifrost Garden.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "bd446cce-e1ed-406f-9436-65aa44cc0ec0_i-say-thee-nay",
+    "title": "I Say Thee Nay!",
+    "description": "Safeguard the sapping device to wither Yggdrasill in Yggsgard.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "e5af72d1-62b3-44dd-93f3-b80a1955c009_for-asgard",
+    "title": "For Asgard!",
+    "description": "Destroy the sapping device and save Yggdrasill in Yggsgard.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "01d19e38-fa15-4ea7-b5ba-d2f85f09fe43_wakey-wakey",
+    "title": "Wakey Wakey",
+    "description": "Shatter 1 hibernation pod in the Super-Soldier Factory of Hydra Charteris Base.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "cee36500-d676-4103-b44a-5064077cc945_call-of-the-hive",
+    "title": "Call of the Hive",
+    "description": "Open the Maveth Portal in Hydra Charteris Base.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "7af1331b-871f-4cee-b479-ed4be8ad27a6_cut-off-one-head",
+    "title": "Cut off One Head",
+    "description": "Destroy the Hydra Charteris Base.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "d08676cd-7466-410a-9b49-cf62bc932b9c_not-on-my-watch",
+    "title": "Not on My Watch",
+    "description": "Shut down the production line of Super-Soldier Factory in Hydra Charteris Base.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "310593ae-6c6d-496c-a607-c40a22cdf413_wide-open",
+    "title": "Wide Open",
+    "description": "Blast the protective barrier of Frozen Airfield in Hydra Charteris Base.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "059f423b-959f-4d2e-a96d-8795c2e94b8b_enter-the-hydra",
+    "title": "Enter the Hydra",
+    "description": "Activate the entrance to Frozen Airfield in Hydra Charteris Base.",
+    "category": "chronoverse-saga",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  }
+]

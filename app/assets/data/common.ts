@@ -2,6 +2,7 @@ import z from "zod";
 import { tex } from "./textures";
 import avgHeroStats from './average-hero-stats.json';
 import heroMatches from './hero-matches.json';
+import { AchievementSchema, type Achievement } from "./achievements";
 
 export type HeroRole = 'vanguard'|'duelist'|'strategist';
 export const HeroRoleSchema = z.enum(['vanguard', 'duelist', 'strategist']);
@@ -742,11 +743,13 @@ export interface SerializableDataMap {
         id: string,
         hero?: HeroData,
         stored: PlayerHeroStore,
+        achievements?: Achievement[],
         isFavourite?: boolean
     },
     profile: {
         storedHeroes: ({ id: string } & PlayerHeroStore)[],
         favourites?: string[],
+        achievements?: Achievement[],
         unknownHeroes?: HeroData[],
         preferences?: PreferencesStore
     }
@@ -772,7 +775,9 @@ export const HeroSegmentSchema = z.object({
         isFavourite: z.boolean().optional(),
 
         stored: PlayerHeroStoreSchema,
-        hero: HeroDataSchema.optional()
+        hero: HeroDataSchema.optional(),
+
+        achievements: z.array(AchievementSchema).optional(),
     })
 })
 
@@ -784,6 +789,7 @@ export const ProfileSegmentSchema = z.object({
     data: z.object({
         storedHeroes: z.array(z.intersection(z.object({ id: z.string() }), PlayerHeroStoreSchema)),
         favourites: z.array(z.string()).optional(),
+        achievements: z.array(AchievementSchema).optional(),
         unknownHeroes: z.array(HeroDataSchema).optional(),
         preferences: PreferencesStoreSchema.optional()
     })

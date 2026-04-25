@@ -94,7 +94,7 @@
                             />
                         </div>
                     </div>
-                    <ul v-if="!selectedHero || selectedHeroData?.isFavourite" class="options">
+                    <ul class="options">
                         <li v-if="!selectedHero">
                             <FormCheckbox
                                 v-model="includeUnknownHeroes"
@@ -112,6 +112,16 @@
                             >
                                 <h4 v-if="!selectedHero">Include favourite heroes</h4>
                                 <h4 v-else>Include favourite status</h4>
+                            </FormCheckbox>
+                        </li>
+                        <li>
+                            <FormCheckbox
+                                v-model="includeAchievements"
+
+                                small
+                            >
+                                <h4 v-if="!selectedHero">Include achievements progress</h4>
+                                <h4 v-else>Include this hero's achievements progress</h4>
                             </FormCheckbox>
                         </li>
                         <li v-if="!selectedHero">
@@ -346,6 +356,7 @@ p
 </style>
 
 <script setup lang="ts">
+import { getAchievements, type Achievement } from '~/assets/data/achievements';
 import {
     DEFAULT_PREFERENCES_STORE,
     levelToRank,
@@ -375,6 +386,7 @@ const storedHeroes = ref(Object.entries(localStorage ?? {})
 const favourites = useLocalStorage<HeroData['id'][]>(`favourite_heroes`, []);
 const unknownHeroes = useLocalStorage<HeroData[]>('unknown_heroes', []);
 const preferences = useLocalStorage<PreferencesStore>('preferences', DEFAULT_PREFERENCES_STORE(), PreferencesStoreSchema);
+const achievementsStore = useLocalStorage<Achievement[]>('achievements', []);
 
 const route = useRoute();
 const heroFromUrl = route.query?.hero;
@@ -396,10 +408,16 @@ const heroesWithData = computed(() => {
 
         const { id, ...store } = heroStore;
 
+        const heroAchievements = getAchievements(undefined, heroStore.id);
+        const filteredAchievements = achievementsStore.value.filter(as => 
+            !!heroAchievements.find(a => a.id == as.id)
+        );
+
         return {
             hero: heroData,
             stored: store,
             rank: levelToRank(heroStore.level),
+            achievements: filteredAchievements,
             isFavourite: includeFavourites ? favourites.value.includes(heroStore.id) : undefined,
             isUnknownHero
         }
@@ -435,6 +453,7 @@ const dataExpanded = ref(false);
 const includeUnknownHeroes = ref(true);
 const includeFavourites = ref(true);
 const includePreferences = ref(true);
+const includeAchievements = ref(true);
 
 const dataBase: Pick<SerializableDataSegment<keyof SerializableDataMap>, 'version' | 'exportedAt'> = {
     version: config.dataVersion,
@@ -453,6 +472,7 @@ const allData = computed<AnySerializableDataSegment>(() => {
     const data = {
         storedHeroes: storedHeroes.value,
         favourites: includeFavourites.value ? favourites.value : undefined,
+        achievements: includeAchievements.value ? achievementsStore.value : undefined,
         unknownHeroes: includeUnknownHeroes.value ? unknownHeroes.value : undefined,
         preferences: includePreferences.value ? preferences.value : undefined
     }
@@ -471,12 +491,14 @@ const heroData = computed<AnySerializableDataSegment>(() => {
             id: heroData.hero.id,
             hero: heroData.hero,
             stored: heroData.stored,
+            achievements: heroData.achievements,
             isFavourite: heroData.isFavourite
         })
 
     return dataWithBase('hero', {
         id: heroData.hero.id,
         stored: heroData.stored,
+        achievements: heroData.achievements,
         isFavourite: heroData.isFavourite
     });
 })

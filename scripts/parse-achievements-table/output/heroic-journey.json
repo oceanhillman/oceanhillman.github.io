@@ -1,0 +1,982 @@
+[
+  {
+    "owner": "black-cat",
+    "id": "f63042d8-60ee-4e09-9858-990330e63977_cats-meow",
+    "title": "Cat's Meow",
+    "description": "As Black Cat, trigger 3 instant dashes during a single Calling Card.",
+    "category": "heroic-journey",
+    "rarity": "silver",
+    "requirement": 3,
+    "reward": 10
+  },
+  {
+    "owner": "white-fox",
+    "id": "d8074c68-4d44-4ac1-9b60-aae7c13f15ab_ally-agents",
+    "title": "Ally Agents",
+    "description": "As White Fox, partner with Agents of Atlas members to land 10 KOs.",
+    "category": "heroic-journey",
+    "rarity": "silver",
+    "requirement": 10,
+    "reward": 10
+  },
+  {
+    "owner": "elsa-bloodstone",
+    "id": "cf1a2a95-9fe7-4680-998f-598ac28c2547_blood-runs-deep",
+    "title": "Blood Runs Deep",
+    "description": "As Elsa Bloodstone, land 3 KOs with a single use of Apex Predator.",
+    "category": "heroic-journey",
+    "rarity": "silver",
+    "requirement": 3,
+    "reward": 10
+  },
+  {
+    "owner": "deadpool",
+    "id": "27a785c4-aa0f-4edd-a2ce-ee78a2632fb5_say-chimichanga",
+    "title": "Say \"Chimichanga!\"",
+    "description": "As Deadpool, take pics with 3 KO'd enemies in a single match.",
+    "category": "heroic-journey",
+    "rarity": "silver",
+    "requirement": 3,
+    "reward": 10
+  },
+  {
+    "owner": "rogue",
+    "id": "5db4718f-b485-4200-9661-f8dc71860fc3_at-her-fingertips",
+    "title": "At Her Fingertips",
+    "description": "As Rogue, obtain 10 different hero abilities with Ability Absorption.",
+    "category": "heroic-journey",
+    "rarity": "silver",
+    "requirement": 10,
+    "reward": 10
+  },
+  {
+    "owner": "gambit",
+    "id": "5e8b3476-29b9-4b35-8af5-8846ac79a510_royal-flush",
+    "title": "Royal Flush",
+    "description": "As Gambit, land 3 KOs with a single use of Ragin' Royal Flush.",
+    "category": "heroic-journey",
+    "rarity": "silver",
+    "requirement": 3,
+    "reward": 10
+  },
+  {
+    "owner": "daredevil",
+    "id": "9af70d37-c00a-48da-b270-279ff67a9d2a_the-defenders",
+    "title": "The Defenders",
+    "description": "As Daredevil, partner with Marvel Knights members to land 10 KOs.",
+    "category": "heroic-journey",
+    "rarity": "silver",
+    "requirement": 10,
+    "reward": 10
+  },
+  {
+    "owner": "angela",
+    "id": "1697124c-9121-466d-89cf-625bc435ebb1_hand-of-heven",
+    "title": "Hand of Heven",
+    "description": "As Angela, snare 4 enemies with a single use of Heven's Retribution.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 4,
+    "reward": 10
+  },
+  {
+    "owner": "blade",
+    "id": "cf1b05c1-7cc0-4f79-a680-9ac23f923909_old-haunts",
+    "title": "Old Haunts",
+    "description": "As Blade, land a 3-player KO streak in Empire of Eternal Night: Central Park",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 3,
+    "reward": 10
+  },
+  {
+    "owner": "phoenix",
+    "id": "5d3db37d-fbb0-4634-b563-5a4bdd63a868_wish-upon-a-phoenix",
+    "title": "Wish Upon a Phoenix",
+    "description": "As Phoenix, strike down 4 enemies with a single Endsong Inferno landing.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 4,
+    "reward": 10
+  },
+  {
+    "owner": "ultron",
+    "id": "8cb990c9-9eee-488c-bd9b-4749f8acb191_no-more-strings",
+    "title": "No More Strings",
+    "description": "As Ultron, take down Avengers members 10 times.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 10,
+    "reward": 10
+  },
+  {
+    "owner": "emma-frost",
+    "id": "7da1efcf-09bf-4b02-b8ff-f19c94f6ec50_schism-from-within",
+    "title": "Schism from Within",
+    "description": "As Emma Frost, force mutants to move 10 times with Psionic Seduction.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 10,
+    "reward": 10
+  },
+  {
+    "owner": "the-thing",
+    "id": "e4f3b670-6262-49fd-b8eb-3326809d0466_what-time-is-it",
+    "title": "What Time Is It?",
+    "description": "As The Thing, launch up 4 enemies with a single use of Clobberin' Time.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 4,
+    "reward": 10
+  },
+  {
+    "owner": "invisible-woman",
+    "id": "83f8c57b-0c3f-44cb-b230-2f056f9ec6e0_lady-of-the-house",
+    "title": "Lady of the House",
+    "description": "As Invisible Woman, assist the Fantastic Four members 10 times.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 10,
+    "reward": 10
+  },
+  {
+    "owner": "mister-fantastic",
+    "id": "a4f52dd2-bc7d-4ae0-90b7-4f57229565c3_bouncing-ideas",
+    "title": "Bouncing Ideas",
+    "description": "As Mister Fantastic, bounce 5 times with a single use of Brainiac Bounce.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 5,
+    "reward": 10
+  },
+  {
+    "owner": "human-torch",
+    "id": "2205eea5-89f1-40ed-adb9-2b86c2fcd56c_hot-trending",
+    "title": "Hot & Trending",
+    "description": "As Human Torch, land 3 KOs with a single use of Supernova.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 3,
+    "reward": 10
+  },
+  {
+    "owner": "iron-fist",
+    "id": "4c3203d7-913f-47c4-a23f-901c0b10ee1d_might-of-fuxi",
+    "title": "Might of Fuxi",
+    "description": "As Iron Fist, land 3 KOs with a single use of Living Chi.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 3,
+    "reward": 10
+  },
+  {
+    "owner": "wolverine",
+    "id": "957821f7-f8a7-40c0-928e-785869bfb653_rage-uncaged",
+    "title": "Rage Uncaged",
+    "description": "As Wolverine, land 3 KOs with a single use of Last Stand.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 3,
+    "reward": 10
+  },
+  {
+    "owner": "psylocke",
+    "id": "9d7da86d-724f-49f3-af8a-44ead3142e03_way-of-the-butterfly",
+    "title": "Way of the Butterfly",
+    "description": "As Psylocke, contest the mission area for 60 seconds in a single match.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 60,
+    "reward": 10
+  },
+  {
+    "owner": "jeff-the-land-shark",
+    "id": "791c621e-5f8c-4a75-83b1-b494c0bf7200_snack-attack",
+    "title": "Snack Attack!",
+    "description": "As Jeff the Land Shark, swallow 4 enemies with a single use of It's Jeff!",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 4,
+    "reward": 10
+  },
+  {
+    "owner": "adam-warlock",
+    "id": "3e58fd35-f3e4-4d53-9e59-97f215cb8134_family-ties",
+    "title": "Family Ties",
+    "description": "As Adam Warlock, forge a soul bond with 3 allies from the Guardians of the Galaxy.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 3,
+    "reward": 10
+  },
+  {
+    "owner": "namor",
+    "id": "bf8c4a07-2f2b-4e3a-ba76-fbcd43d526f6_aquatic-assault",
+    "title": "Aquatic Assault",
+    "description": "As Namor, summon Monstro spawn to land 10 KOs in a single game.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 10,
+    "reward": 10
+  },
+  {
+    "owner": "star-lord",
+    "id": "2aad733a-f8bb-4ef7-8201-499b9686e4fd_vengeance-for-the-milano",
+    "title": "Vengeance for the Milano!",
+    "description": "As Star-Lord, land 10 KOs with assists from the Guardians of the Galaxy.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 10,
+    "reward": 10
+  },
+  {
+    "owner": "peni-parker",
+    "id": "7548b733-3a3d-4ee4-940a-5de364bbddc6_watch-your-step",
+    "title": "Watch Your Step!",
+    "description": "As Peni Parker, blast 3 enemies with a single use of Arachno-Mine.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 3,
+    "reward": 10
+  },
+  {
+    "owner": "winter-soldier",
+    "id": "ffa6c2bb-3a2d-444b-927c-5dccfc7cb7f4_arm-race",
+    "title": "Arm Race",
+    "description": "As Winter Soldier, land 3 KOs with a single use of Kraken Impact.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 3,
+    "reward": 10
+  },
+  {
+    "owner": "thor",
+    "id": "0427449b-2d12-4b8e-aff4-c1571e1af11a_divine-justice",
+    "title": "Divine Justice",
+    "description": "As Thor, strike down 4 enemies with a single use of God of Thunder.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 4,
+    "reward": 10
+  },
+  {
+    "owner": "scarlet-witch",
+    "id": "391fe6e5-06b5-469c-bca1-9ed92176697f_no-more-mutants",
+    "title": "No More Mutants",
+    "description": "As Scarlet Witch, take down Mutant enemies 10 times.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 10,
+    "reward": 10
+  },
+  {
+    "owner": "magneto",
+    "id": "9865e4c6-630c-434d-84f5-3b0e0d68eba9_homo-superior",
+    "title": "Homo Superior",
+    "description": "As Magneto, assist Mutant allies 10 times.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 10,
+    "reward": 10
+  },
+  {
+    "owner": "spider-man",
+    "id": "d3946bff-5d69-42b7-8994-1938d6d60b42_spider-sense-tingling",
+    "title": "Spider-Sense Tingling!",
+    "description": "As Spider-Man, detect an enemy with Spider-Sense and land a winning counterattack.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 1,
+    "reward": 10
+  },
+  {
+    "owner": "venom",
+    "id": "747f5000-b3d8-4648-9321-95984d7a959c_grip-of-hunger",
+    "title": "Grip of Hunger",
+    "description": "As Venom, snare 4 enemies with a single use of Cellular Corrosion.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 4,
+    "reward": 10
+  },
+  {
+    "owner": "iron-man",
+    "id": "01e5ed0c-c897-479d-9b08-ae6325bc99bb_flawless-design",
+    "title": "Flawless Design",
+    "description": "As Iron Man, hit 4 enemies with a single use of Invincible Pulse Cannon.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 4,
+    "reward": 10
+  },
+  {
+    "owner": "black-widow",
+    "id": "7ce3bb82-3ec9-4fb9-86fd-fb0f5b6c1a2c_deadly-bites",
+    "title": "Deadly Bites",
+    "description": "As Black Widow, land 3 KOs with critical hits in a single match.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 3,
+    "reward": 10
+  },
+  {
+    "owner": "squirrel-girl",
+    "id": "0b699a35-e658-42d6-935e-b4b0e3e6c8e1_ahhh-those-tiny-claws",
+    "title": "\"Ahhh, those tiny claws!\"",
+    "description": "As Squirrel Girl, land 3 KOs with a single use of Unbeatable Squirrel Tsunami.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 3,
+    "reward": 10
+  },
+  {
+    "owner": "luna-snow",
+    "id": "6e29e3af-4db0-439e-9554-457cc50e021d_multiverse-tour",
+    "title": "Multiverse Tour",
+    "description": "As Luna Snow, complete a match on 5 maps with different themes.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 5,
+    "reward": 10
+  },
+  {
+    "owner": "moon-knight",
+    "id": "f7583811-6d54-46b4-b5a4-065210664e8d_punishment-of-the-moon",
+    "title": "Punishment of the Moon",
+    "description": "As Moon Knight, hit 4 enemies with a single use of Hand of Khonshu.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 4,
+    "reward": 10
+  },
+  {
+    "owner": "magik",
+    "id": "f3b2f691-9da6-4702-a313-326b5f72efff_demons-roar",
+    "title": "Demon's Roar",
+    "description": "As Magik, land 3 KOs within a single transformation into Darkchild.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 3,
+    "reward": 10
+  },
+  {
+    "owner": "groot",
+    "id": "68ab5c31-f77e-404e-8cc3-2d63aa0d4bc9_vicious-vines",
+    "title": "Vicious Vines",
+    "description": "As Groot, imprison 4 enemies with a single use of Strangling Prison.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 4,
+    "reward": 10
+  },
+  {
+    "owner": "black-panther",
+    "id": "ff1ba3d2-02d4-4f13-b003-3f8e190ec53c_king-of-the-dead",
+    "title": "King of the Dead",
+    "description": "As Black Panther, land a 3-player KO streak in the Intergalactic Empire of Wakanda: Hall of Djalia.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 3,
+    "reward": 10
+  },
+  {
+    "owner": "cloak-dagger",
+    "id": "fb6b5210-354e-4499-92a7-1444d2788e27_symphony-of-light-and-dark",
+    "title": "Symphony of Light and Dark",
+    "description": "As Cloak & Dagger, assist allies in achieving a team wipe.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 1,
+    "reward": 10
+  },
+  {
+    "owner": "hela",
+    "id": "b95404ec-4acb-4543-acbe-f53b8f65c539_terror-of-the-ten-realms",
+    "title": "Terror of the Ten Realms",
+    "description": "As Hela, land a 3-player KO streak in Yggsgard: Yggdrasill Path.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 3,
+    "reward": 10
+  },
+  {
+    "owner": "rocket-raccoon",
+    "id": "26f1679c-d079-4429-85cf-a370aae40555_go-get-em-guardians",
+    "title": "Go Get 'Em, Guardians!",
+    "description": "As Rocket Raccoon, revive the Guardians of the Galaxy characters 5 times.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 5,
+    "reward": 10
+  },
+  {
+    "owner": "captain-america",
+    "id": "f06acaf9-a1af-4eb3-8ccf-a606977f9e9d_justice-for-all",
+    "title": "Justice for All!",
+    "description": "As Captain America, land 3 KOs with a single use of Freedom Charge.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 3,
+    "reward": 10
+  },
+  {
+    "owner": "hawkeye",
+    "id": "cef94383-477d-47db-812a-eb7c7abe73da_west-coast-best-coast",
+    "title": "West Coast, Best Coast",
+    "description": "As Hawkeye, partner with the Avengers to land 10 KOs",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 10,
+    "reward": 10
+  },
+  {
+    "owner": "mantis",
+    "id": "f5f62a08-79cb-4f2b-aa12-ed0abc5c9c09_victory-in-bloom",
+    "title": "Victory in Bloom",
+    "description": "As Mantis, assist allies in achieving a team wipe.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 1,
+    "reward": 10
+  },
+  {
+    "owner": "doctor-strange",
+    "id": "6af3ea3d-994e-4f87-ae18-9695df0454df_perilous-portal",
+    "title": "Perilous Portal",
+    "description": "As Doctor Strange, land 1 terrain KO with the portal.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 1,
+    "reward": 10
+  },
+  {
+    "owner": "loki",
+    "id": "61dd09e6-fdd7-40e4-9a51-c515bfecb37d_god-of-treachery",
+    "title": "God of Treachery",
+    "description": "As Loki, land one KO by stabbing from behind.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 1,
+    "reward": 10
+  },
+  {
+    "owner": "storm",
+    "id": "b52ec77c-91d8-4eaa-9edd-782ceecb0118_to-me-my-x-men",
+    "title": "To Me, My X-Men!",
+    "description": "As Storm, assist X-Men members 10 times.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 10,
+    "reward": 10
+  },
+  {
+    "owner": "the-punisher",
+    "id": "7dedfb16-3bf4-48cf-9a8e-110dcd8cd4dc_smoke-screen",
+    "title": "Smoke Screen",
+    "description": "As the Punisher, land 3 KOs amidst the smoke of Scourge Grenade in a single game.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 3,
+    "reward": 10
+  },
+  {
+    "owner": "hulk",
+    "id": "7f18d0cf-d468-420b-b071-d8849372cdd9_smart-is-new-smash",
+    "title": "Smart Is New Smash",
+    "description": "As Bruce Banner, land 1 KO within 3 seconds of calming down from the Hulk to Banner.",
+    "category": "heroic-journey",
+    "rarity": "",
+    "requirement": 1,
+    "reward": 10
+  },
+  {
+    "owner": "black-cat",
+    "id": "4b1db790-f6d2-40f4-a202-3e8768777442_sorry-sweetie",
+    "title": "Sorry, Sweetie!",
+    "description": "As Black Cat, take down an enemy Spider-Man.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "white-fox",
+    "id": "c79351d6-d781-47db-be13-69064d1ea979_legacy-of-tamamo",
+    "title": "Legacy of Tamamo",
+    "description": "As White Fox, take down an enemy Psylocke.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "elsa-bloodstone",
+    "id": "0285f37e-172c-4bb4-82e0-86804ecf2291_monster-hunters",
+    "title": "Monster Hunters",
+    "description": "As Elsa Bloodstone, partner with Blade to land 1 KO.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "deadpool",
+    "id": "11d8cee5-8cc4-4203-b6c3-5949e5d4ee6d_custody-battle",
+    "title": "Custody Battle",
+    "description": "As Deadpool, take down an enemy Emma Frost.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "rogue",
+    "id": "2e8a5d7e-a1ea-439a-9299-e211c3543894_southern-charm",
+    "title": "Southern Charm",
+    "description": "As Rogue, land 1 KO with an assist from Gambit.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "gambit",
+    "id": "7a2fbdac-d59d-4976-9807-2a0344318741_aces-and-arrows",
+    "title": "Aces and Arrows",
+    "description": "As Gambit, assist Hawkeye in landing 1 KO.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "daredevil",
+    "id": "1e94df29-6acb-4f45-92bc-bc569ea07a93_devil-meets-dragon",
+    "title": "Devil Meets Dragon",
+    "description": "As Daredevil, take down an enemy Iron Fist.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "angela",
+    "id": "47fa5012-0f3e-4c41-b68a-52de70a1d70e_asgardians-of-the-galaxy",
+    "title": "Asgardians of the Galaxy",
+    "description": "As Angela, land 1 KO with an assist from Loki.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "blade",
+    "id": "367d186e-9bb9-4f29-8117-a1e220404e6d_creatures-of-the-knight",
+    "title": "Creatures of the Knight",
+    "description": "As Blade, partner with Moon Knight to land 1 KO.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "phoenix",
+    "id": "9cc5d4f3-efc2-43b1-8195-85dcea34794e_godly-revenge",
+    "title": "Godly Revenge",
+    "description": "As Phoenix, take down an enemy Hela.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "ultron",
+    "id": "b65c0f2c-6d46-4c3f-9121-18cc3d599282_invasion-protocol",
+    "title": "Invasion Protocol",
+    "description": "As Ultron, issue the \"Attack here!\" ping 3 times.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 3,
+    "reward": 5
+  },
+  {
+    "owner": "emma-frost",
+    "id": "e5c60105-6834-4f18-a00b-4c56530c2794_our-little-secret",
+    "title": "Our Little Secret",
+    "description": "As Emma Frost, partner with Magneto to land 1 KO.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "the-thing",
+    "id": "646a2f7e-83f2-4bbe-beea-9b217eb3dfd5_whos-the-strongest-now",
+    "title": "Who's the Strongest Now?",
+    "description": "As the Thing, take down an enemy Hulk.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "invisible-woman",
+    "id": "18a2aac5-399a-47e1-9fb2-c4e37ce53a0c_daughters-of-liberty",
+    "title": "Daughters of Liberty",
+    "description": "As Invisible Woman, partner with Black Widow to land 1 KO.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "mister-fantastic",
+    "id": "8f904e2e-81c0-4cad-a64a-4caea9b578f4_to-solve-everything",
+    "title": "To Solve Everything",
+    "description": "As Mister Fantastic, partner with Iron Man to land 1 KO.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "human-torch",
+    "id": "bfb51fd5-d96e-4d5d-bb29-8323f8250391_flame-and-web",
+    "title": "Flame and Web",
+    "description": "As Human Torch, partner with Spider-Man to land 1 KO.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "iron-fist",
+    "id": "bf469fcd-f8d6-4cb5-84b5-f5382d243999_the-new-agents-of-atlas",
+    "title": "The New Agents of Atlas",
+    "description": "As Iron Fist, land 1 KO with an assist from Luna Snow.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "wolverine",
+    "id": "6e6c54dc-0bea-4135-8bb7-f15bccfbc35e_learn-this-bub",
+    "title": "Learn THIS, bub!",
+    "description": "As Wolverine, take down an enemy Magneto.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "psylocke",
+    "id": "e66dbb82-78aa-49c5-98a7-d5be06f53c3e_jian-and-katana",
+    "title": "Jian and Katana",
+    "description": "As Psylocke, partner with Iron Fist to land 1 KO.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "jeff-the-land-shark",
+    "id": "9a29f343-c515-4d18-b968-07c52c009675_wanna-make-a-snow-shark",
+    "title": "Wanna make a Snow Shark?",
+    "description": "As Jeff the Land Shark, partner with Luna Snow to land 1 KO.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "adam-warlock",
+    "id": "4986a764-23e2-4cf2-bc79-3eb13273fa17_king-in-gold",
+    "title": "King in Gold",
+    "description": "As Adam Warlock, take down an enemy Venom.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "namor",
+    "id": "8007876e-708b-4ad5-882b-ab40f47d21c8_getting-chummy",
+    "title": "Getting Chummy",
+    "description": "As Namor, land 1 KO with and assist from Jeff the Land Shark.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "star-lord",
+    "id": "d074a616-2e5b-4fe4-ad17-24582472536f_a-better-plan",
+    "title": "A Better Plan",
+    "description": "As Star-Lord, issue the \"Fall back!\" ping 3 times.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 3,
+    "reward": 5
+  },
+  {
+    "owner": "peni-parker",
+    "id": "3815c741-db73-4916-a8da-3a27ca366862_spider-fighters",
+    "title": "Spider-Fighters",
+    "description": "As Peni Parker, partner with Spider-Man to land 1 KO.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "winter-soldier",
+    "id": "926cc35e-697c-412e-8eb7-b4b66376eed6_brothers-in-arms",
+    "title": "Brothers in Arms",
+    "description": "As Winter Soldier, land 1 KO with an assist from Rocket Raccoon.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "thor",
+    "id": "05781056-5713-4282-a791-b05fb57890f7_the-odinson-returns",
+    "title": "The Odinson Returns!",
+    "description": "As Thor, take down an enemy Loki.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "scarlet-witch",
+    "id": "5fa0cc11-b750-4512-9e3e-d330249069aa_shattered-reality",
+    "title": "Shattered Reality",
+    "description": "As Scarlet Witch, take down an enemy Scarlet Witch.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "magneto",
+    "id": "d8b40f1c-a027-4028-96ae-59f652d091b1_house-of-m",
+    "title": "House of M",
+    "description": "As Magneto, partner with Scarlet Witch to land 1 KO.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "spider-man",
+    "id": "2f82ed47-420e-48e4-b8c4-c2197f929813_web-white-and-blue",
+    "title": "Web, White, and Blue",
+    "description": "As Spider-Man, partner with Captain America to land 1 KO.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "venom",
+    "id": "73b5e56f-f799-4bb2-8936-77486ee350e3_broken-bond",
+    "title": "Broken Bond",
+    "description": "As Venom, take down an enemy Spider-Man.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "iron-man",
+    "id": "e20bea0f-ba17-48c8-a083-c57d275f5906_beard-bros",
+    "title": "Beard Bros!",
+    "description": "As Iron Man, partner with Doctor Strange to land 1 KO.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "black-widow",
+    "id": "b4631e82-20be-4176-9b13-561233482dbb_red-reunion",
+    "title": "Red Reunion",
+    "description": "As Black Widow, partner with Winter Soldier to land 1 KO.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "squirrel-girl",
+    "id": "5c8cb60a-80eb-468c-ac84-816217fb9b7b_stark-fan-club-founder",
+    "title": "Stark Fan Club Founder",
+    "description": "As Squirrel Girl, partner with Iron Man to land 1 KO.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "luna-snow",
+    "id": "c6eccaee-5528-49c3-8e4c-d3959b57ceb0_frozen-fathoms",
+    "title": "Frozen Fathoms",
+    "description": "As Luna Snow, freeze an enemy Namor with Absolute Zero.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "moon-knight",
+    "id": "58089b97-e31d-4d5b-aae7-fcdf834b7403_moonlit-hel",
+    "title": "Moonlit Hel",
+    "description": "As Moon Knight, partner with Hela to land 1 KO.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "magik",
+    "id": "db0e64a7-a203-4fb6-ad43-42394fafa71c_master-and-apprentice",
+    "title": "Master and Apprentice",
+    "description": "As Magik, partner with Doctor Strange to land 1 KO.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "groot",
+    "id": "5a06bfb2-5bc0-4edf-896a-7e35711c3c0b_tree-talk",
+    "title": "Tree Talk",
+    "description": "As Groot, issue a ping and receive a response from allies.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "black-panther",
+    "id": "8020cdd4-6418-4bad-8df2-7939fb2b3064_clash-of-kings",
+    "title": "Clash of Kings",
+    "description": "As Black Panther, take down an enemy Namor.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "cloak-dagger",
+    "id": "f15bdbec-1298-4f16-b9e6-c0dc65becc97_street-justice",
+    "title": "Street Justice!",
+    "description": "As Cloak and Dagger, assist Spider-Man in landing 1 KO.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "hela",
+    "id": "8017222f-8fcc-46c4-b414-ebc168e5c887_ragnarked",
+    "title": "Ragnaröked",
+    "description": "As Hela, partner with Loki to take down an enemy Thor.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "rocket-raccoon",
+    "id": "19586a92-cd73-4234-a50b-a3489c145439_rodent-rampage",
+    "title": "Rodent Rampage",
+    "description": "As Rocket Raccoon, assist Squirrel Girl in landing 1 KO.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "captain-america",
+    "id": "28fad044-4e8a-497a-bdd7-e849df352fbe_like-old-times",
+    "title": "Like Old Times",
+    "description": "As Captain America, partner with Winter Soldier to land 1 KO.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "hawkeye",
+    "id": "3ec3c8ae-3d45-4f91-8199-515c87869aa5_arrows-bite",
+    "title": "Arrow's Bite",
+    "description": "As Hawkeye, partner with Black Widow to land 1 KO.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "mantis",
+    "id": "b8237cc8-1636-46e8-854a-1a4377932e45_psychic-sisters",
+    "title": "Psychic Sisters",
+    "description": "As Mantis, assist Psylocke in landing 1 KO.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "doctor-strange",
+    "id": "c23b9337-6b4d-4f3b-91fb-3598692983e4_inner-strength",
+    "title": "Inner Strength",
+    "description": "As Doctor Strange, knock out the Hulk's soul with the Eye of Agamotto.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "loki",
+    "id": "19269022-dd20-4517-9f04-16135ae8d793_brotherly-love",
+    "title": "Brotherly Love",
+    "description": "As Loki, assist Thor in landing 1 KO.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "storm",
+    "id": "4ea32182-96bd-4018-ad1e-16800dc345ae_no-love-lost",
+    "title": "No Love Lost",
+    "description": "As Storm, partner with Black Panther to land 1 KO.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "the-punisher",
+    "id": "73a607a3-bf8f-4a72-8319-7366237431d8_vengeance-and-glory",
+    "title": "Vengeance and Glory",
+    "description": "As the Punisher, partner with Captain America to land 1 KO.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "owner": "hulk",
+    "id": "fdef7234-dc5a-49d7-af8e-4faf19e3c2bd_puny-god",
+    "title": "Puny God!",
+    "description": "As Monster Hulk, slam an enemy Loki with Worldbreaker.",
+    "category": "heroic-journey",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  }
+]

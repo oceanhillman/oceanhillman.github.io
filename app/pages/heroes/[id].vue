@@ -113,6 +113,7 @@
                     Planner
                 </li>
                 <li
+                    v-if="achievementList?.length"
                     :class="{
                         new: !preferences.sawAchievementsTab,
                         selected: page == 'achievements'
@@ -551,6 +552,7 @@
                 class="content achievements-wrapper"
             >
                 <PanelAchievements
+                    :category="selectedAchievementsCategory"
                     :achievements="achievementList"
                 />
             </div>

@@ -1,0 +1,101 @@
+[
+  {
+    "id": "7a2dd8d5-3a06-479a-9515-b822cf3ad77c_inevitable",
+    "title": "Inevitable!",
+    "description": "Win 100 matches.",
+    "category": "rivalry-rising",
+    "rarity": "gold",
+    "requirement": 100,
+    "reward": 20
+  },
+  {
+    "id": "257b9946-46e2-49df-afed-59d94d62c1dc_here-to-represent",
+    "title": "Here to Represent",
+    "description": "Join a Tournament match with your faction.",
+    "category": "rivalry-rising",
+    "rarity": "silver",
+    "requirement": 1,
+    "reward": 10
+  },
+  {
+    "id": "e375b12a-48a2-4daa-92cf-1326807a6fd7_all-eyes-on-me",
+    "title": "All Eyes on Me!",
+    "description": "Score MVP 5 times.",
+    "category": "rivalry-rising",
+    "rarity": "silver",
+    "requirement": 5,
+    "reward": 10
+  },
+  {
+    "id": "72aab1a7-8351-42b9-be78-f7814f21d65e_ring-master",
+    "title": "Ring Master",
+    "description": "Rank Gold or higher in Competitive mode.",
+    "category": "rivalry-rising",
+    "rarity": "silver",
+    "requirement": 1,
+    "reward": 10
+  },
+  {
+    "id": "767f920d-de36-4796-8dea-56e78b925bc6_six-sided-victory",
+    "title": "Six-Sided Victory",
+    "description": "Score 6 points in a single game of Doom Match.",
+    "category": "rivalry-rising",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "a9414d78-8892-4a16-aed7-305dbe88669e_assemble",
+    "title": "Assemble!",
+    "description": "Team up with a friend for a match.",
+    "category": "rivalry-rising",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "33887678-4f97-4a90-b059-d291d0dd1fd6_master-of-modes",
+    "title": "Master of Modes",
+    "description": "Complete 1 Arcade match.",
+    "category": "rivalry-rising",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "467d21e0-ff64-42a4-99af-6e721817403c_heating-up",
+    "title": "Heating Up!",
+    "description": "Take down 50 AI enemies in Practice vs. AI.",
+    "category": "rivalry-rising",
+    "rarity": "copper",
+    "requirement": 50,
+    "reward": 5
+  },
+  {
+    "id": "ac9771fa-1585-412c-bf34-3419a86a4d0a_on-fire",
+    "title": "On Fire!",
+    "description": "Win 3 consecutive matches in Quick Match.",
+    "category": "rivalry-rising",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "8962149f-e1d1-476e-9522-13a40399ab93_onslaught",
+    "title": "Onslaught!",
+    "description": "Land a \"TRIPLE!\" KO.",
+    "category": "rivalry-rising",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  },
+  {
+    "id": "bb033f5b-b1d2-4fb3-8055-a611a9105ec9_thumbs-up",
+    "title": "Thumbs Up",
+    "description": "Upvote 1 player.",
+    "category": "rivalry-rising",
+    "rarity": "copper",
+    "requirement": 1,
+    "reward": 5
+  }
+]

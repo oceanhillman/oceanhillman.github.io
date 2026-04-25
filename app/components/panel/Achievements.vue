@@ -19,7 +19,7 @@
                     </div>
                 </div>
             </div>
-            <div class="rewards">
+            <div class="rewards" @click="openRewardsList">
                 <Tex 
                     image="achievementGift"
 
@@ -111,10 +111,14 @@
 <style src="@/assets/style/components/achievements.sass" scoped></style>
 
 <script setup lang="ts">
-import { ACHIEVEMENT_ICONS, type Achievement, type AchievementType } from '~/assets/data/achievements';
+import { ACHIEVEMENT_ICONS, type Achievement, type AchievementType, type AchievementTypeCategory } from '~/assets/data/achievements';
 import type { TooltipBinding } from '~/directives/tooltip';
+import AchievementCategoryRewards from '../modals/AchievementCategoryRewards.vue';
+
+const { openModal } = useModalManager();
 
 const props = defineProps<{
+    category: AchievementTypeCategory,
     achievements: AchievementType[]
 }>();
 
@@ -160,5 +164,13 @@ function completeOrResetAchievement(achievement: AchievementType) {
         setAchievement(achievement.id, 0);
     else
         setAchievement(achievement.id, achievement.requirement);
+}
+
+function openRewardsList() {
+    openModal(AchievementCategoryRewards, {
+        category: props.category,
+    })
+    .promise
+    .catch(() => null);
 }
 </script>
