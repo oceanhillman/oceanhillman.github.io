@@ -65,7 +65,7 @@ export const CHANGELOG = (): ChangeLogEntry[] => [
             date: 'Mar 25, 2026',
             time: '6:19 PM',
 
-            commitSha: '9fa35036fc00681cfe2131d9b2f424b994e4d470'
+            commitSha: '16c643cd901f391d8a849405d65c0dda0478444d'
         },
         title: 'Initial Release',
         description: `The Marvel Rivals Proficiency Calculator allows anyone to calculate the time it takes to reach proficiency reward goals on every hero in the game. With detailed progression and the ability to type in your own stats you are guaranteed to get the most accurate estimates for your playstyle!`,
@@ -93,7 +93,7 @@ export const CHANGELOG = (): ChangeLogEntry[] => [
             date: 'Mar 26, 2026',
             time: '6:50 PM',
 
-            commitSha: '34d3d46a09ccd2914d2bde4d826d6a9510d042e7'
+            commitSha: 'fc1b8f7e6f74ddb8f8dcddb4e900cf66f2fb42bf'
         },
         title: 'Improved Missing Hero Feature',
         description: 'Added ability to convert a user-added missing hero to an existing hero in case it was added in the meantime',
@@ -107,7 +107,7 @@ export const CHANGELOG = (): ChangeLogEntry[] => [
             date: 'Apr 9, 2026',
             time: '9:27 AM',
 
-            commitSha: 'b78d59f61c13088ef155d6587b10c62721128496'
+            commitSha: 'a6cdbd381cdac5863c05e9b3836e4060a24a87ac'
         },
         title: 'Improved Hero Generic Stats Visibility',
         description: 'Added the ability to see generic average stats on a hero\'s page (not only in the landing page)',
@@ -121,7 +121,7 @@ export const CHANGELOG = (): ChangeLogEntry[] => [
             date: 'Apr 10, 2026',
             time: '2:35 AM',
 
-            commitSha: 'd33c80d5e7a3608234b83b82c834c5ae7f8b4959'
+            commitSha: 'da2dfe6ad0ccbd6e9a092421c3df3e974041d041'
         },
         title: 'Arcade Mode',
         description: 'Arcade Mode lets you type in your arcade stats (from any game mode, preferrably 18v18 Annihilation for fastest results) and get detailed estimates on how long it will take to get to your goal by playing arcade instead of Quick/Competitive matches.',
@@ -145,7 +145,7 @@ export const CHANGELOG = (): ChangeLogEntry[] => [
             date: 'Apr 13, 2026',
             time: '4:39 PM',
 
-            commitSha: '54d7b14284cebb5b22d00c604a50c373d9755305'
+            commitSha: 'c6064f48f65fe6bde2a241bf76b2c9623f7a2af3'
         },
         title: 'Added the Changelog',
         description: 'Added this very changelog. You can now see all the updates and additions to the calculator, including new heroes and other QoL changes!',
@@ -156,7 +156,7 @@ export const CHANGELOG = (): ChangeLogEntry[] => [
             date: 'Apr 14, 2026',
             time: '9:56 AM',
 
-            commitSha: '63955b330a5b3b97768d0f782c19215f50fc6508'
+            commitSha: '3393b9ff99b71692776cfa77e45fb0cdff8a117e'
         },
         title: 'QoL changes and bug fixes',
         description: `Made small improvements to the home page, hero pages, and fixed a few issues.
@@ -177,7 +177,7 @@ export const CHANGELOG = (): ChangeLogEntry[] => [
             date: 'Apr 14, 2026',
             time: '4:43 AM',
 
-            commitSha: 'fb4e0b11a44ff0462f1bb6d4a5c2f46661d2dd83'
+            commitSha: '223b72e3096d446bc44efdf0386451fb7861a5ec'
         },
         title: 'More QoL changes and bug fixes',
         description: `Improved hero page (again) - it's now easier than ever to change your current level data, no more menu inception.
@@ -201,7 +201,7 @@ export const CHANGELOG = (): ChangeLogEntry[] => [
             number: '1.2.4',
             date: 'Apr 15, 2026',
             time: '2:12 AM',
-            commitSha: '704938b7ed1894289d11f7549122f06bca2485ac'
+            commitSha: '536108952a8b06e236e5cdec6465a9d24079c0de'
         },
         title: 'Improved mobile user UI/UX and the Changelog',
         description: `Made certain modifications to the UI and UX of the app on mobile for a smoother experience across all devices
@@ -220,7 +220,7 @@ export const CHANGELOG = (): ChangeLogEntry[] => [
             number: '1.3.0',
             date: 'Apr 17, 2026',
             time: '4:11 PM',
-            commitSha: '658c03706959f0ef790e86ca5bae6e9ce18910d8'
+            commitSha: 'fc93bb604b472799f8fc0fc5713b85bf44903b8e'
         },
         title: 'Added Black Cat',
         description: `Added Black Cat to the calculator without generic stats (will add later - when averages are more accurate)<br/>
@@ -251,7 +251,7 @@ export const CHANGELOG = (): ChangeLogEntry[] => [
             number: '1.4.0',
             date: 'Apr 17, 2026',
             time: '10:14 PM',
-            commitSha: 'cfdcb05a8debe37c7bac67b49cad906a125edf17'
+            commitSha: '9ebbc2149a12b7219bfa1e2bdeb6d8b5b3fe59c9'
         },
         title: 'Hero Page UI/UX Improvements',
         description: `Reworked the Hero page to have better UX and be less confusing, using more tabs and less hidden menus.`,
@@ -270,7 +270,7 @@ export const CHANGELOG = (): ChangeLogEntry[] => [
             number: '1.4.1',
             date: 'Apr 18, 2026',
             time: '10:01 PM',
-            commitSha: '0d01897962f87c138263a81b87b88382c6d2e97c'
+            commitSha: '7e19ed6dac0a5cc5a93db1948535a7d01173cdc1'
         },
         title: 'Added tooltips',
         description: `Added tooltips to help with UI confusion here and there. Made other small fixes.`,
@@ -280,7 +280,7 @@ export const CHANGELOG = (): ChangeLogEntry[] => [
             number: '1.4.2',
             date: 'Apr 19, 2026',
             time: '05:10 AM',
-            commitSha: 'faad47d7d8fb0f65e75cab53fede8caf444ae73c'
+            commitSha: '037f348d9c449f7b6e40f9cd30065c8d0423e81a'
         },
         title: 'Added Black Cat average stats',
         description: `Added Black Cat average stats, made a few adjustments to tooltips, fixed a few bugs and improved SEO for hero pages.
@@ -301,6 +301,7 @@ export const CHANGELOG = (): ChangeLogEntry[] => [
             number: '1.5.0',
             date: 'Apr 20, 2026',
             time: '04:25 AM',
+            commitSha: 'c90acc35b4369f3bb4b8f2f4bf71eaf2d06792e3'
         },
         title: 'Added Arcade Mode precise estimates',
         description: `Added Arcade Mode duration feature which estimates the real time in days it will take to reach a goal on a hero based on personal average stats and mission limits. Customizable with a "Daily missions to complete" selector, where users can select a number of missions they are willing to complete (all 15 of the daily ones) before switching to a different mode or stopping to wait for the next day.
