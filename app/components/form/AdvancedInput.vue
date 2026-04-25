@@ -1,7 +1,11 @@
 <template>
     <div :class="{'input-wrapper': 1, disabled}">
         <template v-if="!!numberInput && !numberInput.hideExtraButtons">
-            <button class="small-button step" @click="add((numberInput.step ?? 100) * -1, $event)">
+            <button
+                v-if="!numberInput.hideLargeStepButtons"
+                class="small-button step"
+                @click="add((numberInput.step ?? 100) * -1, $event)"
+            >
                 -{{numberInput.step ?? 100}}
             </button>
             <button class="small-button" @click="add(-1, $event)">
@@ -47,7 +51,11 @@
                     object-fit="contain"
                 />
             </button>
-            <button class="small-button step" @click="add(numberInput.step ?? 100, $event)">
+            <button
+                v-if="!numberInput.hideLargeStepButtons"
+                class="small-button step"
+                @click="add(numberInput.step ?? 100, $event)"
+            >
                 +{{numberInput.step ?? 100}}
             </button>
         </template>
@@ -111,7 +119,8 @@ const props = defineProps<{
         min?: number
         max?: number,
 
-        hideExtraButtons?: boolean
+        hideExtraButtons?: boolean,
+        hideLargeStepButtons?: boolean
     },
 
     disabled?: boolean,

@@ -56,7 +56,7 @@
             justify-content: start
             gap: 70px
 
-        +media-large-desktop
+        +media($minmax: 'min', $size: '1349px')
             padding: 0 0 0 50px
 
         &::before
@@ -104,7 +104,7 @@
 
             cursor: pointer
 
-            +media-large-desktop
+            +media($minmax: 'min', $size: '1349px')
                 display: none
 
             .menu-icon
@@ -150,7 +150,7 @@
             height: 100%
             display: none
 
-            +media($minmax: 'max', $size: '1200px')
+            +media($minmax: 'max', $size: '1350px')
                 position: absolute
                 top: 65px
                 left: 0
@@ -163,7 +163,7 @@
                 background: $blue-accent var(--tex-barBackground)
                 background-position: bottom
 
-            @media (min-width: 992px) and (max-width: 1200px)
+            @media (min-width: 992px) and (max-width: 1350px)
                 top: 64.5px
                 width: calc(100% - 18.5px)
 
@@ -178,7 +178,7 @@
                     width: fit-content
 
                     &::after
-                        background-size: auto 100%
+                        // background-size: auto 100%
 
                         z-index: 2
 
@@ -191,6 +191,7 @@
                 display: flex
                 justify-content: center
                 align-items: center
+                gap: 20px
 
                 color: $light
                 font-family: MarvelRivalsBold
@@ -205,24 +206,35 @@
                     content: ""
                     position: absolute
                     top: 0
-                    left: -10px
+                    left: -2px
                     bottom: 0
-                    right: -10px
+                    right: -2px
 
                     display: none
-                    background: transparent var(--tex-tab) no-repeat
-                    background-size: 35%
+                    background: transparent var(--tex-tabStraight) no-repeat
+                    background-size: 35% 100%
                     background-position: center
 
+                    transform: skew(-15deg)
+
                     +media-desktop
-                        background-size: contain
+                        background-size: 100% 100%
+
+                &:first-of-type::after
+                    left: 0
+                &:last-of-type::after
+                    right: 9px
+                &.new::after
+                    +media($minmax: 'max', $size: '1350px')
+                        background-size: 90% 100%
+                        background-position: 80%
 
                 &:hover
                     color: #fff
 
                 &:active
                     &::after
-                        background: transparent var(--tex-tab-active) no-repeat
+                        background: transparent var(--tex-tabStraight-active) no-repeat
                         background-size: 100% 100%
                         background-position: bottom
 
@@ -239,6 +251,21 @@
                         top: 50%
                         right: -5px
                         transform: translate(-100%, -100%)
+
+                .new
+                    display: inline-block
+                    padding: 1px 10px
+
+                    background: var(--tex-tab-active)
+                    background-size: 100% 100%
+
+                    display: flex
+                    justify-content: center
+                    align-items: center
+
+                    font-family: RefrigeratorDeluxeHeavy
+                    font-size: 16px
+                    color: $text-color
 
     main
         display: flex
@@ -359,12 +386,29 @@
                 position: relative
                 z-index: 2
 
-            .player-level
+            .player-level,
+            .achievements-categories
                 position: absolute
                 bottom: 25px
                 right: 50%
 
                 width: 300px
+
+                +media-mobile
+                    transform: translateX(50%)
+
+                +media-tablet
+                    width: 375px
+
+                +media-desktop
+                    width: 300px
+                    bottom: 85px
+                    right: 0
+
+                +media-large-desktop
+                    width: 375px
+
+            .player-level
                 padding-left: 50px
                 padding-right: 28px
                 padding-bottom: 12px
@@ -382,20 +426,6 @@
                 +media-phone
                     padding-left: 42px
                     padding-right: 22px
-
-                +media-mobile
-                    transform: translateX(50%)
-
-                +media-tablet
-                    width: 375px
-
-                +media-desktop
-                    width: 300px
-                    bottom: 85px
-                    right: 0
-
-                +media-large-desktop
-                    width: 375px
 
                 > .popup
                     position: absolute
@@ -578,6 +608,85 @@
                                 padding: 30px 40px 60px 40px
 
                                 transform: translate(90px, -100%)
+
+            .achievements-categories
+                display: flex
+                flex-direction: column
+                gap: 5px
+
+                .category
+                    position: relative
+                    display: grid
+                    grid-template-columns: 67px auto
+                    align-items: center
+
+                    cursor: pointer
+                    user-select: none
+
+                    background: #f0f4fc
+
+                    &:not(.selected):hover
+                        .icon
+                            background: var(--tex-listItemIconHover) no-repeat
+                            background-size: 100% 100%
+                            border: 3px solid #fff
+
+                        .name
+                            background: var(--tex-listItemHover) no-repeat
+                            background-size: 100% 100%
+
+
+                    &.selected
+                        &::before
+                            display: block
+
+                        .icon
+                            background: var(--tex-listItemIconSelected) no-repeat
+                            background-size: 100% 100%
+
+                            border: 3px solid $color
+
+                        .name
+                            background: var(--tex-listItemSelected) no-repeat
+                            background-size: 100% 100%
+
+                            color: $color
+
+                    &::before
+                        content: ""
+                        position: absolute
+                        top: 0
+                        left: -13px
+
+                        width: 10px
+                        height: 100%
+
+                        background: var(--tex-listItemDecorationSelected) no-repeat
+                        background-size: 100% 100%
+
+                        display: none
+
+                    .icon,
+                    .name
+                        width: 100%
+                        height: 100%
+
+                        display: flex
+                        align-items: center
+
+                    .icon
+                        background: #909dc1
+
+                        border: 3px solid transparent
+                        border-right: none !important
+
+                    .name
+                        padding: 10px 10px 10px 15px
+
+                        h4
+                            font-family: RefrigeratorDeluxeBold
+                            font-size: 22px
+                            text-transform: uppercase
 
         .content
             margin: 0 0 60px 0

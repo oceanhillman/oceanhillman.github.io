@@ -99,6 +99,10 @@ export const TEX = {
         default: 'ui/tab.png',
         active: 'ui/tab-active.png'
     } as Texture,
+    tabStraight: {
+        default: 'ui/tab-straight.png',
+        active: 'ui/tab-straight-active.png'
+    } as Texture,
     leftTriangle: {
         default: 'ui/left-triangle.webp'
     } as Texture,
@@ -185,6 +189,9 @@ export const TEX = {
     giftGold: {
         default: 'icon/gift-gold.png',
     } as Texture,
+    achievementGift: {
+        default: 'icon/achievement-gift.png',
+    } as Texture,
     proficiency: {
         default: 'icon/proficiency.png',
         hover: 'icon/proficiency-hover.png',
@@ -203,6 +210,9 @@ export const TEX = {
     } as Texture,
     dropdownCheck: {
         default: 'icon/check.png'
+    } as Texture,
+    checkRhombus: {
+        default: 'icon/check-rhombus.png'
     } as Texture,
     favourite: {
         default: 'icon/favourite.png',
@@ -277,6 +287,65 @@ export const TEX = {
     upload: {
         default: 'icon/upload.png'
     } as Texture,
+    achievementPoint: {
+        default: 'icon/achievement-point.png'
+    } as Texture,
+    achievementRewardProgress: {
+        default: 'icon/achievement-reward-uncompleted.png',
+        active: 'icon/achievement-reward-completed.png'
+    } as Texture,
+
+    achievementChronoverseSaga: {
+        default: 'icon/achievement/chronoverse-saga.png'
+    } as Texture,
+    achievementChronoverseSagaCopper: {
+        default: 'icon/achievement/chronoverse-saga-copper.png'
+    } as Texture,
+    achievementChronoverseSagaSilver: {
+        default: 'icon/achievement/chronoverse-saga-silver.png'
+    } as Texture,
+    achievementChronoverseSagaGold: {
+        default: 'icon/achievement/chronoverse-saga-gold.png'
+    } as Texture,
+
+    achievementGalactaGuide: {
+        default: 'icon/achievement/galacta-guide.png'
+    } as Texture,
+    achievementGalactaGuideCopper: {
+        default: 'icon/achievement/galacta-guide-copper.png'
+    } as Texture,
+    achievementGalactaGuideSilver: {
+        default: 'icon/achievement/galacta-guide-silver.png'
+    } as Texture,
+    achievementGalactaGuideGold: {
+        default: 'icon/achievement/galacta-guide-gold.png'
+    } as Texture,
+
+    achievementHeroicJourney: {
+        default: 'icon/achievement/heroic-journey.png'
+    } as Texture,
+    achievementHeroicJourneyCopper: {
+        default: 'icon/achievement/heroic-journey-copper.png'
+    } as Texture,
+    achievementHeroicJourneySilver: {
+        default: 'icon/achievement/heroic-journey-silver.png'
+    } as Texture,
+    achievementHeroicJourneyGold: {
+        default: 'icon/achievement/heroic-journey-gold.png'
+    } as Texture,
+
+    achievementRivalryRising: {
+        default: 'icon/achievement/rivalry-rising.png'
+    } as Texture,
+    achievementRivalryRisingCopper: {
+        default: 'icon/achievement/rivalry-rising-copper.png'
+    } as Texture,
+    achievementRivalryRisingSilver: {
+        default: 'icon/achievement/rivalry-rising-silver.png'
+    } as Texture,
+    achievementRivalryRisingGold: {
+        default: 'icon/achievement/rivalry-rising-gold.png'
+    } as Texture,
 
     whiteBackground: {
         default: 'bg/white.webp'
@@ -292,6 +361,9 @@ export const TEX = {
     } as Texture,
     dropdownHover: {
         default: 'bg/dropdown-hover.png'
+    } as Texture,
+    smallButtonBg: {
+        default: 'bg/small-button-bg.png'
     } as Texture,
     popup: {
         default: 'bg/popup.png'
@@ -362,6 +434,22 @@ export const TEX = {
         default: 'bg/hero-select-frame-right-gold.png'
     } as Texture,
 
+    listItemHover: {
+        default: 'bg/list-item-hover.png'
+    } as Texture,
+    listItemSelected: {
+        default: 'bg/list-item-selected.png'
+    } as Texture,
+    listItemIconHover: {
+        default: 'bg/list-item-icon-hover.png',
+    } as Texture,
+    listItemIconSelected: {
+        default: 'bg/list-item-icon-selected.png',
+    } as Texture,
+    listItemDecorationSelected: {
+        default: 'bg/list-item-decoration-selected.png'
+    } as Texture,
+
     promotionalBackgroundMask: {
         default: 'mask/promotional-bg-mask.png',
     } as Texture,
@@ -394,6 +482,9 @@ export const TEX = {
     } as Texture,
     ctaMask: {
         default: 'mask/cta-mask.webp'
+    } as Texture,
+    modalBackgroundMask: {
+        default: 'mask/modal-bg-mask.png'
     } as Texture,
 
 

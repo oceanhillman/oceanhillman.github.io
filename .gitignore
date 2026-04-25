@@ -28,4 +28,6 @@ scripts/*
 !scripts/fetch-commits.js
 !scripts/add-hero
 !scripts/add-hero/*
+!scripts/parse-achievements-table
+!scripts/parse-achievements-table/*
 !scripts/tsconfig.json

@@ -112,6 +112,17 @@
                 >
                     Planner
                 </li>
+                <li
+                    v-if="achievementList?.length"
+                    :class="{
+                        new: !preferences.sawAchievementsTab,
+                        selected: page == 'achievements'
+                    }"
+                    @click="setPage('achievements')"
+                >
+                    <span v-if="!preferences.sawAchievementsTab" class="new">NEW</span>
+                    Achievements
+                </li>
             </ul>
         </nav>
 
@@ -163,8 +174,8 @@
                     </div>
                 </div>
 
-                <ClientOnly>
-                    <div class="player-level">
+                <div v-if="page != 'achievements'" class="player-level">
+                    <ClientOnly>
                         <div
                             v-if="showQuickEditPopup" 
                             class="popup"
@@ -303,8 +314,35 @@
                                 </div>
                             </div>
                         </div>
+                    </ClientOnly>
+                </div>
+                <div v-else class="achievements-categories">
+                    <div
+                        v-for="category in availableAchievementCategories"
+                        :class="{category: 1, selected: selectedAchievementsCategory == category.id}"
+
+                        @click="selectedAchievementsCategory = category.id"
+                    >
+                        <div class="icon">
+                            <Tex
+                                :image="category.icon()"
+                                :color="selectedAchievementsCategory == category.id ?
+                                    '#000'
+                                    :
+                                    '#fff'
+                                "
+
+                                width="64px"
+                                height="64px"
+                            />
+                        </div>
+                        <div class="name">
+                            <h4>
+                                {{ category.name }}
+                            </h4>
+                        </div>
                     </div>
-                </ClientOnly>
+                </div>
             </div>
 
             <div
@@ -509,6 +547,15 @@
                     @open-level-menu="selectCurrentLevel()"
                 />
             </div>
+            <div
+                v-else-if="page == 'achievements'"
+                class="content achievements-wrapper"
+            >
+                <PanelAchievements
+                    :category="selectedAchievementsCategory"
+                    :achievements="achievementList"
+                />
+            </div>
         </main>
     </div>
 </template>
@@ -532,6 +579,7 @@ import { useAbsoluteUrl } from '~/composables/config';
 import ConvertUnknownHeroModal from '~/components/modals/ConvertUnknownHeroModal.vue';
 import ProficiencyPointsModal from '~/components/modals/ProficiencyPointsModal.vue';
 import type { TooltipBinding } from '~/directives/tooltip';
+import { ACHIEVEMENT_CATEGORIES, getAchievements, type AchievementTypeCategory } from '~/assets/data/achievements';
 
 const { openModal } = useModalManager();
 const { notify } = useNotificationManager();
@@ -702,7 +750,7 @@ const isLv1AndGoalLv1 = computed(() => storedLevel.value.level == 1 && storedLev
 const unknownHeroHasPossibleMatch = useUnknownHeroHasPossibleMatch(hero.value).value.length;
 const isIncorrectSelection = computed(() => storedLevel.value.goal <= storedLevel.value.level);
 
-type PageId = 'overview'|'customize'|'estimates'|'planner';
+type PageId = 'overview'|'customize'|'estimates'|'planner'|'achievements';
 const page = ref<PageId>('overview');
 function setPage(newPage: PageId) {
     page.value = newPage;
@@ -712,6 +760,8 @@ function setPage(newPage: PageId) {
         storedLevel.value.openedCalculator = true;
     if (newPage == 'customize')
         tryShowEditPopup();
+    if (newPage == 'achievements')
+        preferences.value.sawAchievementsTab = true;
 }
 
 const selectedRank = ref<ProficiencyRank['id']>(storedLevel.value.rank);
@@ -1108,6 +1158,15 @@ function setGoal(level: number) {
     );
 }
 
+// ==== ACHIEVEMENTS =====
+const selectedAchievementsCategory = ref<AchievementTypeCategory>('heroic-journey');
+const achievementList = computed(() => getAchievements(selectedAchievementsCategory.value, hero.value.id));
+const availableAchievementCategories = computed(() => {
+    const heroAchievements = getAchievements(undefined, hero.value.id);
+    const categoryIds = [ ...new Set(heroAchievements.map(a => a.category)) ];
+
+    return ACHIEVEMENT_CATEGORIES.filter(c => categoryIds.includes(c.id));
+});
 
 // ==== CALCULATOR =====
 const timeEstimates = computed(() => {
