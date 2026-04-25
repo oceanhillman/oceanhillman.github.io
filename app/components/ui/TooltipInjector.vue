@@ -1,7 +1,7 @@
 <template>
     <Teleport to="body">
         <div
-            v-if="tooltip"
+            v-if="tooltip && (tooltip.text || tooltip.icon)"
             ref="tooltipEl"
 
             class="tooltip"

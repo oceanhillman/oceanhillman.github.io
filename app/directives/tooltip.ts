@@ -128,7 +128,7 @@ export const vTooltip: Directive<HTMLElement, TooltipBinding> = {
         
     },
     updated(el, binding) {
-        const { tooltip, hide } = useTooltip();
+        const { tooltip, hide, tooltipHistory } = useTooltip();
 
         if (!binding.value) {
             stateMap.delete(el);
@@ -140,19 +140,28 @@ export const vTooltip: Directive<HTMLElement, TooltipBinding> = {
         const currentBindingOpenMobile = stateMap.get(el)?._mobileOpen;
         stateMap.set(el, { ...binding.value, _mobileOpen: currentBindingOpenMobile });
 
+        let toSet = tooltip.value;
         // reset tooltip only if this is hovered
-        if (tooltip.value?.element != el)
+        if (tooltip.value?.element != el) {
+            const foundInHistory = tooltipHistory.value.find(th => th.element == el);
+            if (!foundInHistory)
+                return;
+            
+            toSet = foundInHistory;
+        }
+
+        if (!toSet || !tooltip.value)
             return;
 
         const touchDevice = isTouchDevice().value;
         if (binding.value.bindToRect || isTouchDevice().value) {
             const rect = el.getBoundingClientRect();
-            tooltip.value.x = rect.left + rect.width / (touchDevice ? 1 : 2);
-            tooltip.value.y = rect.top;
+            toSet.x = rect.left + rect.width / (touchDevice ? 1 : 2);
+            toSet.y = rect.top;
         }
 
-        tooltip.value.text = binding.value.text;
-        tooltip.value.icon = binding.value.icon;
+        toSet.text = binding.value.text;
+        toSet.icon = binding.value.icon;
     },
     unmounted(el, binding) {
         const stateBinding = stateMap.get(el) || binding.value;

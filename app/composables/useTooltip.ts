@@ -33,5 +33,5 @@ export function useTooltip() {
         tooltip.value = tooltipHistory.value.at(-1) ?? null;
     }
 
-    return { tooltip, show, hide };
+    return { tooltip, show, hide, tooltipHistory };
 }
