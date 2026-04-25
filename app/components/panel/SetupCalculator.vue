@@ -111,11 +111,11 @@
 
     p
         font-size: 24px
-        font-family: RefrigeratorDeluxeBold
+        font-family: MarvelRivalsBold
 
         &.info
             font-size: 16px
-            font-family: KelsonSans
+            font-family: MRBody
             color: $light-blue
 
 </style>

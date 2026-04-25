@@ -76,7 +76,7 @@
         outline: none
         
         font-size: 20px
-        font-family: KelsonSans
+        font-family: MRBody
 
         +media-desktop
             width: 650px

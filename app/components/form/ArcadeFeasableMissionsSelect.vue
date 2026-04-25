@@ -67,7 +67,7 @@
             height: 100%
 
             font-size: 16px
-            font-family: RefrigeratorDeluxeBold
+            font-family: MarvelRivalsBold
             color: #b5d6ff
             
             text-align: center

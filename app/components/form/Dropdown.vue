@@ -124,7 +124,7 @@
             align-items: center
             gap: 15px
 
-            font-family: KelsonSans
+            font-family: MRBody
             font-size: 18px
             color: $light
 

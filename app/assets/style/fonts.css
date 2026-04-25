@@ -1,21 +1,17 @@
 @font-face {
-    font-family: RefrigeratorDeluxe;
-    src: url(@/assets/fonts/RefrigeratorDeluxe.ttf);
+    font-family: MarvelRivals;
+    src: url(https://db.onlinewebfonts.com/t/deff549f5c443598a8380e1f91055c01.ttf) format("truetype");
 }
 @font-face {
-    font-family: RefrigeratorDeluxeBold;
-    src: url(@/assets/fonts/RefrigeratorDeluxeBold.ttf);
+    font-family: MarvelRivalsBold;
+    src: url(https://www.marvelrivals.com/pc/gw/20241128194803/font/RefrigeratorDeluxeBold_30fce753.ttf) format("truetype");
 }
 @font-face {
-    font-family: RefrigeratorDeluxeHeavy;
-    src: url(@/assets/fonts/RefrigeratorDeluxeHeavy.ttf);
+    font-family: MarvelRivalsHeavy;
+    src: url(https://www.marvelrivals.com/pc/gw/20240301101352//css/RefrigeratorDeluxeHeavy_8349567.ttf) format("truetype");
 }
 
 @font-face {
-    font-family: KelsonSans;
-    src: url(@/assets/fonts/KelsonSans.ttf) format("truetype");
-}
-@font-face {
-    font-family: KelsonSansBold;
-    src: url(@/assets/fonts/KelsonSansBold.ttf) format("truetype");
+    font-family: MRBody;
+    src: url(https://www.marvelrivals.com/pc/gw/20241128194803/font/NunitoSans10ptCondensedMedium_a1bedac6.ttf) format("truetype");
 }

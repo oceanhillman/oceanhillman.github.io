@@ -1,0 +1,257 @@
+.achievements-panel
+    width: 100%
+    height: 100%
+
+    display: flex
+    flex-direction: column
+
+    .header
+        width: 100%
+        padding: 10px 0 0 0
+
+        display: flex
+        flex-direction: column
+        align-items: center
+        gap: 30px
+        
+        background: $blue-gray
+        color: #fff
+
+        +media-tablet
+            height: 52px
+            padding: 0 0 0 20px
+
+            flex-direction: row
+            justify-content: space-between
+            align-items: center
+
+        .title
+            display: flex
+            flex-direction: column
+            align-items: center
+            gap: 10px
+
+            +media-tablet
+                flex-direction: row
+                gap: 30px
+
+            h3
+                position: relative
+                font-family: MarvelRivalsBold
+                font-size: 22px
+
+                +media-tablet
+                    &::after
+                        content: ""
+                        position: absolute
+                        top: 50%
+                        right: -17px
+                        transform: translateY(-50%)
+
+                        width: 2px
+                        height: 70%
+
+                        background: #ffffff16
+
+            .counter
+                display: flex
+                align-items: center
+                gap: 5px
+
+                .text
+                    font-size: 20px
+
+                    span
+                        color: #9099b1
+
+        .rewards
+            position: relative
+            width: 100%
+            height: 100%
+            max-width: 400px
+
+            background: var(--tex-smallButtonBg) no-repeat
+            background-size: 100% 100%
+
+            display: flex
+            justify-content: center
+            align-items: center
+
+            cursor: pointer
+
+            +media-tablet
+                width: 100px
+
+            &:hover::after
+                display: block
+
+            &::before
+                content: ""
+                position: absolute
+                top: -15px
+                left: 50%
+                transform: translateX(-50%)
+
+                width: 80%
+                height: 3px
+
+                background: #ffffff16
+
+                +media-tablet
+                    top: 50%
+                    left: -15px
+                    transform: translateY(-50%)
+
+                    width: 3px
+                    height: 80%
+
+            &::after
+                content: ""
+                position: absolute
+                top: 0
+                left: 0
+                bottom: 0
+                right: 0
+
+                display: none
+
+                background: #ffffff51
+                border: 1px solid #fff
+
+    .achievements
+        width: 100%
+        height: 100%
+        background: $light-blue-highlight
+        
+        display: flex
+        flex-direction: column
+        gap: 5px
+
+        overflow-x: hidden
+        overflow-y: auto
+
+        li
+            width: 100%
+            padding: 15px 20px
+
+            display: flex
+            flex-direction: column
+            align-items: center
+            gap: 20px
+
+            background: #f0f4fc
+            cursor: pointer
+            user-select: none
+
+            +media-tablet
+                padding: 5px 0
+                display: grid
+                grid-template-columns: 120px auto 120px
+                align-items: center
+
+            &:hover
+                background: #fff
+            &.completed
+                background: #cfd6ea
+
+            .icon
+                justify-self: center
+
+            .details
+                display: flex
+                flex-direction: column
+                justify-content: space-between
+                align-items: center
+                gap: 20px
+
+                +media-tablet
+                    flex-direction: row
+
+                .info
+                    display: flex
+                    flex-direction: column
+                    align-items: center
+                    gap: 10px
+
+                    +media-tablet
+                        align-items: start
+
+                    .title
+                        display: flex
+                        align-items: center
+                        gap: 5px
+
+                        h3
+                            font-size: 26px
+                            font-family: MarvelRivalsBold
+                            text-align: center
+
+                            +media-tablet
+                                text-align: left
+                            
+                        .completed
+                            padding: 1px 15px
+
+                            background: var(--tex-tab-active)
+                            background-size: 100% 100%
+
+                            display: flex
+                            justify-content: center
+                            align-items: center
+
+                            font-family: MarvelRivalsHeavy
+                            font-size: 16px
+                            color: $text-color
+
+                    p
+                        font-size: 18px
+                
+                .progress
+                    display: flex
+                    align-items: center
+                    gap: 5px
+                    
+                    ::v-deep(.input-wrapper)
+                        padding: 0 !important
+                        
+                        .small-button,
+                        .input
+                            padding: 7px 10px
+
+                        .input
+                            width: 60px
+
+                            &::-webkit-inner-spin-button,
+                            &::-webkit-outer-spin-button
+                                appearance: none
+
+                    p
+                        font-size: 22px
+                        color: #7a7b84
+
+                        span
+                            color: $text-color
+
+            .points
+                position: relative
+                display: flex
+                flex-direction: column
+                justify-content: center
+                align-items: center
+
+                +media-tablet
+                    &::before
+                        content: ""
+                        position: absolute
+                        top: 50%
+                        left: 0
+                        transform: translateY(-50%)
+
+                        width: 1px
+                        height: 100%
+
+                        background: #00000020
+
+                p
+                    font-size: 22px
+                    color: #757782

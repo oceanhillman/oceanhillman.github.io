@@ -227,7 +227,7 @@
         cursor: pointer
 
         p
-            font-family: KelsonSans
+            font-family: MRBody
             font-size: 17px
             color: $light-blue
 
@@ -245,7 +245,7 @@
         background: #f1b70c
 
         font-size: 18px
-        font-family: RefrigeratorDeluxeBold
+        font-family: MarvelRivalsBold
         color: #fff
 
         cursor: pointer
@@ -369,7 +369,7 @@
             gap: 10px
 
             span
-                font-family: KelsonSans
+                font-family: MRBody
                 font-size: 19px
 
                 +media-mobile

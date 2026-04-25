@@ -86,7 +86,7 @@
         justify-content: center
         align-items: center
 
-        font-family: RefrigeratorDeluxeBold
+        font-family: MarvelRivalsBold
         font-size: 20px
         color: #48577f
         text-transform: uppercase

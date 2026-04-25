@@ -244,7 +244,7 @@
     h3
         color: $blue
         font-size: 26px
-        font-family: RefrigeratorDeluxeBold
+        font-family: MarvelRivalsBold
         text-transform: uppercase
 
         margin-top: 20px
@@ -262,7 +262,7 @@
         label
             color: $blue
             font-size: 22px
-            font-family: RefrigeratorDeluxeBold
+            font-family: MarvelRivalsBold
             text-transform: uppercase
 
             &.with-image
@@ -289,7 +289,7 @@
         p
             color: $light-blue
             font-size: 16px
-            font-family: KelsonSans
+            font-family: MRBody
 
             padding: 0
 

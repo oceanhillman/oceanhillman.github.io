@@ -111,7 +111,7 @@
 
     .slot
         font-size: 26px
-        font-family: RefrigeratorDeluxe
+        font-family: MarvelRivals
         color: $light
 
 </style>

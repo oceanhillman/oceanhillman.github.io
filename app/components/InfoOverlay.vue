@@ -91,7 +91,7 @@
 
         h1
             font-size: 46px
-            font-family: RefrigeratorDeluxeHeavy
+            font-family: MarvelRivalsHeavy
             font-style: italic
             font-weight: normal
             text-transform: uppercase
@@ -114,7 +114,7 @@
 
             ::v-deep(p)
                 font-size: 18px
-                font-family: KelsonSans
+                font-family: MRBody
                 text-align: justify
 
                 margin-bottom: 20px

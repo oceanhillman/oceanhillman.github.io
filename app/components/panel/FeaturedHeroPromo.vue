@@ -205,7 +205,7 @@
             justify-content: center
             align-items: center
 
-            font-family: RefrigeratorDeluxeHeavy
+            font-family: MarvelRivalsHeavy
             font-size: 30px
             color: $text-color
 
@@ -237,7 +237,7 @@
                 display: flex
                 align-items: center
                 gap: 10px
-                font-family: RefrigeratorDeluxeHeavy
+                font-family: MarvelRivalsHeavy
                 font-size: 22px
                 text-transform: uppercase
 

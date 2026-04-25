@@ -13,7 +13,7 @@
     align-items: center
     color: $dark
 
-    font-family: RefrigeratorDeluxeHeavy, sans-serif
+    font-family: MarvelRivalsHeavy, sans-serif
     font-size: 32px
 
     text-align: center
@@ -37,14 +37,14 @@
         width: 355px
         min-height: 55px
 
-        font-family: RefrigeratorDeluxeBold, sans-serif
+        font-family: MarvelRivalsBold, sans-serif
         font-size: 28px
 
     &.tiny
         width: auto
         min-height: 35px
 
-        font-family: RefrigeratorDeluxeBold, sans-serif
+        font-family: MarvelRivalsBold, sans-serif
         font-size: 22px
 
     &.yellow
