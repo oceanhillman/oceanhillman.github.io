@@ -322,7 +322,29 @@ export const CHANGELOG = (): ChangeLogEntry[] => [
             '/img/changelog/v1.5.0/estimates-arcade.webp',
             '/img/changelog/v1.5.0/planner-arcade.webp',
         ]
-    }
+    },
+    {
+        version: {
+            number: '1.6.0',
+            date: 'Apr 26, 2026',
+            time: '10:23 PM',
+        },
+        title: 'Added Achievements Tracking (for heroes)',
+        description: `Added a new tab to the hero page where hero-specific achievements' progress can be tracked, where rewards can be previewed
+        <br/>
+        <br/>
+        <i>This is a partial feature. Currently, our data has all of the achievements of the game and a new page will be added in the future, where all achievements can be viewed, searched, tracked and marked as completed and where all rewards can be previewed.</i>`,
+        list: [
+            'Achievements Tab to hero page',
+            'Added all game achievements',
+            'Achievements progress can be tracked in the designated tab',
+            'Preview all rewards in the Achievements tab (by pressing on the gift icon)'
+        ],
+        images: [
+            '/img/changelog/v1.6.0/hero-page.webp',
+            '/img/changelog/v1.6.0/rewards.webp',
+        ]
+    },
 ];
 
 export function groupCommitsByVersion(commits: GitHubCommit[]):

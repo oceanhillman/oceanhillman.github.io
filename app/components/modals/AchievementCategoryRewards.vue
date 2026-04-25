@@ -154,7 +154,7 @@
                     span
                         display: block
                         font-size: 22px
-                        font-family: KelsonSans
+                        font-family: MRBody
                         font-weight: 700
                         color: #4a4d5a
 
@@ -192,7 +192,7 @@
                     height: 65px
 
                     font-size: 20px
-                    font-family: RefrigeratorDeluxeBold
+                    font-family: MarvelRivalsBold
                     text-transform: uppercase
                     text-align: center
                     line-height: 100%
