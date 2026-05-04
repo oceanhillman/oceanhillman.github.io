@@ -516,7 +516,7 @@
                 :hero="hero"
             />
             <div v-else />
-            <div v-if="times.length > 3" class="scroll-indicator">
+            <div v-if="times.length > 3" class="indicator scroll-indicator">
                 <Tex
                     image="mouseScroll"
 
@@ -527,6 +527,18 @@
                 <p>Scroll for more</p>
             </div>
             <div v-else class="scroll-missing" />
+
+            <div class="indicator tap-indicator">
+                <Tex
+                    image="tap"
+
+                    width="35px"
+                    height="35px"
+                    object-fit="contain"
+                />
+                <p>Tap segments for details</p>
+            </div>
+
             <div
                 :class="{advanced: 1, active: advanced}"
                 @click="advanced = !advanced"

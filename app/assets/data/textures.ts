@@ -180,6 +180,9 @@ export const TEX = {
     mouseDrag: {
         default: 'icon/mouse-drag.png'
     } as Texture,
+    tap: {
+        default: 'icon/tap.webp'
+    } as Texture,
     hamburger: {
         default: 'icon/hamburger.png'
     } as Texture,

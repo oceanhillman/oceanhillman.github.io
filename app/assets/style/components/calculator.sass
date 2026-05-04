@@ -30,7 +30,7 @@
                 +media-desktop
                     --font-size: 58px !important
 
-                +media-ml-desktop
+                +media-xl-desktop
                     --font-size: 78px !important
 
         .total
@@ -91,7 +91,7 @@
                 width: 170px
                 padding: 0 15px
 
-            +media-ml-desktop
+            +media-xl-desktop
                 width: 245px
                 padding: 0 30px
 
@@ -509,7 +509,7 @@
             .advanced
                 grid-row: 2 / 3
 
-            .scroll-indicator
+            .indicator
                 grid-row: 1 / 2
                 grid-column: 1 / 4
                 justify-self: center
@@ -524,35 +524,44 @@
             .advanced
                 grid-row: auto
 
-            .scroll-indicator
+            .indicator
                 grid-row: auto
                 grid-column: auto
 
             .advanced
                 grid-column: auto
 
+        .indicator
+            display: flex
+            align-items: center
+            gap: 10px
+
+            user-select: none
+
+            img
+                display: block
+                width: 32px
+
+                -webkit-user-drag: none
+
+            p
+                font-family: MarvelRivalsBold
+                font-size: 20px
+                text-transform: uppercase
+
+                color: $light-blue
+
         .scroll-indicator
             display: none
 
             +media-desktop
                 display: flex
-                align-items: center
-                gap: 10px
 
-                user-select: none
+        .tap-indicator
+            display: flex
 
-                img
-                    display: block
-                    width: 32px
-
-                    -webkit-user-drag: none
-
-                p
-                    font-family: MarvelRivalsBold
-                    font-size: 20px
-                    text-transform: uppercase
-
-                    color: $light-blue
+            +media-desktop
+                display: none
 
         .scroll-missing
             width: 100%

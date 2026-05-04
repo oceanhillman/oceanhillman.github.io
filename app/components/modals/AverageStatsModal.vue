@@ -122,10 +122,19 @@
         </div>
 
         <div v-if="!headless" class="buttons">
-            <FormButton size="small" @click="$emit('confirm', { stats: models, statsArcade: modelsArcade })">
+            <FormButton
+                size="small"
+                @click="confirm"
+            >
                 Confirm
             </FormButton>
-            <FormButton size="small" color-scheme="white" @click="$emit('cancel')">Cancel</FormButton>
+            <FormButton
+                size="small"
+                color-scheme="white"
+                @click="$emit('cancel')"
+            >
+                Cancel
+            </FormButton>
         </div>
 
         <InfoOverlay
@@ -526,12 +535,15 @@ defineExpose({
     reset
 })
 
+function confirm() {
+    emit('confirm', { stats: models.value, statsArcade: modelsArcade.value });
+}
 
 useEvent('keydown', (e: KeyboardEvent) => {
     if (e.code !== 'Enter' || e.shiftKey || e.ctrlKey || e.altKey)
         return;
 
-    emit('confirm', { stats: models.value, statsArcade: modelsArcade.value });
+    confirm();
 });
 
 </script>

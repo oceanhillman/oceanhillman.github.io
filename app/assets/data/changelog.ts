@@ -301,7 +301,7 @@ export const CHANGELOG = (): ChangeLogEntry[] => [
             number: '1.5.0',
             date: 'Apr 20, 2026',
             time: '04:25 AM',
-            commitSha: 'c90acc35b4369f3bb4b8f2f4bf71eaf2d06792e3'
+            commitSha: 'bcef10c22328cf9f1b7913b2aa54645a33c7df0c'
         },
         title: 'Added Arcade Mode precise estimates',
         description: `Added Arcade Mode duration feature which estimates the real time in days it will take to reach a goal on a hero based on personal average stats and mission limits. Customizable with a "Daily missions to complete" selector, where users can select a number of missions they are willing to complete (all 15 of the daily ones) before switching to a different mode or stopping to wait for the next day.

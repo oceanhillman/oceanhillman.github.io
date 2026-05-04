@@ -33,6 +33,14 @@
                         object-fit="cover"
 
                         @click="toggleFavourite"
+
+                        v-tooltip="({
+                            text: isFavourite ? 
+                                `Remove from <b>favourites</b>`
+                                :
+                                `Add to <b>favourites</b>`,
+                            icon: 'mouseLeft'
+                        } satisfies TooltipBinding)"
                     />
                 </div>
 
@@ -564,13 +572,12 @@
 
 <script setup lang="ts">
 import { useModalManager } from '#imports';
-import { CHALLENGE_ICONS, CHALLENGE_NAMES, DEFAULT_HERO_STORE, DEFAULT_PREFERENCES_STORE, getAverageStatsForHero, getHeroMatchCount, levelToRank, PlayerHeroStoreSchema, PreferencesStoreSchema, PROFICIENCY_RANKS, replaceRewardPlaceholders, type Challenge, type PlayerHeroStore, type PreferencesStore, type ProficiencyRank, type Reward } from '~/assets/data/common';
+import { CHALLENGE_ICONS, CHALLENGE_NAMES, DEFAULT_HERO_STORE, DEFAULT_PREFERENCES_STORE, getAverageStatsForHero, getHeroMatchCount, levelToRank, PlayerHeroStoreSchema, PreferencesStoreSchema, PROFICIENCY_RANKS, replaceRewardPlaceholders, type Challenge, type HeroData, type PlayerHeroStore, type PreferencesStore, type ProficiencyRank, type Reward } from '~/assets/data/common';
 import { createHero, deleteHero, editHero, HERO_LIST, UNKNOWN_HERO } from '~/assets/data/heroes';
 import AverageStatsModal from '~/components/modals/AverageStatsModal.vue';
 import ListSelect from '~/components/modals/ListSelect.vue';
 import ModifyHeroData from '~/components/modals/ModifyHeroData.vue';
 import { changeColor } from '~/utils/util';
-import { type HeroData } from '../../assets/data/common';
 import { calculateTimesToLevel, Calculator } from '~/services/calculator';
 import { tex, texUrl } from '~/assets/data/textures';
 import ConfigureHeroModal from '~/components/modals/ConfigureHeroModal.vue';
@@ -581,6 +588,9 @@ import ProficiencyPointsModal from '~/components/modals/ProficiencyPointsModal.v
 import type { TooltipBinding } from '~/directives/tooltip';
 import { ACHIEVEMENT_CATEGORIES, getAchievements, type AchievementTypeCategory } from '~/assets/data/achievements';
 
+type PageId = 'overview'|'customize'|'estimates'|'planner'|'achievements';
+const PAGE_IDS = ['overview', 'customize', 'estimates', 'planner', 'achievements'];
+
 const { openModal } = useModalManager();
 const { notify } = useNotificationManager();
 
@@ -588,6 +598,17 @@ const unknownHeroes = useLocalStorage<HeroData[]>('unknown_heroes', []);
 
 const router = useRouter();
 const route = useRoute();
+const pageFromUrl = computed<PageId>(() => {
+    const slug = Array.isArray(route.params.slug) ? route.params.slug?.[0] : route.params.slug;
+    if (!slug)
+        return 'overview';
+
+    if (!PAGE_IDS.includes(slug) || (Array.isArray(slug) && slug.length > 1))
+        throw createError({ statusCode: 404, message: `Page not found`, stack: `` });
+
+    return slug as PageId;
+});
+
 const heroId = route.params.id;
 const unknownHero = unknownHeroes.value.find(h => h.id === heroId);
 const hero = ref<HeroData>(HERO_LIST.find(h => h.id === heroId) ?? unknownHero!);
@@ -750,9 +771,13 @@ const isLv1AndGoalLv1 = computed(() => storedLevel.value.level == 1 && storedLev
 const unknownHeroHasPossibleMatch = useUnknownHeroHasPossibleMatch(hero.value).value.length;
 const isIncorrectSelection = computed(() => storedLevel.value.goal <= storedLevel.value.level);
 
-type PageId = 'overview'|'customize'|'estimates'|'planner'|'achievements';
-const page = ref<PageId>('overview');
+
+const page = ref<PageId>(pageFromUrl.value);
 function setPage(newPage: PageId) {
+    const query = route.query?.from ? `?from=${backLink.value}` : '';
+    const newUrl = `/heroes/${heroId}/${newPage}${query}`;
+    history.pushState(null, '', newUrl);
+
     page.value = newPage;
     menuOpen.value = false;
 
