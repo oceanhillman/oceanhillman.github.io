@@ -231,13 +231,14 @@
     .info-button-container
         display: flex
         align-items: center
-        gap: 5px
+        gap: 10px
 
         cursor: pointer
 
         p
             font-family: MRBody
             font-size: 17px
+            line-height: 100%
             color: $light-blue
 
             padding: 0 !important
@@ -255,7 +256,9 @@
 
         font-size: 18px
         font-family: MarvelRivalsBold
+        line-height: 100%
         color: #fff
+        text-align: right
 
         cursor: pointer
 

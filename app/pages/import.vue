@@ -524,6 +524,7 @@ p
 </style>
 
 <script setup lang="ts">
+import type { Achievement } from '~/assets/data/achievements';
 import {
     AnySegmentSchema,
     DEFAULT_HERO_STORE,
@@ -551,6 +552,7 @@ const storedHeroes = Object.entries(localStorage ?? {})
 const favourites = useLocalStorage<HeroData['id'][]>(`favourite_heroes`, []);
 const unknownHeroes = useLocalStorage<HeroData[]>('unknown_heroes', []);
 const preferences = useLocalStorage<PreferencesStore>('preferences', DEFAULT_PREFERENCES_STORE(), PreferencesStoreSchema);
+const achievementsStore = useLocalStorage<Achievement[]>('achievements', []);
 
 const heroesWithData = computed(() => {
     return storedHeroes.map(heroStore => {
@@ -941,6 +943,16 @@ function importData() {
          && !favourites.value.includes(id)
         )
             favourites.value.push(id);
+
+        if (dataSegment.value.data.achievements) {
+            dataSegment.value.data.achievements.forEach(a => {
+                const existing = achievementsStore.value.find(existing => existing.id == a.id);
+                if (existing)
+                    existing.current = a.current;
+                else
+                    achievementsStore.value.push(a);
+            });
+        }
     }
     else if (dataSegment.value.type == 'profile') {
         if (dataSegment.value.data.unknownHeroes) {
@@ -968,6 +980,16 @@ function importData() {
 
         if (dataSegment.value.data.preferences)
             preferences.value = dataSegment.value.data.preferences;
+
+        if (dataSegment.value.data.achievements) {
+            dataSegment.value.data.achievements.forEach(a => {
+                const existing = achievementsStore.value.find(existing => existing.id == a.id);
+                if (existing)
+                    existing.current = a.current;
+                else
+                    achievementsStore.value.push(a);
+            });
+        }
     }
 
     nextTick(resetLocalStorageCache);

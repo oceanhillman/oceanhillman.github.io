@@ -1,5 +1,47 @@
 [
   {
+    "sha": "5dc8251fe07e2b8de81a0c3de55147b2a9228fd3",
+    "node_id": "C_kwDORv7rQ9oAKDVkYzgyNTFmZTA3ZTJiOGRlODFhMGMzZGU1NTE0N2IyYTkyMjhmZDM",
+    "commit": {
+      "author": {
+        "name": "mr-calculator",
+        "email": "mr-calculator.estimate510@slmails.com",
+        "date": "2026-05-04T03:17:25Z"
+      },
+      "committer": {
+        "name": "mr-calculator",
+        "email": "mr-calculator.estimate510@slmails.com",
+        "date": "2026-05-04T03:17:25Z"
+      },
+      "message": "Modified hero page to have routes for the main tabs\nAdded small tip for mobile to indicate that rank segments in the calculator can be clicked/tapped on to show details\nFixed a style issue where the mobile/small screen navigation in the hero page would show up and get stuck to open when screens are between 1200 - 1350px width\nUpdated Black Cat generic average stats",
+      "tree": {
+        "sha": "f540c1d66b4a5c61ea7a3ae1b83abdfbec4b8044",
+        "url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/git/trees/f540c1d66b4a5c61ea7a3ae1b83abdfbec4b8044"
+      },
+      "url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/git/commits/5dc8251fe07e2b8de81a0c3de55147b2a9228fd3",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/commits/5dc8251fe07e2b8de81a0c3de55147b2a9228fd3",
+    "html_url": "https://github.com/mr-calculator/mr-calculator.github.io/commit/5dc8251fe07e2b8de81a0c3de55147b2a9228fd3",
+    "comments_url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/commits/5dc8251fe07e2b8de81a0c3de55147b2a9228fd3/comments",
+    "author": null,
+    "committer": null,
+    "parents": [
+      {
+        "sha": "8e9bdfcbfb0c06d3edcf0290d5a1852ef23d2a38",
+        "url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/commits/8e9bdfcbfb0c06d3edcf0290d5a1852ef23d2a38",
+        "html_url": "https://github.com/mr-calculator/mr-calculator.github.io/commit/8e9bdfcbfb0c06d3edcf0290d5a1852ef23d2a38"
+      }
+    ]
+  },
+  {
     "sha": "8e9bdfcbfb0c06d3edcf0290d5a1852ef23d2a38",
     "node_id": "C_kwDORv7rQ9oAKDhlOWJkZmNiZmIwYzA2ZDNlZGNmMDI5MGQ1YTE4NTJlZjIzZDJhMzg",
     "commit": {
