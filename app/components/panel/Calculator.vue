@@ -1,11 +1,12 @@
 <template>
     <div :class="{calculator: 1, advanced}">
         <div class="rich-title">
-            To get to
+            To get to <br/>
             <span class="icon">
                 <img :src="goal.rank?.icon" />
             </span>
             <span class="level">LV{{ goal.level }}</span>
+            <br/>
             (<span class="icon reward">
                 <img
                     v-if="!goal.reward.iconAnimation"
@@ -21,6 +22,7 @@
             </span>&nbsp;<span :class="['reward', `rarity-${goal.reward.rarity}`]">
                 {{ goal.reward.name }}
             </span>)
+            <br/>
             (<span class="level">{{ levelCount }} levels</span>)
             it will take you:
         </div>

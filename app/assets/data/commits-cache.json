@@ -1,5 +1,47 @@
 [
   {
+    "sha": "d783cc415f3edb44ef9d26b20c5799fbae5212c7",
+    "node_id": "C_kwDORv7rQ9oAKGQ3ODNjYzQxNWYzZWRiNDRlZjlkMjZiMjBjNTc5OWZiYWU1MjEyYzc",
+    "commit": {
+      "author": {
+        "name": "mr-calculator",
+        "email": "mr-calculator.estimate510@slmails.com",
+        "date": "2026-05-04T15:45:58Z"
+      },
+      "committer": {
+        "name": "mr-calculator",
+        "email": "mr-calculator.estimate510@slmails.com",
+        "date": "2026-05-04T15:45:58Z"
+      },
+      "message": "Fixed import page missing import functionality for achievements\nFixed a few styling issues with iOS",
+      "tree": {
+        "sha": "f0b58bd884e0d3ef6bbc8c74c973d86c45f08ce7",
+        "url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/git/trees/f0b58bd884e0d3ef6bbc8c74c973d86c45f08ce7"
+      },
+      "url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/git/commits/d783cc415f3edb44ef9d26b20c5799fbae5212c7",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/commits/d783cc415f3edb44ef9d26b20c5799fbae5212c7",
+    "html_url": "https://github.com/mr-calculator/mr-calculator.github.io/commit/d783cc415f3edb44ef9d26b20c5799fbae5212c7",
+    "comments_url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/commits/d783cc415f3edb44ef9d26b20c5799fbae5212c7/comments",
+    "author": null,
+    "committer": null,
+    "parents": [
+      {
+        "sha": "5dc8251fe07e2b8de81a0c3de55147b2a9228fd3",
+        "url": "https://api.github.com/repos/mr-calculator/mr-calculator.github.io/commits/5dc8251fe07e2b8de81a0c3de55147b2a9228fd3",
+        "html_url": "https://github.com/mr-calculator/mr-calculator.github.io/commit/5dc8251fe07e2b8de81a0c3de55147b2a9228fd3"
+      }
+    ]
+  },
+  {
     "sha": "5dc8251fe07e2b8de81a0c3de55147b2a9228fd3",
     "node_id": "C_kwDORv7rQ9oAKDVkYzgyNTFmZTA3ZTJiOGRlODFhMGMzZGU1NTE0N2IyYTkyMjhmZDM",
     "commit": {
