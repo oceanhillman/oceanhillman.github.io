@@ -328,7 +328,7 @@ export const CHANGELOG = (): ChangeLogEntry[] => [
             number: '1.6.0',
             date: 'Apr 26, 2026',
             time: '10:23 PM',
-            // commitSha: '05adaecab5f6af5a460b9ff6bdd4cd52f1f41594'
+            commitSha: '05adaecab5f6af5a460b9ff6bdd4cd52f1f41594'
         },
         title: 'Added Achievements Tracking (for heroes)',
         description: `Added a new tab to the hero page where hero-specific achievements' progress can be tracked, where rewards can be previewed
@@ -350,7 +350,8 @@ export const CHANGELOG = (): ChangeLogEntry[] => [
         version: {
             number: '1.6.1',
             date: 'May 15, 2026',
-            time: '02:31 PM'
+            time: '02:31 PM',
+            commitSha: '4da2c05e1f64cb715ca9b1a73ef028934c1d3276'
         },
         title: 'Added Devil Dinosaur',
         description: `Added the new hero, Devil Dinosaur.
