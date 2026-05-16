@@ -145,7 +145,11 @@
                                             icon: 'mouseLeft'
                                         } satisfies TooltipBinding)"
                                     >
-                                        <img :src="hero._hero.dataDir + 'spray.webp'" :alt="`${hero.heroName} Logo (Spray)`" />
+                                        <img
+                                            :src="hero._hero.dataDir + 'spray.webp'"
+                                            :alt="`${hero.heroName} Logo (Spray)`"
+                                        />
+                                        <span v-if="hero.featured">NEW</span>
                                     </div>
                                     <div
                                         class="inner"
@@ -894,9 +898,17 @@ const allHeroesWithStats = HERO_LIST.map(h => {
         heroAvatar: `${h.dataDir}head.webp`,
         percent: matchCount ? matchCount / highestMatchCount : .2,
         matchCount,
-        avgStats
+        avgStats,
+        featured: h.id === featuredHero.value?.id
     }
-}).sort((a, b) => a._hero.name.localeCompare(b._hero.name));
+}).sort((a, b) => {
+    if (a.featured)
+        return -1;
+    if (b.featured)
+        return 1;
+
+    return a._hero.name.localeCompare(b._hero.name)
+});
 
 const credibilitySelectedHeroId = ref<string|null>(null);
 const credibilitySelectedHero = computed(() => {

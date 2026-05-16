@@ -160,6 +160,13 @@ async function main() {
             }
         })) as HeroIdentity;
 
+        if (heroIdentity.id && heroIdentity.internalId) {
+            // let's see if we can expand the file with the new internal id - hero id pair
+            const added = addInternalIdPair(heroIdentity.id, heroIdentity.internalId);
+            if (added)
+                p.log.info(`Added [${heroIdentity.id}]: ${heroIdentity.internalId} to the local pair collection.`);
+        }
+
         if (fs.existsSync(`${HERO_FILE_PATH}${heroIdentity.id}.ts`)) {
             const choice = await showChoices('Hero file exists, what would you like to do?', false, true);
 

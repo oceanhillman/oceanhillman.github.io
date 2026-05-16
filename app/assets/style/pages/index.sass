@@ -661,8 +661,9 @@
 
                                         cursor: pointer
 
-                                        +media-desktop
-                                            transform: skew(15deg)
+                                        > *
+                                            +media-desktop
+                                                transform: skew(15deg)
 
                                         &::before
                                             display: none
@@ -682,6 +683,9 @@
 
                                             z-index: 1
 
+                                            +media-desktop
+                                                transform: translate(-50%, -50%) skew(15deg)
+
                                             +media-large-desktop  
                                                 width: 88px + 55px
                                                 height: 105px + 55px
@@ -696,6 +700,25 @@
                                             +media-large-desktop  
                                                 width: 150px
                                                 height: 150px
+
+                                        span
+                                            position: absolute
+                                            bottom: -22px
+                                            // left: 50%
+                                            // transform: translateX(-50%)
+
+                                            padding: 1px 10px
+
+                                            background: var(--tex-tab-active)
+                                            background-size: 100% 100%
+
+                                            display: flex
+                                            justify-content: center
+                                            align-items: center
+
+                                            font-family: MarvelRivalsHeavy
+                                            font-size: 18px
+                                            color: $text-color
 
                                 h3.name
                                     font-size: 22px
@@ -824,8 +847,9 @@
                             text-transform: uppercase
 
                         h4
-                            font-size: 18px
+                            font-size: 20px
                             text-transform: uppercase
+                            font-family: MarvelRivalsHeavy
 
                             margin-top: 20px
 
