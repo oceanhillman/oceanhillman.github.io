@@ -21,7 +21,11 @@
             <ClientOnly>
                 <PanelHeroList
                     back-button="/"
-                />
+                >
+                    <FormButton to="/heroes/summary" size="large">
+                        SUMMARY
+                    </FormButton>
+                </PanelHeroList>
             </ClientOnly>
         </div>
     </main>
