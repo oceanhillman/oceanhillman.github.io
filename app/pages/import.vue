@@ -973,6 +973,9 @@ function importData() {
                     achievementsStore.value.push(a);
             });
         }
+
+        if (dataSegment.value.data.ownedCostumes)
+            localStorage.setItem(`cosmetics_owned_${id}`, JSON.stringify(dataSegment.value.data.ownedCostumes));
     }
     else if (dataSegment.value.type == 'profile') {
         if (dataSegment.value.data.unknownHeroes) {
@@ -1009,6 +1012,11 @@ function importData() {
                 else
                     achievementsStore.value.push(a);
             });
+        }
+
+        if (dataSegment.value.data.ownedCostumes) {
+            for (const [heroId, ownedList] of Object.entries(dataSegment.value.data.ownedCostumes))
+                localStorage.setItem(`cosmetics_owned_${heroId}`, JSON.stringify(ownedList));
         }
     }
 
