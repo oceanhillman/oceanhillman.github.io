@@ -725,18 +725,36 @@
                     +scrollbar($background: $light, $thumb: $light-blue, $active: $color)
 
                 .cosmetics-controls
-                    display: flex
-                    flex-wrap: wrap
+                    display: grid
+                    grid-template-columns: 1fr 1fr
                     align-items: center
-                    gap: 20px
+                    gap: 10px
                     margin-bottom: 20px
 
+                    +media-tablet
+                        display: flex
+                        flex-wrap: wrap
+                        gap: 20px
+
+                    > *:not(.owned-count)
+                        width: 100%
+
+                        +media-tablet
+                            width: 200px
+
                     .owned-count
-                        margin-right: auto
+                        grid-column: 1 / -1
                         font-family: MarvelRivalsBold
-                        font-size: 28px
+                        font-size: 22px
                         text-transform: uppercase
                         color: $light-blue-highlight
+
+                        +media-phone
+                            font-size: 18px
+
+                        +media-tablet
+                            margin-right: auto
+                            font-size: 28px
 
                         
 
@@ -749,10 +767,9 @@
                     gap: 20px
 
                     +media-tablet
-                        flex-direction: row
-                        justify-content: flex-start
-                        flex-wrap: wrap
-                        align-items: start
+                        display: grid
+                        grid-template-columns: repeat(auto-fill, 200px)
+                        justify-content: center
 
             .update-stats-modal
                 max-height: 100%
