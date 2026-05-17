@@ -8,6 +8,77 @@
     align-items: center
     gap: 20px
 
+    .view-bar
+        width: 100%
+        height: 52px
+        position: relative
+
+        display: flex
+        justify-content: center
+
+
+        &::before
+            content: ""
+            position: absolute
+            top: 0
+            left: 0
+            width: 157px
+            height: 100%
+
+            z-index: 1
+
+        &::after
+            content: ""
+            position: absolute
+            top: 0
+            right: 0
+            width: 75px
+            height: 100%
+
+            z-index: 1
+
+        ul
+            display: flex
+            z-index: 2
+
+            li
+                height: 52px
+                padding: 0 30px
+
+                font-size: 20px
+                font-family: MarvelRivalsBold
+                color: $light
+
+                text-align: center
+                line-height: 52px
+
+                user-select: none
+                cursor: pointer
+
+                +media-desktop
+                    padding: 0 60px
+
+                &:not(:last-of-type)
+                    position: relative
+
+                    &::after
+                        content: ""
+                        position: absolute
+                        top: 0
+                        right: 0
+                        width: 9px
+                        height: 100%
+
+                        background: var(--tex-panelTabSeparator) no-repeat
+                        background-size: contain
+                        background-position: center
+
+                &:hover
+                    color: #fff
+
+                &.selected
+                    color: $color
+
     .tools
         position: sticky
         top: 10px
@@ -30,7 +101,7 @@
 
                 &.sticky-mobile-show
                     transform: translateY(0%)
-            
+
             &::before
                 content: ""
                 position: absolute
@@ -87,7 +158,7 @@
 
                 border: 3px solid $light-blue-highlight
                 outline: none
-                
+
                 font-size: 20px
                 font-family: MRBody
 
@@ -120,7 +191,7 @@
                 :deep(.dropdown)
                     width: 260px
             gap: 10px
-            
+
             +media-mobile
                 justify-content: center
                 flex-wrap: wrap-reverse
