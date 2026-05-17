@@ -587,17 +587,17 @@ function deleteData() {
     .promise
     .then(() => {
         localStorage.clear();
-
-        resetLocalStorageCache();
-        storedHeroes.value = [];
-
-        notify(
-            `Your data was deleted successfully.`,
-            3000,
-            { image: 'check', color: '#458a14' }
-        );
+        sessionStorage.setItem('dataDeleted', '1');
+        window.location.reload();
     })
     .catch(() => null)
 }
+
+onMounted(() => {
+    if (sessionStorage.getItem('dataDeleted')) {
+        sessionStorage.removeItem('dataDeleted');
+        notify(`Your data was deleted successfully.`, 3000, { image: 'check', color: '#458a14' });
+    }
+})
 
 </script>
