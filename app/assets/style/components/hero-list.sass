@@ -14,6 +14,7 @@
         width: 100%
         display: flex
         justify-content: space-between
+        align-items: center
 
         z-index: 10
 
@@ -56,8 +57,27 @@
         .back-button
             display: none
 
+        .slot-center
+            @media only screen and (max-width: 1454px)
+                :deep(.button)
+                    min-width: 200px
+                    padding: 8px 20px
+
+            +media-mobile
+                order: -1
+                min-width: 344px
+                display: flex
+                justify-content: center
+
+                :deep(.button)
+                    width: 100%
+
         .search
-            position: relative
+            flex: 1
+
+            .search-inner
+                position: relative
+                width: fit-content
 
             input
                 width: 100%
@@ -72,7 +92,7 @@
                 font-family: MRBody
 
                 +media-desktop
-                    width: 320px
+                    width: 285px
 
                 +media-large-desktop
                     width: 450px
@@ -91,10 +111,14 @@
 
 
         .filters
-            width: 100%
+            flex: 1
             display: flex
             align-items: center
             justify-content: end
+
+            @media only screen and (min-width: 992px) and (max-width: 1454px)
+                :deep(.dropdown)
+                    width: 260px
             gap: 10px
             
             +media-mobile

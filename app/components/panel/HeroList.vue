@@ -16,23 +16,28 @@
                 />
             </NuxtLink>
             <div class="search">
-                <input
-                    ref="searchInput"
-                    type="text"
-                    placeholder="Search..."
+                <div class="search-inner">
+                    <input
+                        ref="searchInput"
+                        type="text"
+                        placeholder="Search..."
 
-                    v-model="searchText"
-                />
-                <Tex
-                    image="search"
-                    color="var(--light-blue-highlight)"
+                        v-model="searchText"
+                    />
+                    <Tex
+                        image="search"
+                        color="var(--light-blue-highlight)"
 
-                    width="25px"
-                    height="25px"
-                    object-fit="contain"
-                />
+                        width="25px"
+                        height="25px"
+                        object-fit="contain"
+                    />
+                </div>
             </div>
 
+            <div class="slot-center">
+                <slot />
+            </div>
             <div class="filters">
                 <FormCheckbox v-model="filterFavourites">
                     Favourites
