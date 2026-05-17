@@ -83,12 +83,6 @@
                     Overview
                 </li>
                 <li
-                    :class="{ selected: page == 'cosmetics' }"
-                    @click="setPage('cosmetics')"
-                >
-                    Cosmetics
-                </li>
-                <li
                     :class="{ 'warning-wrapper': 1, selected: page == 'customize' }"
                     @click="setPage('customize')"
                 >
@@ -136,6 +130,12 @@
                 >
                     <!-- <span v-if="!preferences.sawAchievementsTab" class="new">NEW</span> -->
                     Achievements
+                </li>
+                <li
+                    :class="{ selected: page == 'cosmetics' }"
+                    @click="setPage('cosmetics')"
+                >
+                    Cosmetics
                 </li>
             </ul>
         </nav>
@@ -634,8 +634,8 @@ import { ACHIEVEMENT_CATEGORIES, getAchievements, type AchievementTypeCategory }
 import { skinSlug, HERO_COSMETICS, type CostumeEntry } from '~/assets/data/cosmeticsRarity';
 import CostumeDetailModal from '~/components/modals/CostumeDetailModal.vue';
 
-type PageId = 'overview'|'cosmetics'|'customize'|'estimates'|'planner'|'achievements';
-const PAGE_IDS = ['overview', 'cosmetics', 'customize', 'estimates', 'planner', 'achievements'];
+type PageId = 'overview'|'customize'|'estimates'|'planner'|'achievements'|'cosmetics';
+const PAGE_IDS = ['overview', 'customize', 'estimates', 'planner', 'achievements', 'cosmetics'];
 
 const { openModal } = useModalManager();
 const { notify } = useNotificationManager();
