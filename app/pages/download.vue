@@ -505,7 +505,7 @@ const allData = computed<AnySerializableDataSegment>(() => {
         achievements: includeAchievements.value ? achievementsStore.value : undefined,
         unknownHeroes: includeUnknownHeroes.value ? unknownHeroes.value : undefined,
         preferences: includePreferences.value ? preferences.value : undefined,
-        ownedCostumes: Object.keys(ownedCostumesMap).length ? ownedCostumesMap : undefined
+        ownedCostumes: ownedCostumesMap
     }
 
     return dataWithBase('profile', data);
