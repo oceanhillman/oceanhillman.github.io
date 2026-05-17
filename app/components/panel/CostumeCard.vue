@@ -55,6 +55,11 @@
 
 <style scoped lang="sass">
 .hero-card
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45)
+
+    &:hover
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.65)
+
     .check-corner
         position: absolute
         top: 0
