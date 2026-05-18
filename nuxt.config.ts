@@ -32,7 +32,7 @@ export default defineNuxtConfig({
     },
 
     app: {
-        baseURL: '/',
+        baseURL: '/mr-calculator.github.io/',
 
         head: {
             htmlAttrs: { lang: 'en' },
@@ -165,9 +165,4 @@ export default defineNuxtConfig({
             '/heroes/new',
         ]
     },
-
-    devServer: {
-        host: "192.168.0.199",
-        port: 5500
-    }
 })
