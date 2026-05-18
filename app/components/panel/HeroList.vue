@@ -1,5 +1,11 @@
 <template>
     <div class="hero-list">
+        <div class="view-bar">
+            <ul>
+                <li :class="{ selected: currentView === 'gallery' }" @click="currentView = 'gallery'">GALLERY<span class="view-label"> VIEW</span></li>
+                <li :class="{ selected: currentView === 'list' }" @click="currentView = 'list'">LIST<span class="view-label"> VIEW</span></li>
+            </ul>
+        </div>
         <div
             ref="tools"
             :class="{ tools: 1, mobile }"
@@ -32,7 +38,6 @@
                     object-fit="contain"
                 />
             </div>
-
             <div class="filters">
                 <FormCheckbox v-model="filterFavourites">
                     Favourites
@@ -43,8 +48,11 @@
                 />
             </div>
         </div>
+        <template v-if="currentView === 'list'">
+            <slot name="list-view" />
+        </template>
         <component
-            v-if="!!featuredHero"
+            v-if="currentView === 'gallery' && !!featuredHero"
             :is="links ? NuxtLink : 'div'"
             class="featured-hero"
 
@@ -115,7 +123,7 @@
                 </p>
             </div>
         </component>
-        <ul class="list">
+        <ul v-if="currentView === 'gallery'" class="list">
             <li v-if="addHeroEnabled && filterByRole == 'all-roles' && !filterFavourites && !searchText">
                 <component
                     :is="links ? NuxtLink : 'div'"
@@ -190,17 +198,26 @@ const props = withDefaults(defineProps<{
     addHeroEnabled?: boolean,
     showUnknownHeroes?: boolean,
 
-    sortHeroes?: (a: HeroData, b: HeroData) => number
+    sortHeroes?: (a: HeroData, b: HeroData) => number,
+
+    view?: 'gallery' | 'list',
 }>(), {
     links: true,
     addHeroEnabled: true,
     showUnknownHeroes: true,
-    sortHeroes: (a,b) => a.name.localeCompare(b.name)
+    sortHeroes: (a,b) => a.name.localeCompare(b.name),
+    view: 'gallery',
 });
 
 const emit = defineEmits<{
-    clickHero: [ heroId: string ]
+    clickHero: [ heroId: string ],
+    'update:view': [ view: 'gallery' | 'list' ],
 }>();
+
+const currentView = computed({
+    get: () => props.view,
+    set: (val) => emit('update:view', val),
+});
 
 const roleDropdownOptions = [
     {
@@ -372,4 +389,6 @@ useEvent('keydown', (e: KeyboardEvent) => {
     if (e.key.match(/[a-zA-Z]{1}/g)?.length === 1)
         searchInput.value?.focus();
 });
+
+defineExpose({ searchText, filterByRole, filterFavourites });
 </script>
