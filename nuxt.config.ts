@@ -32,7 +32,7 @@ export default defineNuxtConfig({
     },
 
     app: {
-        baseURL: '/mr-calculator.github.io/',
+        baseURL: '/',
 
         head: {
             htmlAttrs: { lang: 'en' },
