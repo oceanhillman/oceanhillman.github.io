@@ -2,8 +2,8 @@
     <div class="hero-list">
         <div class="view-bar">
             <ul>
-                <li :class="{ selected: currentView === 'gallery' }" @click="currentView = 'gallery'">GALLERY VIEW</li>
-                <li :class="{ selected: currentView === 'list' }" @click="currentView = 'list'">LIST VIEW</li>
+                <li :class="{ selected: currentView === 'gallery' }" @click="currentView = 'gallery'">GALLERY<span class="view-label"> VIEW</span></li>
+                <li :class="{ selected: currentView === 'list' }" @click="currentView = 'list'">LIST<span class="view-label"> VIEW</span></li>
             </ul>
         </div>
         <div
@@ -22,27 +22,21 @@
                 />
             </NuxtLink>
             <div class="search">
-                <div class="search-inner">
-                    <input
-                        ref="searchInput"
-                        type="text"
-                        placeholder="Search..."
+                <input
+                    ref="searchInput"
+                    type="text"
+                    placeholder="Search..."
 
-                        v-model="searchText"
-                    />
-                    <Tex
-                        image="search"
-                        color="var(--light-blue-highlight)"
+                    v-model="searchText"
+                />
+                <Tex
+                    image="search"
+                    color="var(--light-blue-highlight)"
 
-                        width="25px"
-                        height="25px"
-                        object-fit="contain"
-                    />
-                </div>
-            </div>
-
-            <div class="slot-center">
-                <slot />
+                    width="25px"
+                    height="25px"
+                    object-fit="contain"
+                />
             </div>
             <div class="filters">
                 <FormCheckbox v-model="filterFavourites">
