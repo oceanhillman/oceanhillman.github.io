@@ -20,9 +20,11 @@
             <UiSeparator />
             <ClientOnly>
                 <PanelHeroList
-                    ref="heroList"
                     back-button="/"
                     v-model:view="view"
+                    @update:searchText="listSearch = $event"
+                    @update:filterByRole="listRole = $event"
+                    @update:filterFavourites="listFavs = $event"
                 >
                     <template #list-view>
                         <div class="table-wrapper">
@@ -210,9 +212,10 @@ onBeforeUnmount(save);
 // View toggle
 const view = useLocalStorage<'gallery' | 'list'>('heroes_view', 'gallery');
 
-// Filter state — read from PanelHeroList via expose
-interface HeroListFilters { searchText: string, filterByRole: string, filterFavourites: boolean }
-const heroList = useTemplateRef<HeroListFilters>('heroList');
+// Filter state — synced from PanelHeroList via emitted events
+const listSearch = ref('');
+const listRole = ref('all-roles');
+const listFavs = ref(false);
 const favourites = useLocalStorage<string[]>('favourite_heroes', []);
 
 function favouriteHero(heroId: string) {
@@ -273,9 +276,9 @@ const cardSortOptions = [
 const ROLE_ORDER = ['vanguard', 'duelist', 'strategist'];
 
 const sortedHeroData = computed(() => {
-    const search = heroList.value?.searchText ?? '';
-    const role = heroList.value?.filterByRole ?? 'all-roles';
-    const favOnly = heroList.value?.filterFavourites ?? false;
+    const search = listSearch.value;
+    const role = listRole.value;
+    const favOnly = listFavs.value;
     const favs = favourites.value;
 
     let data = [...heroData.value];

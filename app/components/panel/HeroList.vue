@@ -212,6 +212,9 @@ const props = withDefaults(defineProps<{
 const emit = defineEmits<{
     clickHero: [ heroId: string ],
     'update:view': [ view: 'gallery' | 'list' ],
+    'update:searchText': [string],
+    'update:filterByRole': [string],
+    'update:filterFavourites': [boolean],
 }>();
 
 const currentView = computed({
@@ -301,6 +304,10 @@ const filterFavourites = ref(false);
 const favourites = useLocalStorage<HeroData['id'][]>(`favourite_heroes`, []);
 
 const searchText = ref('');
+
+watch(searchText, v => emit('update:searchText', v));
+watch(filterByRole, v => emit('update:filterByRole', v));
+watch(filterFavourites, v => emit('update:filterFavourites', v));
 
 function filterHeroList(list: HeroData[]) {
     if (filterByRole.value != 'all-roles' && filterByRole.value != 'favourite')
