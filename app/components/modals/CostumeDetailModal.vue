@@ -331,8 +331,8 @@
 </style>
 
 <script setup lang="ts">
-import type { CostumeEntry } from '~/assets/data/cosmeticsRarity';
-import { skinSlug } from '~/assets/data/cosmeticsRarity';
+import type { CostumeEntry } from '~/assets/data/costumeData';
+import { skinSlug } from '~/assets/data/costumeData';
 
 const props = withDefaults(defineProps<{
     costume: CostumeEntry;
