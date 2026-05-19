@@ -632,7 +632,7 @@ import ConvertUnknownHeroModal from '~/components/modals/ConvertUnknownHeroModal
 import ProficiencyPointsModal from '~/components/modals/ProficiencyPointsModal.vue';
 import type { TooltipBinding } from '~/directives/tooltip';
 import { ACHIEVEMENT_CATEGORIES, getAchievements, type AchievementTypeCategory } from '~/assets/data/achievements';
-import { skinSlug, HERO_COSMETICS, type CostumeEntry } from '~/assets/data/cosmeticsRarity';
+import { skinSlug, HERO_COSMETICS, type CostumeEntry } from '~/assets/data/costumeData';
 import CostumeDetailModal from '~/components/modals/CostumeDetailModal.vue';
 
 type PageId = 'overview'|'customize'|'estimates'|'planner'|'achievements'|'cosmetics';
@@ -1272,6 +1272,7 @@ const filterOptions = [
     { value: 'rare',      label: 'RARE' },
     { value: 'shop',       label: 'SHOP' },
     { value: 'battlepass', label: 'BATTLEPASS' },
+    { value: 'event',      label: 'EVENT' },
     { value: 'other',      label: 'OTHER' },
 ];
 const sortDropdownOptions = [
@@ -1281,7 +1282,7 @@ const sortDropdownOptions = [
 ];
 
 const RARITY_VALUES = new Set(['legendary', 'epic', 'rare']);
-const CATEGORY_VALUES = new Set(['shop', 'battlepass', 'other']);
+const CATEGORY_VALUES = new Set(['shop', 'battlepass', 'event', 'other']);
 
 const RARITY_ORDER: Record<string, number> = { legendary: 0, epic: 1, rare: 2 };
 const sortedCostumes = computed(() => {
